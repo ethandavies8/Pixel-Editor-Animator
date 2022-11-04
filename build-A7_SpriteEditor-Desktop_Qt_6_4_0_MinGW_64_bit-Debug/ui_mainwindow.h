@@ -93,8 +93,21 @@ public:
         colorPreview->setFrameShape(QFrame::StyledPanel);
         colorPreview->setFrameShadow(QFrame::Raised);
         pixelEditor = new QTableWidget(centralwidget);
+        if (pixelEditor->columnCount() < 8)
+            pixelEditor->setColumnCount(8);
+        if (pixelEditor->rowCount() < 8)
+            pixelEditor->setRowCount(8);
         pixelEditor->setObjectName("pixelEditor");
-        pixelEditor->setGeometry(QRect(20, 40, 521, 401));
+        pixelEditor->setGeometry(QRect(100, 70, 331, 341));
+        pixelEditor->setMouseTracking(true);
+        pixelEditor->setShowGrid(true);
+        pixelEditor->setRowCount(8);
+        pixelEditor->setColumnCount(8);
+        pixelEditor->horizontalHeader()->setVisible(false);
+        pixelEditor->horizontalHeader()->setCascadingSectionResizes(false);
+        pixelEditor->horizontalHeader()->setDefaultSectionSize(41);
+        pixelEditor->verticalHeader()->setVisible(false);
+        pixelEditor->verticalHeader()->setDefaultSectionSize(42);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");

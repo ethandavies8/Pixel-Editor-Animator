@@ -17,5 +17,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void printCellPressed(int, int);
 };
 #endif // MAINWINDOW_H
