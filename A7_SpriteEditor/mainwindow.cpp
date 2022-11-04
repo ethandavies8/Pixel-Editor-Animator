@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QTableWidget"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     // do this
     ui->setupUi(this);
+    ui->pixelEditor->setColumnCount(2);
+
 }
 
 MainWindow::~MainWindow()
