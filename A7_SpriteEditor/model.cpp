@@ -1,22 +1,28 @@
 #include "model.h"
+#include "frame.h"
 
 model::model()
 {
-
+    //get FrameSize from view
+    Frame newFrame(frameSize);
+    frames.append(newFrame);
 
 }
 
-void model::addFrame(int frame){
-    frames.append(frame);
+void model::addFrame(){
+    Frame newFrame(frameSize);
+    frames.append(newFrame);
 }
 
-void model::removeFrame(int frame){
-    frames.removeOne(frame);
+
+
+void model::removeFrame(Frame removedFrame){
+    frames.removeOne(removedFrame);
 }
 
-void model::swapFrame(int frame, int otherFrame){
+void model::swapFrame(Frame frame, Frame otherFrame){
 
-    int *tempFrame = &frame;
+    Frame *tempFrame = &frame;
     int otherFrameIndex = frames.indexOf(otherFrame);
     frames.replace(frames.indexOf(frame), otherFrame);
     frames.replace(otherFrameIndex, *tempFrame);
