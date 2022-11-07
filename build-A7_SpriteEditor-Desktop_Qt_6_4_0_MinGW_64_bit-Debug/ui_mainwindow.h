@@ -100,6 +100,7 @@ public:
         pixelEditor->setObjectName("pixelEditor");
         pixelEditor->setGeometry(QRect(100, 70, 331, 341));
         pixelEditor->setMouseTracking(true);
+        pixelEditor->setFocusPolicy(Qt::NoFocus);
         pixelEditor->setShowGrid(true);
         pixelEditor->setRowCount(8);
         pixelEditor->setColumnCount(8);

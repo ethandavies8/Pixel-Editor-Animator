@@ -31,7 +31,7 @@ struct qt_meta_stringdata_MainWindow_t {
     char stringdata1[14];
     char stringdata2[1];
     char stringdata3[13];
-    char stringdata4[5];
+    char stringdata4[17];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -41,13 +41,13 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(11, 13),  // "editorClicked"
         QT_MOC_LITERAL(25, 0),  // ""
         QT_MOC_LITERAL(26, 12),  // "toolSelected"
-        QT_MOC_LITERAL(39, 4)   // "Tool"
+        QT_MOC_LITERAL(39, 16)   // "MainWindow::Tool"
     },
     "MainWindow",
     "editorClicked",
     "",
     "toolSelected",
-    "Tool"
+    "MainWindow::Tool"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -91,7 +91,7 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'toolSelected'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<Tool, std::false_type>
+        QtPrivate::TypeAndForceComplete<MainWindow::Tool, std::false_type>
     >,
     nullptr
 } };
@@ -103,7 +103,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         (void)_t;
         switch (_id) {
         case 0: _t->editorClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 1: _t->toolSelected((*reinterpret_cast< std::add_pointer_t<Tool>>(_a[1]))); break;
+        case 1: _t->toolSelected((*reinterpret_cast< std::add_pointer_t<MainWindow::Tool>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -116,7 +116,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (MainWindow::*)(Tool );
+            using _t = void (MainWindow::*)(MainWindow::Tool );
             if (_t _q_method = &MainWindow::toolSelected; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
@@ -163,7 +163,7 @@ void MainWindow::editorClicked(int _t1, int _t2)
 }
 
 // SIGNAL 1
-void MainWindow::toolSelected(Tool _t1)
+void MainWindow::toolSelected(MainWindow::Tool _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

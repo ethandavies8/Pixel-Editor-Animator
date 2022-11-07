@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <frame.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,9 +25,13 @@ private:
     enum Tool {brush, eraser};
     Tool currentTool = brush;
 
+    void setPixel(Pixel, int, int);
+
+public slots:
+    //void getColor();
 
 signals:
     void editorClicked(int, int);
-    void toolSelected(Tool);
+    void toolSelected(MainWindow::Tool);
 };
 #endif // MAINWINDOW_H

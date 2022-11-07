@@ -27,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
             this,
             &MainWindow::callToolSelectedEraser //&MainWindow::callToolSelected
             );
+
+    //Pixel pix = {0,0,0,1};
+
 }
 
 MainWindow::~MainWindow()
@@ -39,6 +42,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::callEditorClicked(int row, int col) {
     emit editorClicked(row, col);
+    setPixel({0,0,255,255}, row,col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
 
@@ -50,6 +54,24 @@ void MainWindow::callToolSelectedBrush() {
 void MainWindow::callToolSelectedEraser() {
     emit toolSelected(eraser);
     std::cout << "Emitted select Tool: Eraser" << std::endl;
+}
+
+void MainWindow::setPixel(Pixel pixel, int row, int col) {
+    if(ui->pixelEditor->item(row, col) == nullptr) {
+        std::cout << "No item, creating one." << std::endl;
+        QTableWidgetItem *item = new QTableWidgetItem;
+        item->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
+        ui->pixelEditor->setItem(row, col, item);
+    }
+    else {
+        std::cout << "item exists" << std::endl;
+        ui->pixelEditor->itemAt(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
+    }
+
+
+    //ui->pixelEditor->setItem(row, col, item);
+    //QTableWidgetItem item()
+    //ui->pixelEditor->item(row, col)->setBackground(color); //QColor(pixel.red, pixel.green, pixel.blue, pixel.alpha)
 }
 
 
