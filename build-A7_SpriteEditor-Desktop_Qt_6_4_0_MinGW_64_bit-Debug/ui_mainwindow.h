@@ -36,8 +36,8 @@ public:
     QScrollBar *horizontalScrollBar;
     QSlider *fpsSlider;
     QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *brushButton;
+    QPushButton *eraserButton;
     QPushButton *pushButton_4;
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
@@ -76,12 +76,12 @@ public:
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName("pushButton");
         pushButton->setGeometry(QRect(710, 200, 75, 24));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(590, 250, 41, 41));
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(590, 290, 41, 41));
+        brushButton = new QPushButton(centralwidget);
+        brushButton->setObjectName("brushButton");
+        brushButton->setGeometry(QRect(590, 250, 41, 41));
+        eraserButton = new QPushButton(centralwidget);
+        eraserButton->setObjectName("eraserButton");
+        eraserButton->setGeometry(QRect(590, 290, 41, 41));
         pushButton_4 = new QPushButton(centralwidget);
         pushButton_4->setObjectName("pushButton_4");
         pushButton_4->setGeometry(QRect(710, 250, 41, 41));
@@ -105,13 +105,13 @@ public:
         pixelEditor->setColumnCount(8);
         pixelEditor->horizontalHeader()->setVisible(false);
         pixelEditor->horizontalHeader()->setCascadingSectionResizes(false);
-        pixelEditor->horizontalHeader()->setDefaultSectionSize(41);
+        pixelEditor->horizontalHeader()->setDefaultSectionSize(49);
         pixelEditor->verticalHeader()->setVisible(false);
         pixelEditor->verticalHeader()->setDefaultSectionSize(42);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -128,8 +128,8 @@ public:
         saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
         loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
+        brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
+        eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
     } // retranslateUi
 

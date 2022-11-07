@@ -11,12 +11,22 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
-    void printCellPressed(int, int);
+    void callEditorClicked(int, int);
+    void callToolSelectedBrush();
+    void callToolSelectedEraser();
+    enum Tool {brush, eraser};
+    Tool currentTool = brush;
+
+
+signals:
+    void editorClicked(int, int);
+    void toolSelected(Tool);
 };
 #endif // MAINWINDOW_H

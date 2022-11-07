@@ -13,7 +13,19 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
             this,
-            &MainWindow::printCellPressed
+            &MainWindow::callEditorClicked
+            );
+
+    connect(ui->brushButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::callToolSelectedBrush
+            );
+
+    connect(ui->eraserButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::callToolSelectedEraser //&MainWindow::callToolSelected
             );
 }
 
@@ -25,7 +37,19 @@ MainWindow::~MainWindow()
     }
 }
 
-void MainWindow::printCellPressed(int row, int col) {
+void MainWindow::callEditorClicked(int row, int col) {
+    emit editorClicked(row, col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
+
+void MainWindow::callToolSelectedBrush() {
+    emit toolSelected(brush);
+    std::cout << "Emitted select Tool: Brush" << std::endl;
+}
+
+void MainWindow::callToolSelectedEraser() {
+    emit toolSelected(eraser);
+    std::cout << "Emitted select Tool: Eraser" << std::endl;
+}
+
 

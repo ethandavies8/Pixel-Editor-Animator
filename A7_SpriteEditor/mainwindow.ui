@@ -102,7 +102,7 @@
      <string>Play</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="brushButton">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -115,7 +115,7 @@
      <string>Brush</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="eraserButton">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -191,7 +191,7 @@
      <bool>false</bool>
     </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>41</number>
+     <number>49</number>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
@@ -223,7 +223,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
