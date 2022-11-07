@@ -7,8 +7,9 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QJsonDocument>
-#include<QJsonObject>
+#include <QJsonObject>
 #include <QMessageBox>
+#include <QJsonArray>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -48,11 +49,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::loadFile
             );
 
-//    connect(this,
-//            &MainWindow::replaceProject,
-//            &model,
-//            &Model::replaceProject
-//            );
+    connect(this,
+            &MainWindow::replaceProject,
+            &model,
+            &Model::loadProject
+            );
 }
 
 MainWindow::~MainWindow()
@@ -78,10 +79,12 @@ void MainWindow::callToolSelectedEraser() {
 void MainWindow::loadFile() {
 
     // Ask the user for the file to open
-    QFile file(QFileDialog::getOpenFileName(this, "Open Project", "C://", "JSON Files (*.json)"));
+    QFile file(QFileDialog::getOpenFileName(this, "Open Project", "C://", "Sprite Sheet Projects (*.ssp)"));
 
-    if (!file.isOpen())
+    if (!file.isOpen()) {
         QMessageBox::warning(this, "ERROR", "File not open.");
+        return;
+    }
 
     QString data = file.readAll();
     file.close();
@@ -89,22 +92,45 @@ void MainWindow::loadFile() {
     QJsonDocument document = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject project = document.object();
 
-    // Error checking
-    if (!project.isEmpty())
-        QMessageBox::warning(this, "ERROR", "Project is empty.");
-    else if (!project.contains("height"))
-        QMessageBox::warning(this, "ERROR", "Project does not contain height.");
-    else if (!project.contains("width"))
-        QMessageBox::warning(this, "ERROR", "Project does not contain width.");
-    else if (!project.contains("numberOfFrames"))
-        QMessageBox::warning(this, "ERROR", "Project does not contain numberOfFrames.");
-    else if (!project.contains("frames"))
-        QMessageBox::warning(this, "ERROR", "Project does not contain frames.");
-
-    // Send this object back to the model to replace current project
-    // emit replaceProject(project);
+    if (projectFormatIsCorrect(project))
+        emit replaceProject(project); // Replace the project if it passes error checking
 }
 
 void MainWindow::saveFile() {
 
+}
+
+// Helper method for error checking JSON format
+bool MainWindow::projectFormatIsCorrect(QJsonObject& project) {
+
+    if (!project.isEmpty()) {
+        QMessageBox::warning(this, "ERROR", "Project is empty.");
+        return false;
+    }
+    else if (!project.contains("height")) {
+        QMessageBox::warning(this, "ERROR", "Project does not contain height.");
+        return false;
+    }
+    else if (!project.contains("width")) {
+        QMessageBox::warning(this, "ERROR", "Project does not contain width.");
+        return false;
+    }
+    else if (!project.contains("numberOfFrames")) {
+        QMessageBox::warning(this, "ERROR", "Project does not contain numberOfFrames.");
+        return false;
+    }
+    else if (!project.contains("frames")) {
+        QMessageBox::warning(this, "ERROR", "Project does not contain frames.");
+        return false;
+    }
+    else if (project.value("height").toInt() != project.value("width").toInt()) {
+        QMessageBox::warning(this, "ERROR", "Project must have a square sprite size.");
+        return false;
+    }
+    else if (project.value("numberOfFrames").toInt() != project.value("frames").toArray().size()) {
+        QMessageBox::warning(this, "ERROR", "Number of frames does not match frames given.");
+        return false;
+    }
+
+    return true;
 }

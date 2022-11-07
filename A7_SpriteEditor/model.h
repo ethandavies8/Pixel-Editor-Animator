@@ -14,7 +14,7 @@ public:
 signals:
 
 public slots:
-//    void replaceProject(QJsonObject& loadedProject);
+    void loadProject(QJsonObject& otherProject);
 
 private:
     QVector<Frame> frames;

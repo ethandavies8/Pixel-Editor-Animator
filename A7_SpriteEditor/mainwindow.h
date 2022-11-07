@@ -22,6 +22,7 @@ private:
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
+    bool projectFormatIsCorrect(QJsonObject&);
     enum Tool {brush, eraser};
     Tool currentTool = brush;
 

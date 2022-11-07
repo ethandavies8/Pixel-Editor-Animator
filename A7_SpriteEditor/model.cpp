@@ -1,5 +1,7 @@
 #include "model.h"
 #include "frame.h"
+#include <QJsonObject>
+#include <QJsonArray>
 
 Model::Model(QObject *parent)
     : QObject{parent}
@@ -28,3 +30,19 @@ void Model::addFrame(){
 //    frames.replace(otherFrameIndex, *tempFrame);
 
 //}
+
+void Model::loadProject(QJsonObject& otherProject) {
+
+    QVector<Frame> newFrames;
+
+    int size = otherProject.value("height").toInt();
+    QJsonArray projectFrames = otherProject.value("frames").toArray();
+
+    for (const QJsonValue& value : projectFrames) {
+    }
+
+    // Now overwrite the original model with a new one
+    // frames = newFrames;
+    frameSize = size;
+    activeFramePointer = 0;
+}
