@@ -2,7 +2,7 @@
 #define MODEL_H
 
 #include <QVector>
-
+#include "frame.h"
 
 
 class model
@@ -11,11 +11,12 @@ public:
     model();
 
 private:
-    QVector<int> frames;
-  //  frame activeFrame;
-    void addFrame(int frame);
-    void swapFrame(int frame1, int frame2);
-    void removeFrame(int frame);
+    QVector<Frame> frames;
+    int activeFramePointer = 0;
+    int frameSize = 16;
+    void addFrame();
+    void swapFrame(Frame frame, Frame otherFrame);
+    void removeFrame(Frame removedFrame);
     void load();
     void save();
     //AnimationWindow
