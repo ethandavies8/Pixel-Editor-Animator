@@ -33,6 +33,10 @@ public:
     QAction *actionSAVE;
     QAction *actionSAVEAS;
     QAction *actionOPEN;
+    QAction *actionSave;
+    QAction *actionSave_As;
+    QAction *actionOpen;
+    QAction *actionLoad;
     QWidget *centralwidget;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -45,8 +49,7 @@ public:
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
     QMenuBar *menubar;
-    QMenu *saveMenu;
-    QMenu *loadMenu;
+    QMenu *fileMenu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -60,6 +63,14 @@ public:
         actionSAVEAS->setObjectName("actionSAVEAS");
         actionOPEN = new QAction(MainWindow);
         actionOPEN->setObjectName("actionOPEN");
+        actionSave = new QAction(MainWindow);
+        actionSave->setObjectName("actionSave");
+        actionSave_As = new QAction(MainWindow);
+        actionSave_As->setObjectName("actionSave_As");
+        actionOpen = new QAction(MainWindow);
+        actionOpen->setObjectName("actionOpen");
+        actionLoad = new QAction(MainWindow);
+        actionLoad->setObjectName("actionLoad");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         scrollArea = new QScrollArea(centralwidget);
@@ -117,20 +128,17 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 800, 17));
-        saveMenu = new QMenu(menubar);
-        saveMenu->setObjectName("saveMenu");
-        loadMenu = new QMenu(menubar);
-        loadMenu->setObjectName("loadMenu");
+        fileMenu = new QMenu(menubar);
+        fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
 
-        menubar->addAction(saveMenu->menuAction());
-        menubar->addAction(loadMenu->menuAction());
-        saveMenu->addAction(actionSAVE);
-        saveMenu->addAction(actionSAVEAS);
-        loadMenu->addAction(actionOPEN);
+        menubar->addAction(fileMenu->menuAction());
+        fileMenu->addAction(actionSave);
+        fileMenu->addSeparator();
+        fileMenu->addAction(actionLoad);
 
         retranslateUi(MainWindow);
 
@@ -143,12 +151,15 @@ public:
         actionSAVE->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
         actionSAVEAS->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
         actionOPEN->setText(QCoreApplication::translate("MainWindow", "Open Project", nullptr));
+        actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionSave_As->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
+        actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
+        actionLoad->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
         eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
-        saveMenu->setTitle(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        loadMenu->setTitle(QCoreApplication::translate("MainWindow", "Load", nullptr));
+        fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
 };

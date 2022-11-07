@@ -27,6 +27,19 @@ MainWindow::MainWindow(QWidget *parent)
             this,
             &MainWindow::callToolSelectedEraser //&MainWindow::callToolSelected
             );
+
+    // MENU ITEMS (SAVE AND LOAD)
+    connect(ui->actionSave,
+            &QAction::triggered,
+            this,
+            &MainWindow::saveFile
+            );
+
+    connect(ui->actionLoad,
+            &QAction::triggered,
+            this,
+            &MainWindow::loadFile
+            );
 }
 
 MainWindow::~MainWindow()

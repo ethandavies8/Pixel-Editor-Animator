@@ -24,6 +24,9 @@ private:
     enum Tool {brush, eraser};
     Tool currentTool = brush;
 
+public slots:
+    void loadFile();
+    void saveFile();
 
 signals:
     void editorClicked(int, int);
