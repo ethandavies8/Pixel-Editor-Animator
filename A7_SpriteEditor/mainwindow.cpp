@@ -32,9 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    while (true) {
-
-    }
 }
 
 void MainWindow::callEditorClicked(int row, int col) {
