@@ -1,20 +1,20 @@
 #include "model.h"
 #include "frame.h"
 
-model::model()
+Model::Model(QObject *parent)
+    : QObject{parent}
 {
     //get FrameSize from view
     Frame newFrame(frameSize);
     frames.append(newFrame);
-
 }
 
-void model::addFrame(){
+Model::~Model() {}
+
+void Model::addFrame(){
     Frame newFrame(frameSize);
     frames.append(newFrame);
 }
-
-
 
 //void model::removeFrame(Frame removedFrame){
 //    frames.removeOne(removedFrame);
@@ -28,11 +28,3 @@ void model::addFrame(){
 //    frames.replace(otherFrameIndex, *tempFrame);
 
 //}
-
-void model::load(){
-
-}
-
-void model::save(){
-
-}

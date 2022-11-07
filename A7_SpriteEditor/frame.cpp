@@ -37,3 +37,9 @@ Pixel Frame::getPixel(int x, int y) {
 void Frame::setPixel(int x, int y, Pixel newPixel) {
     pixels[y][x] = newPixel;
 }
+
+// Assignment operator for frame class
+Frame& Frame::operator=(const Frame& other) {
+    pixels = other.pixels;
+    return *this;
+}
