@@ -10,10 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -28,9 +30,10 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionSAVE;
+    QAction *actionSAVEAS;
+    QAction *actionOPEN;
     QWidget *centralwidget;
-    QPushButton *saveButton;
-    QPushButton *loadButton;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QScrollBar *horizontalScrollBar;
@@ -42,6 +45,8 @@ public:
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
     QMenuBar *menubar;
+    QMenu *saveMenu;
+    QMenu *loadMenu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -49,14 +54,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(800, 600);
+        actionSAVE = new QAction(MainWindow);
+        actionSAVE->setObjectName("actionSAVE");
+        actionSAVEAS = new QAction(MainWindow);
+        actionSAVEAS->setObjectName("actionSAVEAS");
+        actionOPEN = new QAction(MainWindow);
+        actionOPEN->setObjectName("actionOPEN");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        saveButton = new QPushButton(centralwidget);
-        saveButton->setObjectName("saveButton");
-        saveButton->setGeometry(QRect(20, 0, 61, 31));
-        loadButton = new QPushButton(centralwidget);
-        loadButton->setObjectName("loadButton");
-        loadButton->setGeometry(QRect(90, 0, 61, 31));
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName("scrollArea");
         scrollArea->setGeometry(QRect(20, 450, 761, 81));
@@ -111,11 +116,21 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 17));
+        saveMenu = new QMenu(menubar);
+        saveMenu->setObjectName("saveMenu");
+        loadMenu = new QMenu(menubar);
+        loadMenu->setObjectName("loadMenu");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(saveMenu->menuAction());
+        menubar->addAction(loadMenu->menuAction());
+        saveMenu->addAction(actionSAVE);
+        saveMenu->addAction(actionSAVEAS);
+        loadMenu->addAction(actionOPEN);
 
         retranslateUi(MainWindow);
 
@@ -125,12 +140,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
+        actionSAVE->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionSAVEAS->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
+        actionOPEN->setText(QCoreApplication::translate("MainWindow", "Open Project", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
         eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
         pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        saveMenu->setTitle(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        loadMenu->setTitle(QCoreApplication::translate("MainWindow", "Load", nullptr));
     } // retranslateUi
 
 };
