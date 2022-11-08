@@ -39,8 +39,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // MENU ITEMS (SAVE AND LOAD)
     connect(ui->actionSave,
             &QAction::triggered,
-            this,
-            &MainWindow::saveFile
+            &model,
+            &Model::retrieveJsonProject
             );
 
     connect(ui->actionLoad,
@@ -53,6 +53,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::replaceProject,
             &model,
             &Model::loadProject
+            );
+
+    connect(&model,
+            &Model::saveProject,
+            this,
+            &MainWindow::saveFile
             );
 }
 
@@ -96,8 +102,15 @@ void MainWindow::loadFile() {
         emit replaceProject(project); // Replace the project if it passes error checking
 }
 
-void MainWindow::saveFile() {
+void MainWindow::saveFile(QJsonObject& thisProject) {
 
+    QFile file(QFileDialog::getSaveFileName(this, "Save Project", "./", "Sprite Sheet Projects (*.ssp)"));
+
+    file.open(QIODevice::WriteOnly);
+    QJsonDocument document;
+    document.setObject(thisProject);
+    file.write(document.toJson());
+    file.close();
 }
 
 // Helper method for error checking JSON format

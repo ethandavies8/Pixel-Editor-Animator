@@ -12,9 +12,11 @@ public:
     virtual ~Model();
 
 signals:
+    void saveProject(QJsonObject& thisProject);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
+    void retrieveJsonProject();
 
 private:
     QVector<Frame> frames;

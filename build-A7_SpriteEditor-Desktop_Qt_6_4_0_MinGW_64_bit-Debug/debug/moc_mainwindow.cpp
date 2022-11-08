@@ -84,7 +84,7 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        7,    0,   55,    2, 0x0a,    8 /* Public */,
-       8,    0,   56,    2, 0x0a,    9 /* Public */,
+       8,    1,   56,    2, 0x0a,    9 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -93,7 +93,7 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 6,    2,
 
        0        // eod
 };
@@ -120,7 +120,8 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'loadFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'saveFile'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QJsonObject &, std::false_type>
     >,
     nullptr
 } };
@@ -135,7 +136,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->toolSelected((*reinterpret_cast< std::add_pointer_t<Tool>>(_a[1]))); break;
         case 2: _t->replaceProject((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
         case 3: _t->loadFile(); break;
-        case 4: _t->saveFile(); break;
+        case 4: _t->saveFile((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

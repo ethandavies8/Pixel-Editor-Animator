@@ -28,7 +28,7 @@ private:
 
 public slots:
     void loadFile();
-    void saveFile();
+    void saveFile(QJsonObject&);
 
 signals:
     void editorClicked(int, int);

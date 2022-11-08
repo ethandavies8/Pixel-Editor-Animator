@@ -31,6 +31,7 @@ void Model::addFrame(){
 
 //}
 
+// Slot that reads a Json Object and replaces this project with it
 void Model::loadProject(QJsonObject& otherProject) {
 
     QVector<Frame> newFrames;
@@ -45,4 +46,13 @@ void Model::loadProject(QJsonObject& otherProject) {
     // frames = newFrames;
     frameSize = size;
     activeFramePointer = 0;
+}
+
+// Slot that will send a signal back to the view with this project converted to Json
+void Model::retrieveJsonProject() {
+    QJsonObject root;
+    root.insert("height", frameSize);
+    root.insert("width", frameSize);
+    root.insert("numberOfFrames", frames.size());
+    emit saveProject(root);
 }
