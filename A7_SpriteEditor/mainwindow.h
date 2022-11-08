@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <frame.h>
+#include "QColorDialog"
 #include "model.h"
 
 QT_BEGIN_NAMESPACE
@@ -22,9 +24,15 @@ private:
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
+    void openColorDialog();
     bool projectFormatIsCorrect(QJsonObject&);
     enum Tool {brush, eraser};
     Tool currentTool = brush;
+
+    void setPixel(Pixel, int, int);
+    void sendColor();
+
+    QColorDialog *colorDialog;
 
 public slots:
     void loadFile();
@@ -34,5 +42,6 @@ signals:
     void editorClicked(int, int);
     void toolSelected(Tool);
     void replaceProject(QJsonObject&);
+    void colorChange(Pixel);
 };
 #endif // MAINWINDOW_H
