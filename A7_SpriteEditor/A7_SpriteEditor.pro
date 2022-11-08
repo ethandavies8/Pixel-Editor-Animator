@@ -12,15 +12,18 @@ SOURCES += \
     frame.cpp \
     main.cpp \
     mainwindow.cpp \
-    model.cpp
+    model.cpp \
+    sizedialog.cpp
 
 HEADERS += \
     frame.h \
     mainwindow.h \
-    model.h
+    model.h \
+    sizedialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    sizedialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

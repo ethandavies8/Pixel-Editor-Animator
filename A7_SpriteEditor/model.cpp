@@ -3,8 +3,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-Model::Model(QObject *parent)
+Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}
+    , frameSize(spriteSize)
 {
     //get FrameSize from view
     Frame newFrame(frameSize);
