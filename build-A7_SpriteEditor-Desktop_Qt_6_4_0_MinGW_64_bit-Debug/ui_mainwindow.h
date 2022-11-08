@@ -160,7 +160,6 @@ public:
         brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
         eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
         colorButton->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
         fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 

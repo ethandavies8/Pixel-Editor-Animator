@@ -25,6 +25,7 @@ private:
     void callToolSelectedBrush();
     void callToolSelectedEraser();
     void openColorDialog();
+    bool projectFormatIsCorrect(QJsonObject&);
     enum Tool {brush, eraser};
     Tool currentTool = brush;
 
@@ -34,18 +35,6 @@ private:
     QColorDialog *colorDialog;
 
 public slots:
-    //void getColor();
-
-signals:
-    void editorClicked(int, int);
-    void toolSelected(MainWindow::Tool);
-    void colorChange(Pixel);
-
-    bool projectFormatIsCorrect(QJsonObject&);
-    enum Tool {brush, eraser};
-    Tool currentTool = brush;
-
-public slots:
     void loadFile();
     void saveFile(QJsonObject&);
 
@@ -53,5 +42,6 @@ signals:
     void editorClicked(int, int);
     void toolSelected(Tool);
     void replaceProject(QJsonObject&);
+    void colorChange(Pixel);
 };
 #endif // MAINWINDOW_H

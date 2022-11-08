@@ -131,6 +131,9 @@ void MainWindow::sendColor() {
            std::to_string(currentColor.alpha()) + ");}";
 
    ui->colorPreview->setStyleSheet(QString::fromStdString(style));
+
+}
+
 // Slot that will ask the user for a file and read it to replace the project
 void MainWindow::loadFile() {
 
