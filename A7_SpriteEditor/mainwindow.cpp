@@ -20,6 +20,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->setupUi(this);
     //colorDialog->setCurrentColor(Qt::black);
 //    emit colorChange({0,0,0,255});
+
+
+
+
     //ui->pixelEditor->setColumnCount(2);
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
@@ -134,17 +138,16 @@ void MainWindow::sendColor() {
 void MainWindow::loadFile() {
 
     // Ask the user for the file to open
-    QFile file(QFileDialog::getOpenFileName(this, "Open Project", "C://", "Sprite Sheet Projects (*.ssp)"));
+    QFile file(QFileDialog::getOpenFileName(this, "Open Project", "./", "Sprite Sheet Projects (*.ssp)"));
 
-    if (!file.isOpen()) {
-        QMessageBox::warning(this, "ERROR", "File not open.");
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this, "ERROR", "File not loaded.");
         return;
     }
 
-    QString data = file.readAll();
+    QJsonDocument document = QJsonDocument::fromJson(file.readAll());
     file.close();
 
-    QJsonDocument document = QJsonDocument::fromJson(data.toUtf8());
     QJsonObject project = document.object();
 
     if (projectFormatIsCorrect(project))
@@ -166,7 +169,7 @@ void MainWindow::saveFile(QJsonObject& thisProject) {
 // Helper method for error checking JSON format
 bool MainWindow::projectFormatIsCorrect(QJsonObject& project) {
 
-    if (!project.isEmpty()) {
+    if (project.isEmpty()) {
         QMessageBox::warning(this, "ERROR", "Project is empty.");
         return false;
     }
@@ -190,8 +193,8 @@ bool MainWindow::projectFormatIsCorrect(QJsonObject& project) {
         QMessageBox::warning(this, "ERROR", "Project must have a square sprite size.");
         return false;
     }
-    else if (project.value("numberOfFrames").toInt() != project.value("frames").toArray().size()) {
-        QMessageBox::warning(this, "ERROR", "Number of frames does not match frames given.");
+    else if (project.value("numberOfFrames").toInt() != project.value("frames").toObject().size()) {
+        QMessageBox::warning(this, "ERROR", "The number of frames does not match the frames present.");
         return false;
     }
 

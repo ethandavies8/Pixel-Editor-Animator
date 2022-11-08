@@ -3,8 +3,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-Model::Model(QObject *parent)
+Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}
+    , frameSize(spriteSize)
 {
     //get FrameSize from view
     Frame newFrame(frameSize);
@@ -34,16 +35,34 @@ void Model::addFrame(){
 // Slot that reads a Json Object and replaces this project with it
 void Model::loadProject(QJsonObject& otherProject) {
 
+    QJsonArray frameArray = otherProject.value("frames").toArray();
     QVector<Frame> newFrames;
 
     int size = otherProject.value("height").toInt();
-    QJsonArray projectFrames = otherProject.value("frames").toArray();
 
-    for (const QJsonValue& value : projectFrames) {
+    for (const QJsonValue& frameVal : frameArray) {
+        QJsonArray rows = frameVal.toArray();
+        Frame loadFrame(size);
+
+        // Go through each pixel and draw the frame
+        for (int rowNum = 0; rowNum < size; rowNum++) {
+            QJsonArray columns = rows[rowNum].toArray();
+            for (int colNum = 0; colNum < size; colNum++) {
+                QJsonArray pixel = columns[colNum].toArray();
+                Pixel pixelValue = {pixel[0].toInt(),
+                                pixel[1].toInt(),
+                                pixel[2].toInt(),
+                                pixel[3].toInt()};
+                loadFrame.setPixel(colNum, rowNum, pixelValue);
+            }
+        }
+
+        // Add the frame to a new list
+        newFrames.push_back(loadFrame);
     }
 
     // Now overwrite the original model with a new one
-    // frames = newFrames;
+    frames = newFrames;
     frameSize = size;
     activeFramePointer = 0;
 }
@@ -55,15 +74,15 @@ void Model::retrieveJsonProject() {
     root.insert("width", frameSize);
     root.insert("numberOfFrames", frames.size());
 
-    QJsonObject frameArr;
+    QJsonObject framesObject;
     for (int i = 0; i < frames.size(); i++) {
 
         // Add frame numbers (frame0, frame1, etc.)
         QString itemName = "frame";
-        frameArr.insert(itemName.append(QString::number(i)), frames[i].getJsonArray());
+        framesObject.insert(itemName.append(QString::number(i)), frames[i].getJsonArray());
     }
 
-    root.insert("frames", frameArr);
+    root.insert("frames", framesObject);
 
     emit saveProject(root);
 }
