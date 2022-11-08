@@ -117,6 +117,8 @@ public:
         pixelEditor->setGeometry(QRect(100, 70, 331, 341));
         pixelEditor->setMouseTracking(true);
         pixelEditor->setFocusPolicy(Qt::NoFocus);
+        pixelEditor->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        pixelEditor->setDragEnabled(false);
         pixelEditor->setShowGrid(true);
         pixelEditor->setRowCount(8);
         pixelEditor->setColumnCount(8);
@@ -128,7 +130,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 17));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         fileMenu = new QMenu(menubar);
         fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);
