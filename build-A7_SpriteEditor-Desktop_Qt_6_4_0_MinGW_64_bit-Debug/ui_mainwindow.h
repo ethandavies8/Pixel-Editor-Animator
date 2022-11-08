@@ -10,10 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -28,9 +30,14 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionSAVE;
+    QAction *actionSAVEAS;
+    QAction *actionOPEN;
+    QAction *actionSave;
+    QAction *actionSave_As;
+    QAction *actionOpen;
+    QAction *actionLoad;
     QWidget *centralwidget;
-    QPushButton *saveButton;
-    QPushButton *loadButton;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QScrollBar *horizontalScrollBar;
@@ -42,6 +49,7 @@ public:
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
     QMenuBar *menubar;
+    QMenu *fileMenu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -49,14 +57,22 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(800, 600);
+        actionSAVE = new QAction(MainWindow);
+        actionSAVE->setObjectName("actionSAVE");
+        actionSAVEAS = new QAction(MainWindow);
+        actionSAVEAS->setObjectName("actionSAVEAS");
+        actionOPEN = new QAction(MainWindow);
+        actionOPEN->setObjectName("actionOPEN");
+        actionSave = new QAction(MainWindow);
+        actionSave->setObjectName("actionSave");
+        actionSave_As = new QAction(MainWindow);
+        actionSave_As->setObjectName("actionSave_As");
+        actionOpen = new QAction(MainWindow);
+        actionOpen->setObjectName("actionOpen");
+        actionLoad = new QAction(MainWindow);
+        actionLoad->setObjectName("actionLoad");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        saveButton = new QPushButton(centralwidget);
-        saveButton->setObjectName("saveButton");
-        saveButton->setGeometry(QRect(20, 0, 61, 31));
-        loadButton = new QPushButton(centralwidget);
-        loadButton->setObjectName("loadButton");
-        loadButton->setGeometry(QRect(90, 0, 61, 31));
         scrollArea = new QScrollArea(centralwidget);
         scrollArea->setObjectName("scrollArea");
         scrollArea->setGeometry(QRect(20, 450, 761, 81));
@@ -112,11 +128,18 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 17));
+        fileMenu = new QMenu(menubar);
+        fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(fileMenu->menuAction());
+        fileMenu->addAction(actionSave);
+        fileMenu->addSeparator();
+        fileMenu->addAction(actionLoad);
 
         retranslateUi(MainWindow);
 
@@ -126,12 +149,19 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
+        actionSAVE->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionSAVEAS->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
+        actionOPEN->setText(QCoreApplication::translate("MainWindow", "Open Project", nullptr));
+        actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        actionSave_As->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
+        actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
+        actionLoad->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
         eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
         colorButton->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
 };

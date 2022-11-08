@@ -5,6 +5,11 @@
  <data>
   <variable>EnvironmentId</variable>
   <value type="QByteArray">{7af63e44-f461-471d-9389-9ae9e986837e}</value>
+<!-- Written by QtCreator 8.0.2, 2022-11-07T15:40:33. -->
+<qtcreator>
+ <data>
+  <variable>EnvironmentId</variable>
+  <value type="QByteArray">{09d703ed-338e-48d4-9a11-e40bd9e397c8}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -96,6 +101,8 @@
     <value type="int" key="EnableQmlDebugging">0</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\danie\Documents\Homework\22 Fall\CS3505\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\sizzl\OneDrive\Documents\Homework Documents\CS 3505\a7\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -135,6 +142,8 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\danie\Documents\Homework\22 Fall\CS3505\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Release</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\sizzl\OneDrive\Documents\Homework Documents\CS 3505\a7\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Release</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -176,6 +185,8 @@
     <value type="int" key="EnableQmlDebugging">0</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\danie\Documents\Homework\22 Fall\CS3505\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Profile</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\sizzl\OneDrive\Documents\Homework Documents\CS 3505\a7\a7-sprite-editor-f22-TheCuties\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Profile</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Profile</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -237,12 +248,15 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/A7_SpriteEditor.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/A7_SpriteEditor.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/A7_SpriteEditor.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/A7_SpriteEditor.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

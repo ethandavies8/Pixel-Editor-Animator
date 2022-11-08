@@ -8,6 +8,11 @@
 
 #include "frame.h"
 #include <vector>
+#include <QJsonObject>
+#include <QJsonArray>
+
+using std::vector;
+using std::string;
 
 // Constructor to create an empty frame
 Frame::Frame(int size)
@@ -36,4 +41,35 @@ Pixel Frame::getPixel(int x, int y) {
 // Set the pixel based on the position on the screen
 void Frame::setPixel(int x, int y, Pixel newPixel) {
     pixels[y][x] = newPixel;
+}
+
+// Assignment operator for frame class
+Frame& Frame::operator=(const Frame& other) {
+    pixels = other.pixels;
+    return *this;
+}
+
+// Helper method to retrieve a JsonArray from this object
+QJsonArray Frame::getJsonArray() {
+
+    QJsonArray frame;
+
+    for (int i = 0; i < pixels.size(); i++) {
+        QJsonArray arr;
+
+        // Create an array of pixels
+        for (Pixel& pixel : pixels[i]) {
+            QJsonArray pix;
+            pix.push_back(pixel.red);
+            pix.push_back(pixel.green);
+            pix.push_back(pixel.blue);
+            pix.push_back(pixel.alpha);
+
+            arr.push_back(pix);
+        }
+
+        frame.push_back(arr);
+    }
+
+    return frame;
 }

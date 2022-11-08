@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <frame.h>
 #include "QColorDialog"
+#include "model.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +16,7 @@ class MainWindow : public QMainWindow
 
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
@@ -40,5 +41,17 @@ signals:
     void toolSelected(MainWindow::Tool);
     void colorChange(Pixel);
 
+    bool projectFormatIsCorrect(QJsonObject&);
+    enum Tool {brush, eraser};
+    Tool currentTool = brush;
+
+public slots:
+    void loadFile();
+    void saveFile(QJsonObject&);
+
+signals:
+    void editorClicked(int, int);
+    void toolSelected(Tool);
+    void replaceProject(QJsonObject&);
 };
 #endif // MAINWINDOW_H
