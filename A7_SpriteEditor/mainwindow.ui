@@ -152,6 +152,12 @@
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
     <property name="showGrid">
      <bool>true</bool>
     </property>
@@ -200,7 +206,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">

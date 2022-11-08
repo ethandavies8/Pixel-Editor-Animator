@@ -16,12 +16,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     , ui(new Ui::MainWindow),
       colorDialog(new QColorDialog)
 {
-    // do this
     ui->setupUi(this);
-    //colorDialog->setCurrentColor(Qt::black);
-//    emit colorChange({0,0,0,255});
-
-    //ui->pixelEditor->setColumnCount(2);
+    //EDITOR/DRAWING Conncetions
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
             this,
@@ -37,7 +33,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     connect(ui->eraserButton,
             &QPushButton::clicked,
             this,
-            &MainWindow::callToolSelectedEraser //&MainWindow::callToolSelected
+            &MainWindow::callToolSelectedEraser
             );
     connect(ui->colorButton,
             &QPushButton::clicked,
@@ -49,8 +45,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::sendColor
             );
-
-    //Pixel pix = {0,0,0,1};
 
 
     // MENU ITEMS (SAVE AND LOAD)
@@ -86,7 +80,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::callEditorClicked(int row, int col) {
     emit editorClicked(row, col);
-    setPixel({0,0,255,255}, row,col);
+    QColor currentColor(colorDialog->currentColor());
+    setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
 
@@ -102,6 +97,8 @@ void MainWindow::callToolSelectedEraser() {
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     if(ui->pixelEditor->item(row, col) == nullptr) {
+        ui->pixelEditor->setStyleSheet("item {selection-background-color: transparent; selection-color: transparent;};");
+        ui->pixelEditor->setStyleSheet("item:selected{ background-color: transparent }");
         std::cout << "No item, creating one." << std::endl;
         QTableWidgetItem *item = new QTableWidgetItem;
         item->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
@@ -111,11 +108,6 @@ void MainWindow::setPixel(Pixel pixel, int row, int col) {
         std::cout << "item exists" << std::endl;
         ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
     }
-
-
-    //ui->pixelEditor->setItem(row, col, item);
-    //QTableWidgetItem item()
-    //ui->pixelEditor->item(row, col)->setBackground(color); //QColor(pixel.red, pixel.green, pixel.blue, pixel.alpha)
 }
 
 void MainWindow::openColorDialog() {
