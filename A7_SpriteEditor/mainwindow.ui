@@ -102,7 +102,7 @@
      <string>Erase</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="colorButton">
     <property name="geometry">
      <rect>
       <x>710</x>
@@ -148,6 +148,9 @@
     </property>
     <property name="mouseTracking">
      <bool>true</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="showGrid">
      <bool>true</bool>
