@@ -103,12 +103,12 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="playPauseButton">
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>200</y>
-      <width>41</width>
+      <y>195</y>
+      <width>31</width>
       <height>31</height>
      </rect>
     </property>
@@ -130,7 +130,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>250</y>
+      <y>300</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -255,7 +255,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>290</y>
+      <y>340</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -277,8 +277,8 @@
    <widget class="QPushButton" name="colorButton">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>250</y>
+      <x>660</x>
+      <y>320</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -301,7 +301,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>300</y>
+      <y>325</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -374,6 +374,16 @@
     <column/>
     <column/>
     <column/>
+   </widget>
+   <widget class="QGraphicsView" name="spritePreview">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>0</y>
+      <width>241</width>
+      <height>191</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

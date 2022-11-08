@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -42,12 +44,13 @@ public:
     QWidget *scrollAreaWidgetContents;
     QScrollBar *horizontalScrollBar;
     QSlider *fpsSlider;
-    QPushButton *pushButton;
+    QPushButton *playPauseButton;
     QPushButton *brushButton;
     QPushButton *eraserButton;
     QPushButton *colorButton;
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
+    QGraphicsView *spritePreview;
     QMenuBar *menubar;
     QMenu *fileMenu;
     QStatusBar *statusbar;
@@ -57,6 +60,16 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(800, 600);
+        QPalette palette;
+        QBrush brush(QColor(145, 218, 218, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        QBrush brush1(QColor(240, 240, 240, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        MainWindow->setPalette(palette);
+        MainWindow->setAutoFillBackground(false);
         actionSAVE = new QAction(MainWindow);
         actionSAVE->setObjectName("actionSAVE");
         actionSAVEAS = new QAction(MainWindow);
@@ -89,21 +102,55 @@ public:
         fpsSlider->setObjectName("fpsSlider");
         fpsSlider->setGeometry(QRect(590, 200, 101, 22));
         fpsSlider->setOrientation(Qt::Horizontal);
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(710, 200, 75, 24));
+        playPauseButton = new QPushButton(centralwidget);
+        playPauseButton->setObjectName("playPauseButton");
+        playPauseButton->setGeometry(QRect(710, 195, 31, 31));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("C:/Users/battl/Downloads/playpause.png"), QSize(), QIcon::Normal, QIcon::Off);
+        playPauseButton->setIcon(icon);
+        playPauseButton->setIconSize(QSize(25, 25));
         brushButton = new QPushButton(centralwidget);
         brushButton->setObjectName("brushButton");
-        brushButton->setGeometry(QRect(590, 250, 41, 41));
+        brushButton->setGeometry(QRect(590, 300, 41, 41));
+        QPalette palette1;
+        QBrush brush2(QColor(157, 235, 235, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush2);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush2);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        brushButton->setPalette(palette1);
+        QFont font;
+        font.setStrikeOut(false);
+        brushButton->setFont(font);
+        brushButton->setAutoFillBackground(false);
+        brushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(157, 235, 235);"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8("C:/Users/battl/Downloads/brush Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        brushButton->setIcon(icon1);
+        brushButton->setIconSize(QSize(30, 30));
         eraserButton = new QPushButton(centralwidget);
         eraserButton->setObjectName("eraserButton");
-        eraserButton->setGeometry(QRect(590, 290, 41, 41));
+        eraserButton->setGeometry(QRect(590, 340, 41, 41));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8("C:/Users/battl/Downloads/Eraser_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        eraserButton->setIcon(icon2);
+        eraserButton->setIconSize(QSize(35, 35));
         colorButton = new QPushButton(centralwidget);
         colorButton->setObjectName("colorButton");
-        colorButton->setGeometry(QRect(710, 250, 41, 41));
+        colorButton->setGeometry(QRect(660, 320, 41, 41));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8("C:/Users/battl/Downloads/color-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        colorButton->setIcon(icon3);
+        colorButton->setIconSize(QSize(35, 35));
         colorPreview = new QFrame(centralwidget);
         colorPreview->setObjectName("colorPreview");
-        colorPreview->setGeometry(QRect(710, 300, 31, 31));
+        colorPreview->setGeometry(QRect(710, 325, 31, 31));
         colorPreview->setAutoFillBackground(false);
         colorPreview->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 0);"));
         colorPreview->setFrameShape(QFrame::StyledPanel);
@@ -114,7 +161,7 @@ public:
         if (pixelEditor->rowCount() < 8)
             pixelEditor->setRowCount(8);
         pixelEditor->setObjectName("pixelEditor");
-        pixelEditor->setGeometry(QRect(100, 70, 331, 341));
+        pixelEditor->setGeometry(QRect(110, 70, 401, 341));
         pixelEditor->setMouseTracking(true);
         pixelEditor->setFocusPolicy(Qt::NoFocus);
         pixelEditor->setShowGrid(true);
@@ -125,10 +172,13 @@ public:
         pixelEditor->horizontalHeader()->setDefaultSectionSize(49);
         pixelEditor->verticalHeader()->setVisible(false);
         pixelEditor->verticalHeader()->setDefaultSectionSize(42);
+        spritePreview = new QGraphicsView(centralwidget);
+        spritePreview->setObjectName("spritePreview");
+        spritePreview->setGeometry(QRect(560, 0, 241, 191));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 17));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         fileMenu = new QMenu(menubar);
         fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);
@@ -156,10 +206,10 @@ public:
         actionSave_As->setText(QCoreApplication::translate("MainWindow", "Save As", nullptr));
         actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
         actionLoad->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
-        brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
-        eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
-        colorButton->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        playPauseButton->setText(QString());
+        brushButton->setText(QString());
+        eraserButton->setText(QString());
+        colorButton->setText(QString());
         fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
