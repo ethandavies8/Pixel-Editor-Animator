@@ -18,9 +18,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     // do this
     ui->setupUi(this);
 
-
-
-
     //ui->pixelEditor->setColumnCount(2);
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,

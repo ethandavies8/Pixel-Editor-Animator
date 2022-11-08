@@ -21,7 +21,7 @@ public slots:
 private:
     QVector<Frame> frames;
     int activeFramePointer = 0;
-    int frameSize = 8;
+    int frameSize;
     void addFrame();
 //    void swapFrame(Frame frame, Frame otherFrame);
 //    void removeFrame(Frame removedFrame);

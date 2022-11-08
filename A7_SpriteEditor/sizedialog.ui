@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Welcome to Spritz!</string>
   </property>
   <widget class="QComboBox" name="sizeComboBox">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>319</x>
      <y>10</y>
-     <width>50</width>
+     <width>61</width>
      <height>22</height>
     </rect>
    </property>

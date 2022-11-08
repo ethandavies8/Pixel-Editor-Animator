@@ -37,7 +37,7 @@ public:
         sizeComboBox->addItem(QString());
         sizeComboBox->addItem(QString());
         sizeComboBox->setObjectName("sizeComboBox");
-        sizeComboBox->setGeometry(QRect(330, 10, 50, 22));
+        sizeComboBox->setGeometry(QRect(319, 10, 61, 22));
         QFont font;
         font.setFamilies({QString::fromUtf8("Small Fonts")});
         font.setPointSize(8);
@@ -69,7 +69,7 @@ public:
 
     void retranslateUi(QDialog *SizeDialog)
     {
-        SizeDialog->setWindowTitle(QCoreApplication::translate("SizeDialog", "Dialog", nullptr));
+        SizeDialog->setWindowTitle(QCoreApplication::translate("SizeDialog", "Welcome to Spritz!", nullptr));
         sizeComboBox->setItemText(0, QCoreApplication::translate("SizeDialog", "8x8", nullptr));
         sizeComboBox->setItemText(1, QCoreApplication::translate("SizeDialog", "16x16", nullptr));
         sizeComboBox->setItemText(2, QCoreApplication::translate("SizeDialog", "32x32", nullptr));
