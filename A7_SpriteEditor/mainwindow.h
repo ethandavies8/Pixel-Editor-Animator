@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <frame.h>
+#include "QColorDialog"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,10 +23,14 @@ private:
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
+    void openColorDialog();
     enum Tool {brush, eraser};
     Tool currentTool = brush;
 
     void setPixel(Pixel, int, int);
+    void sendColor();
+
+    QColorDialog *colorDialog;
 
 public slots:
     //void getColor();
@@ -33,5 +38,7 @@ public slots:
 signals:
     void editorClicked(int, int);
     void toolSelected(MainWindow::Tool);
+    void colorChange(Pixel);
+
 };
 #endif // MAINWINDOW_H

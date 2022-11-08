@@ -3,12 +3,16 @@
 #include "QTableWidget"
 #include "iostream"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow),
+      colorDialog(new QColorDialog)
 {
     // do this
     ui->setupUi(this);
+    //colorDialog->setCurrentColor(Qt::black);
+//    emit colorChange({0,0,0,255});
     //ui->pixelEditor->setColumnCount(2);
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
@@ -26,6 +30,16 @@ MainWindow::MainWindow(QWidget *parent)
             &QPushButton::clicked,
             this,
             &MainWindow::callToolSelectedEraser //&MainWindow::callToolSelected
+            );
+    connect(ui->colorButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::openColorDialog
+            );
+    connect(colorDialog,
+            &QColorDialog::colorSelected,
+            this,
+            &MainWindow::sendColor
             );
 
     //Pixel pix = {0,0,0,1};
@@ -65,7 +79,7 @@ void MainWindow::setPixel(Pixel pixel, int row, int col) {
     }
     else {
         std::cout << "item exists" << std::endl;
-        ui->pixelEditor->itemAt(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
+        ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
     }
 
 
@@ -74,4 +88,17 @@ void MainWindow::setPixel(Pixel pixel, int row, int col) {
     //ui->pixelEditor->item(row, col)->setBackground(color); //QColor(pixel.red, pixel.green, pixel.blue, pixel.alpha)
 }
 
+void MainWindow::openColorDialog() {
+    colorDialog->open();
+}
 
+void MainWindow::sendColor() {
+   QColor currentColor(colorDialog->currentColor());
+    emit colorChange({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()});
+   std::string style = "QFrame {background-color: rgba(" + std::to_string(currentColor.red()) + ", " +
+           std::to_string(currentColor.green()) + ", " +
+           std::to_string(currentColor.blue()) + ", " +
+           std::to_string(currentColor.alpha()) + ");}";
+
+   ui->colorPreview->setStyleSheet(QString::fromStdString(style));
+}

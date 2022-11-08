@@ -38,7 +38,7 @@ public:
     QPushButton *pushButton;
     QPushButton *brushButton;
     QPushButton *eraserButton;
-    QPushButton *pushButton_4;
+    QPushButton *colorButton;
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
     QMenuBar *menubar;
@@ -82,9 +82,9 @@ public:
         eraserButton = new QPushButton(centralwidget);
         eraserButton->setObjectName("eraserButton");
         eraserButton->setGeometry(QRect(590, 290, 41, 41));
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(710, 250, 41, 41));
+        colorButton = new QPushButton(centralwidget);
+        colorButton->setObjectName("colorButton");
+        colorButton->setGeometry(QRect(710, 250, 41, 41));
         colorPreview = new QFrame(centralwidget);
         colorPreview->setObjectName("colorPreview");
         colorPreview->setGeometry(QRect(710, 300, 31, 31));
@@ -131,7 +131,7 @@ public:
         pushButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         brushButton->setText(QCoreApplication::translate("MainWindow", "Brush", nullptr));
         eraserButton->setText(QCoreApplication::translate("MainWindow", "Erase", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
+        colorButton->setText(QCoreApplication::translate("MainWindow", "Color", nullptr));
     } // retranslateUi
 
 };
