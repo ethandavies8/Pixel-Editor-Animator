@@ -49,10 +49,10 @@ Frame& Frame::operator=(const Frame& other) {
     return *this;
 }
 
-// Helper method to retrieve Json Object from this object
-QJsonObject Frame::getJsonObject() {
+// Helper method to retrieve a JsonArray from this object
+QJsonArray Frame::getJsonArray() {
 
-    QJsonObject frame;
+    QJsonArray frame;
 
     for (int i = 0; i < pixels.size(); i++) {
         QJsonArray arr;
@@ -68,9 +68,7 @@ QJsonObject Frame::getJsonObject() {
             arr.push_back(pix);
         }
 
-        // Add row numbers (row0, row1, etc.)
-        QString itemName = "row";
-        frame.insert(itemName.append(QString::number(i)), arr);
+        frame.push_back(arr);
     }
 
     return frame;

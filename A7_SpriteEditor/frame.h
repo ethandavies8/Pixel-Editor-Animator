@@ -27,7 +27,7 @@ public:
     Pixel getPixel(int x, int y); // Get the pixel and its colors
     void setPixel(int x, int y, Pixel newPixel); // Set the pixel's colors
     Frame& operator=(const Frame& other);
-    QJsonObject getJsonObject();
+    QJsonArray getJsonArray();
 
 private:
     vector<vector<Pixel>> pixels; // A 2D array of pixels, each pixel is a Pixel struct of [red, blue, green, alpha]

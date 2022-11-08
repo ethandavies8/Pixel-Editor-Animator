@@ -54,5 +54,16 @@ void Model::retrieveJsonProject() {
     root.insert("height", frameSize);
     root.insert("width", frameSize);
     root.insert("numberOfFrames", frames.size());
+
+    QJsonObject frameArr;
+    for (int i = 0; i < frames.size(); i++) {
+
+        // Add frame numbers (frame0, frame1, etc.)
+        QString itemName = "frame";
+        frameArr.insert(itemName.append(QString::number(i)), frames[i].getJsonArray());
+    }
+
+    root.insert("frames", frameArr);
+
     emit saveProject(root);
 }

@@ -82,6 +82,7 @@ void MainWindow::callToolSelectedEraser() {
     std::cout << "Emitted select Tool: Eraser" << std::endl;
 }
 
+// Slot that will ask the user for a file and read it to replace the project
 void MainWindow::loadFile() {
 
     // Ask the user for the file to open
@@ -102,6 +103,7 @@ void MainWindow::loadFile() {
         emit replaceProject(project); // Replace the project if it passes error checking
 }
 
+// Slot that will ask the user for a file location and save the project
 void MainWindow::saveFile(QJsonObject& thisProject) {
 
     QFile file(QFileDialog::getSaveFileName(this, "Save Project", "./", "Sprite Sheet Projects (*.ssp)"));
