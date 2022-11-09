@@ -73,10 +73,10 @@ void Model::setPixel(int row, int col, Pixel pixel){
 QPixmap Model::frameToPixmap(Frame frame){
     QImage image(frameSize, frameSize, QImage::Format_ARGB32);
     QColor color;
-    for(int i = 0; i < brushSize; i++){
-       for(int j = 0; j < brushSize; j++){
+    for(int i = 0; i < frameSize; i++){
+       for(int j = 0; j < frameSize; j++){
           color = QColor(frame.getPixel(i, j).red, frame.getPixel(i, j).green, frame.getPixel(i, j).blue, frame.getPixel(i, j).alpha);
-          image.setPixelColor(i, j, color);
+          image.setPixelColor(j, i, color);
        }
     }
     QPixmap result(QPixmap::fromImage(image));
