@@ -26,7 +26,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_MainWindow_t {
-    uint offsetsAndSizes[32];
+    uint offsetsAndSizes[34];
     char stringdata0[11];
     char stringdata1[14];
     char stringdata2[1];
@@ -39,10 +39,11 @@ struct qt_meta_stringdata_MainWindow_t {
     char stringdata9[9];
     char stringdata10[12];
     char stringdata11[16];
-    char stringdata12[9];
+    char stringdata12[14];
     char stringdata13[9];
-    char stringdata14[18];
-    char stringdata15[6];
+    char stringdata14[9];
+    char stringdata15[18];
+    char stringdata16[6];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -60,10 +61,11 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
         QT_MOC_LITERAL(97, 8),  // "addFrame"
         QT_MOC_LITERAL(106, 11),  // "removeFrame"
         QT_MOC_LITERAL(118, 15),  // "changeBrushSize"
-        QT_MOC_LITERAL(134, 8),  // "loadFile"
-        QT_MOC_LITERAL(143, 8),  // "saveFile"
-        QT_MOC_LITERAL(152, 17),  // "updatePixelEditor"
-        QT_MOC_LITERAL(170, 5)   // "Frame"
+        QT_MOC_LITERAL(134, 13),  // "frameSelected"
+        QT_MOC_LITERAL(148, 8),  // "loadFile"
+        QT_MOC_LITERAL(157, 8),  // "saveFile"
+        QT_MOC_LITERAL(166, 17),  // "updatePixelEditor"
+        QT_MOC_LITERAL(184, 5)   // "Frame"
     },
     "MainWindow",
     "editorClicked",
@@ -77,6 +79,7 @@ Q_CONSTINIT static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_Main
     "addFrame",
     "removeFrame",
     "changeBrushSize",
+    "frameSelected",
     "loadFile",
     "saveFile",
     "updatePixelEditor",
@@ -91,26 +94,27 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   74,    2, 0x06,    1 /* Public */,
-       3,    1,   79,    2, 0x06,    4 /* Public */,
-       5,    1,   82,    2, 0x06,    6 /* Public */,
-       7,    1,   85,    2, 0x06,    8 /* Public */,
-       9,    0,   88,    2, 0x06,   10 /* Public */,
-      10,    0,   89,    2, 0x06,   11 /* Public */,
-      11,    1,   90,    2, 0x06,   12 /* Public */,
+       1,    2,   80,    2, 0x06,    1 /* Public */,
+       3,    1,   85,    2, 0x06,    4 /* Public */,
+       5,    1,   88,    2, 0x06,    6 /* Public */,
+       7,    1,   91,    2, 0x06,    8 /* Public */,
+       9,    0,   94,    2, 0x06,   10 /* Public */,
+      10,    0,   95,    2, 0x06,   11 /* Public */,
+      11,    1,   96,    2, 0x06,   12 /* Public */,
+      12,    1,   99,    2, 0x06,   14 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      12,    0,   93,    2, 0x0a,   14 /* Public */,
-      13,    1,   94,    2, 0x0a,   15 /* Public */,
-      14,    1,   97,    2, 0x0a,   17 /* Public */,
+      13,    0,  102,    2, 0x0a,   16 /* Public */,
+      14,    1,  103,    2, 0x0a,   17 /* Public */,
+      15,    1,  106,    2, 0x0a,   19 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
@@ -120,11 +124,12 @@ Q_CONSTINIT static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 15,    2,
+    QMetaType::Void, 0x80000000 | 16,    2,
 
        0        // eod
 };
@@ -158,6 +163,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'changeBrushSize'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'frameSelected'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'loadFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'saveFile'
@@ -183,9 +191,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->addFrame(); break;
         case 5: _t->removeFrame(); break;
         case 6: _t->changeBrushSize((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 7: _t->loadFile(); break;
-        case 8: _t->saveFile((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
-        case 9: _t->updatePixelEditor((*reinterpret_cast< std::add_pointer_t<Frame>>(_a[1]))); break;
+        case 7: _t->frameSelected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 8: _t->loadFile(); break;
+        case 9: _t->saveFile((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
+        case 10: _t->updatePixelEditor((*reinterpret_cast< std::add_pointer_t<Frame>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -239,6 +248,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
                 return;
             }
         }
+        {
+            using _t = void (MainWindow::*)(int );
+            if (_t _q_method = &MainWindow::frameSelected; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 7;
+                return;
+            }
+        }
     }
 }
 
@@ -261,13 +277,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }
@@ -317,6 +333,13 @@ void MainWindow::changeBrushSize(int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
+void MainWindow::frameSelected(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

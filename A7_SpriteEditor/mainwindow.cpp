@@ -100,6 +100,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::sendColor
             );
+    connect(ui->framePreview,
+            &QTableWidget::cellClicked,
+            this,
+            &MainWindow::callFramePreviewClicked
+            );
 
     connect(ui->brushSizeSlider,
             &QSlider::valueChanged,
@@ -162,6 +167,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::addFrame,
             &model,
             &Model::addFrame);
+    connect(this,
+            &MainWindow::frameSelected,
+            &model,
+            &Model::updateCurrentFramePointer);
+
 
 }
 
@@ -191,6 +201,10 @@ void MainWindow::callEditorClicked(int row, int col) {
     emit editorClicked(row, col);
     //setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
+}
+
+void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
+    emit frameSelected(frameIndex);
 }
 
 void MainWindow::callToolSelectedBrush() {

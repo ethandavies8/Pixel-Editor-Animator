@@ -38,6 +38,8 @@ private:
     void callRemoveFrame();
     void updateFramePreview(QVector<QPixmap>);
 
+    void callFramePreviewClicked(int, int);
+
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
@@ -52,5 +54,6 @@ signals:
     void addFrame();
     void removeFrame();
     void changeBrushSize(int);
+    void frameSelected(int);
 };
 #endif // MAINWINDOW_H

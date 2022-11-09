@@ -27,6 +27,7 @@ public slots:
     void updateBrushSize(int brushSize);
     void changeTool(Model::Tool tool);
     void addFrame();
+    void updateCurrentFramePointer(int);
 
 private:
     QVector<Frame> frames;

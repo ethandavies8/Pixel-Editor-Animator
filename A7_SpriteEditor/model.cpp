@@ -26,6 +26,11 @@ void Model::removeFrame(int removedFrameIndex){
     frames.removeAt(removedFrameIndex);
 }
 
+void Model::updateCurrentFramePointer(int index){
+    activeFramePointer = index;
+    emit frameEditorUpdate(frames.at(activeFramePointer));
+}
+
 void Model::swapFrame(int frameIndex, int otherFrameIndex){
 
     Frame tempFrame = frames.at(frameIndex);

@@ -27,7 +27,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Model_t {
-    uint offsetsAndSizes[48];
+    uint offsetsAndSizes[50];
     char stringdata0[6];
     char stringdata1[12];
     char stringdata2[1];
@@ -52,6 +52,7 @@ struct qt_meta_stringdata_Model_t {
     char stringdata21[12];
     char stringdata22[5];
     char stringdata23[9];
+    char stringdata24[26];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Model_t::offsetsAndSizes) + ofs), len 
@@ -80,7 +81,8 @@ Q_CONSTINIT static const qt_meta_stringdata_Model_t qt_meta_stringdata_Model = {
         QT_MOC_LITERAL(225, 10),  // "changeTool"
         QT_MOC_LITERAL(236, 11),  // "Model::Tool"
         QT_MOC_LITERAL(248, 4),  // "tool"
-        QT_MOC_LITERAL(253, 8)   // "addFrame"
+        QT_MOC_LITERAL(253, 8),  // "addFrame"
+        QT_MOC_LITERAL(262, 25)   // "updateCurrentFramePointer"
     },
     "Model",
     "saveProject",
@@ -105,7 +107,8 @@ Q_CONSTINIT static const qt_meta_stringdata_Model_t qt_meta_stringdata_Model = {
     "changeTool",
     "Model::Tool",
     "tool",
-    "addFrame"
+    "addFrame",
+    "updateCurrentFramePointer"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -116,7 +119,7 @@ Q_CONSTINIT static const uint qt_meta_data_Model[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -124,18 +127,19 @@ Q_CONSTINIT static const uint qt_meta_data_Model[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   74,    2, 0x06,    1 /* Public */,
-       5,    1,   77,    2, 0x06,    3 /* Public */,
-       7,    1,   80,    2, 0x06,    5 /* Public */,
+       1,    1,   80,    2, 0x06,    1 /* Public */,
+       5,    1,   83,    2, 0x06,    3 /* Public */,
+       7,    1,   86,    2, 0x06,    5 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       9,    1,   83,    2, 0x0a,    7 /* Public */,
-      11,    0,   86,    2, 0x0a,    9 /* Public */,
-      12,    2,   87,    2, 0x0a,   10 /* Public */,
-      15,    1,   92,    2, 0x0a,   13 /* Public */,
-      18,    1,   95,    2, 0x0a,   15 /* Public */,
-      20,    1,   98,    2, 0x0a,   17 /* Public */,
-      23,    0,  101,    2, 0x0a,   19 /* Public */,
+       9,    1,   89,    2, 0x0a,    7 /* Public */,
+      11,    0,   92,    2, 0x0a,    9 /* Public */,
+      12,    2,   93,    2, 0x0a,   10 /* Public */,
+      15,    1,   98,    2, 0x0a,   13 /* Public */,
+      18,    1,  101,    2, 0x0a,   15 /* Public */,
+      20,    1,  104,    2, 0x0a,   17 /* Public */,
+      23,    0,  107,    2, 0x0a,   19 /* Public */,
+      24,    1,  108,    2, 0x0a,   20 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -150,6 +154,7 @@ Q_CONSTINIT static const uint qt_meta_data_Model[] = {
     QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
 
        0        // eod
 };
@@ -191,7 +196,10 @@ Q_CONSTINIT const QMetaObject Model::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<Model::Tool, std::false_type>,
         // method 'addFrame'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'updateCurrentFramePointer'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>
     >,
     nullptr
 } };
@@ -212,6 +220,7 @@ void Model::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 7: _t->updateBrushSize((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 8: _t->changeTool((*reinterpret_cast< std::add_pointer_t<Model::Tool>>(_a[1]))); break;
         case 9: _t->addFrame(); break;
+        case 10: _t->updateCurrentFramePointer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -270,13 +279,13 @@ int Model::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }
