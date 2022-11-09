@@ -12,6 +12,7 @@ Model::Model(int spriteSize, QObject *parent)
     frames.append(newFrame);
 }
 
+//Testing this branch
 Model::~Model() {}
 
 void Model::addFrame(){
@@ -29,8 +30,44 @@ void Model::addFrame(){
 //    int otherFrameIndex = frames.indexOf(otherFrame);
 //    frames.replace(frames.indexOf(frame), otherFrame);
 //    frames.replace(otherFrameIndex, *tempFrame);
-
 //}
+
+
+void Model::receivePixelClick(int row, int col){
+    if(currentTool == eraser){
+        setPixel(row, col, Pixel{255,255,255,0});
+    }
+    else{
+        setPixel(row, col, currentColor);
+    }
+}
+
+void Model::setPixel(int row, int col, Pixel pixel){
+    int x = 0;
+    int y = 0;
+    //adjust starting location of for loop
+    if(brushSize == 3){
+        x = -1;
+        y = -1;
+    }
+    for(int i = 0; i < brushSize; i++){
+       for(int j = 0; j < brushSize; j++){
+          setPixel(row + i + x, col + j + y, pixel);
+       }
+    }
+}
+
+void Model::updateBrushSize(int brushSize){
+    this->brushSize = brushSize;
+}
+
+void Model::changeTool(Tool tool){
+    currentTool = tool;
+}
+
+void Model::updateCurrentColor(Pixel pixel){
+    currentColor = pixel;
+}
 
 // Slot that reads a Json Object and replaces this project with it
 void Model::loadProject(QJsonObject& otherProject) {
@@ -56,7 +93,6 @@ void Model::loadProject(QJsonObject& otherProject) {
                 loadFrame.setPixel(colNum, rowNum, pixelValue);
             }
         }
-
         // Add the frame to a new list
         newFrames.push_back(loadFrame);
     }
