@@ -16,8 +16,21 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     , ui(new Ui::MainWindow),
       colorDialog(new QColorDialog)
 {
+    //SETUP UI
     ui->setupUi(this);
+
+    //SETUP PIXEL EDITOR
+    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->setColumnCount(model.getFrameSize());
+    ui->pixelEditor->setRowCount(model.getFrameSize());
+    //ui->pixelEditor->setStyleSheet("QTableWidget { selection-color: transparent; selection-background-color: transparent; }");
     //EDITOR/DRAWING Conncetions
+    for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
+        ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/model.getFrameSize());
+        ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/model.getFrameSize());
+    }
+
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
             this,
@@ -79,8 +92,11 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::callEditorClicked(int row, int col) {
-    emit editorClicked(row, col);
     QColor currentColor(colorDialog->currentColor());
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, currentColor);
+    ui->pixelEditor->setPalette(pal);
+    emit editorClicked(row, col);
     setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
@@ -97,8 +113,8 @@ void MainWindow::callToolSelectedEraser() {
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     if(ui->pixelEditor->item(row, col) == nullptr) {
-        ui->pixelEditor->setStyleSheet("item {selection-background-color: transparent; selection-color: transparent;};");
-        ui->pixelEditor->setStyleSheet("item:selected{ background-color: transparent }");
+        //ui->pixelEditor->setStyleSheet("item {selection-background-color: transparent; selection-color: transparent;};");
+        //ui->pixelEditor->setStyleSheet("item:selected{ background-color: transparent }");
         std::cout << "No item, creating one." << std::endl;
         QTableWidgetItem *item = new QTableWidgetItem;
         item->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));

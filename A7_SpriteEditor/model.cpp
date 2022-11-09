@@ -86,3 +86,7 @@ void Model::retrieveJsonProject() {
 
     emit saveProject(root);
 }
+
+int Model::getFrameSize() {
+    return frameSize;
+}

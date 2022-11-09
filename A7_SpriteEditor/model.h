@@ -10,6 +10,7 @@ class Model : public QObject
 public:
     explicit Model(int spriteSize, QObject *parent = nullptr);
     virtual ~Model();
+    int getFrameSize();
 
 signals:
     void saveProject(QJsonObject& thisProject);
