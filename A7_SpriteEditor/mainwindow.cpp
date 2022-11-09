@@ -67,6 +67,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             ui->pixelEditor->setItem(row, col, item);
         }
     }
+    emit colorChange({0, 0, 0, 255});
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::black);
+    ui->pixelEditor->setPalette(pal);
 
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
@@ -171,7 +175,12 @@ void MainWindow::updatePixelEditor(Frame frame){
 void MainWindow::callEditorClicked(int row, int col) {
     QColor currentColor(colorDialog->currentColor());
     QPalette pal;
-    pal.setColor(QPalette::Highlight, currentColor);
+    if(currentTool == Model::brush) {
+       pal.setColor(QPalette::Highlight, currentColor);
+    }
+    else {
+        pal.setColor(QPalette::Highlight, Qt::white);
+    }
     ui->pixelEditor->setPalette(pal);
     emit editorClicked(row, col);
     //setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
@@ -218,7 +227,8 @@ void MainWindow::callRemoveFrame() {
 
 void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
     for (int currentFrame = 0; currentFrame < frames.length(); ++currentFrame) {
-        ui->framePreview->item(0, currentFrame)->setIcon(QIcon(frames[currentFrame]));
+        QIcon icon(frames[currentFrame].scaled(80, 80, Qt::KeepAspectRatio));
+        ui->framePreview->item(0, currentFrame)->setData(Qt::DecorationRole, frames[currentFrame].scaledToHeight(75));
         std::cout << "updated Frame at: " << std::to_string(currentFrame) << std::endl;
     }
 
