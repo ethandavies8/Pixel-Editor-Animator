@@ -20,7 +20,7 @@ Frame::Frame(int size)
         QVector<Pixel> row;
 
         for (int width = 0; width < size; width++)
-            row.push_back({0, 0, 0, 0}); // Set all pixels in the row as empty
+            row.push_back({255, 255, 255, 0}); // Set all pixels in the row as empty
 
         pixels.push_back(row); // Push this row of empty pixels onto the frame
     }
