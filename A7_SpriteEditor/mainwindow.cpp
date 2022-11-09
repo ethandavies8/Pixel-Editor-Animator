@@ -24,6 +24,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->setColumnCount(model.getFrameSize());
     ui->pixelEditor->setRowCount(model.getFrameSize());
+    ui->pixelEditor->setGeometry(20,0,450,450);
     //ui->pixelEditor->setStyleSheet("QTableWidget { selection-color: transparent; selection-background-color: transparent; }");
     //EDITOR/DRAWING Conncetions
     for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
