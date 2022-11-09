@@ -40,7 +40,9 @@ Pixel Frame::getPixel(int x, int y) {
 
 // Set the pixel based on the position on the screen
 void Frame::setPixel(int x, int y, Pixel newPixel) {
-    pixels[y][x] = newPixel;
+    if(x < (int)pixels.size() && y < (int)pixels.size() && x >= 0 && y >= 0){
+        pixels[y][x] = newPixel;
+    }
 }
 
 // Assignment operator for frame class
@@ -56,7 +58,6 @@ QJsonArray Frame::getJsonArray() {
 
     for (int i = 0; i < pixels.size(); i++) {
         QJsonArray arr;
-
         // Create an array of pixels
         for (Pixel& pixel : pixels[i]) {
             QJsonArray pix;

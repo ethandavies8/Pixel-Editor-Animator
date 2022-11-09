@@ -71,6 +71,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::saveFile
             );
+
 }
 
 MainWindow::~MainWindow()
