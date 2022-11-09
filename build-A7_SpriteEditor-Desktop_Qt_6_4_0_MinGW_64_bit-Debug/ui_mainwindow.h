@@ -20,8 +20,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QScrollArea>
-#include <QtWidgets/QScrollBar>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
@@ -40,9 +38,6 @@ public:
     QAction *actionOpen;
     QAction *actionLoad;
     QWidget *centralwidget;
-    QScrollArea *scrollArea;
-    QWidget *scrollAreaWidgetContents;
-    QScrollBar *horizontalScrollBar;
     QSlider *fpsSlider;
     QPushButton *playPauseButton;
     QPushButton *brushButton;
@@ -51,6 +46,9 @@ public:
     QFrame *colorPreview;
     QTableWidget *pixelEditor;
     QGraphicsView *spritePreview;
+    QTableWidget *framePreview;
+    QPushButton *removeFrameButton;
+    QPushButton *addFrameButton;
     QMenuBar *menubar;
     QMenu *fileMenu;
     QStatusBar *statusbar;
@@ -86,22 +84,13 @@ public:
         actionLoad->setObjectName("actionLoad");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        scrollArea = new QScrollArea(centralwidget);
-        scrollArea->setObjectName("scrollArea");
-        scrollArea->setGeometry(QRect(20, 460, 761, 81));
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 759, 79));
-        scrollArea->setWidget(scrollAreaWidgetContents);
-        horizontalScrollBar = new QScrollBar(centralwidget);
-        horizontalScrollBar->setObjectName("horizontalScrollBar");
-        horizontalScrollBar->setGeometry(QRect(20, 540, 761, 16));
-        horizontalScrollBar->setOrientation(Qt::Horizontal);
         fpsSlider = new QSlider(centralwidget);
         fpsSlider->setObjectName("fpsSlider");
         fpsSlider->setGeometry(QRect(590, 200, 101, 22));
+        fpsSlider->setMinimum(1);
+        fpsSlider->setMaximum(3);
         fpsSlider->setOrientation(Qt::Horizontal);
+        fpsSlider->setTickPosition(QSlider::TicksBelow);
         playPauseButton = new QPushButton(centralwidget);
         playPauseButton->setObjectName("playPauseButton");
         playPauseButton->setGeometry(QRect(710, 195, 31, 31));
@@ -197,10 +186,42 @@ public:
         spritePreview = new QGraphicsView(centralwidget);
         spritePreview->setObjectName("spritePreview");
         spritePreview->setGeometry(QRect(560, 0, 241, 191));
+        framePreview = new QTableWidget(centralwidget);
+        if (framePreview->columnCount() < 8)
+            framePreview->setColumnCount(8);
+        if (framePreview->rowCount() < 1)
+            framePreview->setRowCount(1);
+        framePreview->setObjectName("framePreview");
+        framePreview->setGeometry(QRect(20, 460, 540, 98));
+        framePreview->setMouseTracking(true);
+        framePreview->setShowGrid(true);
+        framePreview->setRowCount(1);
+        framePreview->setColumnCount(8);
+        framePreview->horizontalHeader()->setVisible(false);
+        framePreview->horizontalHeader()->setMinimumSectionSize(50);
+        framePreview->horizontalHeader()->setDefaultSectionSize(80);
+        framePreview->verticalHeader()->setVisible(false);
+        framePreview->verticalHeader()->setDefaultSectionSize(80);
+        removeFrameButton = new QPushButton(centralwidget);
+        removeFrameButton->setObjectName("removeFrameButton");
+        removeFrameButton->setEnabled(false);
+        removeFrameButton->setGeometry(QRect(570, 500, 41, 41));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Bebas Neue")});
+        font1.setPointSize(21);
+        removeFrameButton->setFont(font1);
+        removeFrameButton->setIcon(icon2);
+        removeFrameButton->setIconSize(QSize(35, 35));
+        addFrameButton = new QPushButton(centralwidget);
+        addFrameButton->setObjectName("addFrameButton");
+        addFrameButton->setGeometry(QRect(570, 460, 41, 41));
+        addFrameButton->setFont(font1);
+        addFrameButton->setIcon(icon2);
+        addFrameButton->setIconSize(QSize(35, 35));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 800, 19));
         fileMenu = new QMenu(menubar);
         fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);
@@ -232,6 +253,8 @@ public:
         brushButton->setText(QString());
         eraserButton->setText(QString());
         colorButton->setText(QString());
+        removeFrameButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        addFrameButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 

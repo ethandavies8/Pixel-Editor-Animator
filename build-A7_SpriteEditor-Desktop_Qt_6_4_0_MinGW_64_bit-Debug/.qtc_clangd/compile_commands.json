@@ -31,13 +31,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -56,10 +56,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\frame.cpp"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\frame.cpp"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/frame.cpp"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/frame.cpp"
 },
 {
     "arguments": [
@@ -93,13 +93,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -118,10 +118,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\main.cpp"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\main.cpp"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/main.cpp"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/main.cpp"
 },
 {
     "arguments": [
@@ -155,13 +155,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -180,10 +180,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\mainwindow.cpp"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\mainwindow.cpp"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/mainwindow.cpp"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/mainwindow.cpp"
 },
 {
     "arguments": [
@@ -217,13 +217,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -242,10 +242,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\model.cpp"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\model.cpp"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/model.cpp"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/model.cpp"
 },
 {
     "arguments": [
@@ -279,13 +279,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -304,10 +304,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\sizedialog.cpp"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\sizedialog.cpp"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/sizedialog.cpp"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/sizedialog.cpp"
 },
 {
     "arguments": [
@@ -341,13 +341,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -366,10 +366,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\frame.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\frame.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/frame.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/frame.h"
 },
 {
     "arguments": [
@@ -403,13 +403,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -428,10 +428,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\mainwindow.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\mainwindow.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/mainwindow.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/mainwindow.h"
 },
 {
     "arguments": [
@@ -465,13 +465,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -490,10 +490,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\model.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\model.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/model.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/model.h"
 },
 {
     "arguments": [
@@ -527,13 +527,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -552,10 +552,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\sizedialog.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor\\sizedialog.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/sizedialog.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/A7_SpriteEditor/sizedialog.h"
 },
 {
     "arguments": [
@@ -589,13 +589,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -614,10 +614,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
 },
 {
     "arguments": [
@@ -651,13 +651,13 @@
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedMingwHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders",
         "-IC:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\A7_SpriteEditor",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtWidgets",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtGui",
         "-IC:\\Qt\\6.4.0\\mingw_64\\include\\QtCore",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
-        "-IC:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\debug",
+        "-IC:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug",
         "-IC:\\Qt\\6.4.0\\mingw_64\\mkspecs\\win32-g++",
         "-isystem",
         "C:\\Qt\\Tools\\mingw1120_64\\lib\\gcc\\x86_64-w64-mingw32\\11.2.0\\include\\c++",
@@ -676,9 +676,9 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\sizzl\\OneDrive\\Documents\\Homework Documents\\CS 3505\\a7\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_sizedialog.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_sizedialog.h"
     ],
-    "directory": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/sizzl/OneDrive/Documents/Homework Documents/CS 3505/a7/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_sizedialog.h"
+    "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_sizedialog.h"
 }
 ]
