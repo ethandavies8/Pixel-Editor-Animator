@@ -6,10 +6,7 @@
 * Header file for the Frame class
 */
 
-#include <vector>
 #include <QJsonObject>
-
-using std::vector;
 
 #ifndef FRAME_H
 #define FRAME_H
@@ -30,7 +27,7 @@ public:
     QJsonArray getJsonArray();
 
 private:
-    vector<vector<Pixel>> pixels; // A 2D array of pixels, each pixel is a Pixel struct of [red, blue, green, alpha]
+    QVector<QVector<Pixel>> pixels; // A 2D array of pixels, each pixel is a Pixel struct of [red, blue, green, alpha]
 };
 
 #endif // FRAME_H

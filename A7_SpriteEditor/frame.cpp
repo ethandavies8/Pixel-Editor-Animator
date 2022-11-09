@@ -7,11 +7,9 @@
 */
 
 #include "frame.h"
-#include <vector>
 #include <QJsonObject>
 #include <QJsonArray>
 
-using std::vector;
 using std::string;
 
 // Constructor to create an empty frame
@@ -19,7 +17,7 @@ Frame::Frame(int size)
 {
     // Pre-fill an empty frame with fully transparent pixels
     for (int height = 0; height < size; height++) {
-        vector<Pixel> row;
+        QVector<Pixel> row;
 
         for (int width = 0; width < size; width++)
             row.push_back({255, 255, 255, 0}); // Set all pixels in the row as empty
