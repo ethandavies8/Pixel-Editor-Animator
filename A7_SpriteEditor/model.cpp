@@ -1,7 +1,9 @@
 #include "model.h"
 #include "frame.h"
+#include "qpixmap.h"
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QImage>
 
 Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}
@@ -20,17 +22,25 @@ void Model::addFrame(){
     frames.append(newFrame);
 }
 
-//void model::removeFrame(Frame removedFrame){
-//    frames.removeOne(removedFrame);
-//}
+void Model::removeFrame(int removedFrameIndex){
+    frames.removeAt(removedFrameIndex);
+}
 
-//void model::swapFrame(Frame frame, Frame otherFrame){
+void Model::swapFrame(int frameIndex, int otherFrameIndex){
 
-//    Frame *tempFrame = &frame;
-//    int otherFrameIndex = frames.indexOf(otherFrame);
-//    frames.replace(frames.indexOf(frame), otherFrame);
-//    frames.replace(otherFrameIndex, *tempFrame);
-//}
+    Frame tempFrame = frames.at(frameIndex);
+    frames.replace(frameIndex, otherFrameIndex);
+    frames[otherFrameIndex] = tempFrame;
+    sendPreviewArray();
+}
+
+void Model::sendPreviewArray(){
+    QVector<QPixmap> preview;
+    for(int i = 0; i < frames.size(); i++){
+        preview.append(frameToPixmap(frames.at(i)));
+    }
+    emit previewUpdate(preview);
+}
 
 
 void Model::receivePixelClick(int row, int col){
@@ -40,6 +50,7 @@ void Model::receivePixelClick(int row, int col){
     else{
         setPixel(row, col, currentColor);
     }
+
 }
 
 void Model::setPixel(int row, int col, Pixel pixel){
@@ -52,9 +63,24 @@ void Model::setPixel(int row, int col, Pixel pixel){
     }
     for(int i = 0; i < brushSize; i++){
        for(int j = 0; j < brushSize; j++){
-          setPixel(row + i + x, col + j + y, pixel);
+          frames[activeFramePointer].setPixel(row + i + x, col + j + y, pixel);
        }
     }
+    emit frameEditorUpdate(frames.at(activeFramePointer));
+    sendPreviewArray();
+}
+
+QPixmap Model::frameToPixmap(Frame frame){
+    QImage image(frameSize, frameSize, QImage::Format_ARGB32);
+    QColor color;
+    for(int i = 0; i < brushSize; i++){
+       for(int j = 0; j < brushSize; j++){
+          color = QColor(frame.getPixel(i, j).red, frame.getPixel(i, j).green, frame.getPixel(i, j).blue, frame.getPixel(i, j).alpha);
+          image.setPixelColor(i, j, color);
+       }
+    }
+    QPixmap result(QPixmap::fromImage(image));
+    return result;
 }
 
 void Model::updateBrushSize(int brushSize){

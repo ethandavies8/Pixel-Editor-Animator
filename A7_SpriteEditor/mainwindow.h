@@ -26,22 +26,24 @@ private:
     void callToolSelectedEraser();
     void openColorDialog();
     bool projectFormatIsCorrect(QJsonObject&);
-    enum Tool {brush, eraser};
-    Tool currentTool = brush;
+    Model::Tool currentTool = Model::brush;
 
     void setPixel(Pixel, int, int);
     void sendColor();
 
     QColorDialog *colorDialog;
+    int frameSize;
 
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
+    void updatePixelEditor(Frame);
 
 signals:
     void editorClicked(int, int);
-    void toolSelected(Tool);
+    void toolSelected(Model::Tool);
     void replaceProject(QJsonObject&);
     void colorChange(Pixel);
+    void changeBrushSize(int);
 };
 #endif // MAINWINDOW_H

@@ -20,6 +20,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->setupUi(this);
 
     //SETUP PIXEL EDITOR
+    frameSize = model.getFrameSize();
     ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->setColumnCount(model.getFrameSize());
@@ -49,6 +50,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::callToolSelectedEraser
             );
+
     connect(ui->colorButton,
             &QPushButton::clicked,
             this,
@@ -86,11 +88,44 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::saveFile
             );
 
+    //Model Connection
+    connect(this,
+            &MainWindow::changeBrushSize,
+            &model,
+            &Model::updateBrushSize);
+
+    connect(this,
+            &MainWindow::editorClicked,
+            &model,
+            &Model::receivePixelClick);
+
+    connect(this,
+            &MainWindow::toolSelected,
+            &model,
+            &Model::changeTool);
+
+    connect(this,
+            &MainWindow::colorChange,
+            &model,
+            &Model::updateCurrentColor);
+    connect(&model,
+            &Model::frameEditorUpdate,
+            this,
+            &MainWindow::updatePixelEditor);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updatePixelEditor(Frame frame){
+    for (int row = 0; row < frameSize; ++row) {
+        for (int col = 0; col < frameSize; ++col) {
+            setPixel(frame.getPixel(row, col), row, col);
+        }
+    }
 }
 
 void MainWindow::callEditorClicked(int row, int col) {
@@ -99,19 +134,20 @@ void MainWindow::callEditorClicked(int row, int col) {
     pal.setColor(QPalette::Highlight, currentColor);
     ui->pixelEditor->setPalette(pal);
     emit editorClicked(row, col);
-    setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
+    //setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
     std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
 
 void MainWindow::callToolSelectedBrush() {
-    emit toolSelected(brush);
+    emit toolSelected(Model::brush);
     std::cout << "Emitted select Tool: Brush" << std::endl;
 }
 
 void MainWindow::callToolSelectedEraser() {
-    emit toolSelected(eraser);
+    emit toolSelected(Model::eraser);
     std::cout << "Emitted select Tool: Eraser" << std::endl;
 }
+
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     if(ui->pixelEditor->item(row, col) == nullptr) {
