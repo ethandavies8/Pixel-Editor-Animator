@@ -35,6 +35,16 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::callAddFrame
             );
+    connect(ui->removeFrameButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::callRemoveFrame
+            );
+    connect(&model,
+            &Model::previewUpdate,
+            this,
+            &MainWindow::updateFramePreview
+            );
 
 
     //SETUP PIXEL EDITOR & Connections
@@ -138,6 +148,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::updatePixelEditor);
 
+    connect(this,
+            &MainWindow::addFrame,
+            &model,
+            &Model::addFrame);
+
 }
 
 MainWindow::~MainWindow()
@@ -194,13 +209,11 @@ void MainWindow::sendColor() {
 
 }
 
-void MainWindow::callAddFrame(bool add) {
-//    //TEST
-//    QPixmap pix("C:/Users/danie/Downloads/testImage.png");
-//    QVector<QPixmap> pixs;
-//    pixs.append(pix);
-//    updateFramePreview(pixs);
-    emit addFrame();
+void MainWindow::callAddFrame() {
+        emit addFrame();
+}
+void MainWindow::callRemoveFrame() {
+        emit removeFrame();
 }
 
 void MainWindow::updateFramePreview(QVector<QPixmap> frames) {

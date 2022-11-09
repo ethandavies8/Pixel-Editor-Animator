@@ -34,7 +34,8 @@ private:
     QColorDialog *colorDialog;
     int frameSize;
 
-    void callAddFrame(bool);
+    void callAddFrame();
+    void callRemoveFrame();
     void updateFramePreview(QVector<QPixmap>);
 
 public slots:
@@ -49,6 +50,7 @@ signals:
     void colorChange(Pixel);
 
     void addFrame();
+    void removeFrame();
     void changeBrushSize(int);
 };
 #endif // MAINWINDOW_H
