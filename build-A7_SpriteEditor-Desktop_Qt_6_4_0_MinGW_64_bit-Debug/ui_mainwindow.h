@@ -49,6 +49,7 @@ public:
     QTableWidget *framePreview;
     QPushButton *removeFrameButton;
     QPushButton *addFrameButton;
+    QSlider *brushSizeSlider;
     QMenuBar *menubar;
     QMenu *fileMenu;
     QStatusBar *statusbar;
@@ -218,10 +219,18 @@ public:
         addFrameButton->setFont(font1);
         addFrameButton->setIcon(icon2);
         addFrameButton->setIconSize(QSize(35, 35));
+        brushSizeSlider = new QSlider(centralwidget);
+        brushSizeSlider->setObjectName("brushSizeSlider");
+        brushSizeSlider->setGeometry(QRect(480, 310, 101, 22));
+        brushSizeSlider->setMinimum(1);
+        brushSizeSlider->setMaximum(3);
+        brushSizeSlider->setOrientation(Qt::Horizontal);
+        brushSizeSlider->setTickPosition(QSlider::TicksBelow);
+        brushSizeSlider->setTickInterval(1);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 19));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         fileMenu = new QMenu(menubar);
         fileMenu->setObjectName("fileMenu");
         MainWindow->setMenuBar(menubar);

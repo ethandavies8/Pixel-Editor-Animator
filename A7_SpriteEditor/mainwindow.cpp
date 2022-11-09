@@ -101,6 +101,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::sendColor
             );
 
+    connect(ui->brushSizeSlider,
+            &QSlider::valueChanged,
+            &model,
+            &Model::updateBrushSize
+            );
+
 
     // MENU ITEMS (SAVE AND LOAD)
     connect(ui->actionSave,
