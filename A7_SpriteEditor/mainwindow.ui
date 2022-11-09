@@ -116,8 +116,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>C:/Users/battl/Downloads/playpause.png</normaloff>C:/Users/battl/Downloads/playpause.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/playpause.png</normaloff>:/icons/playpause.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -241,8 +241,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>C:/Users/battl/Downloads/brush Icon.png</normaloff>C:/Users/battl/Downloads/brush Icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/brush Icon.png</normaloff>:/icons/brush Icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -264,8 +264,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>C:/Users/battl/Downloads/Eraser_icon.png</normaloff>C:/Users/battl/Downloads/Eraser_icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/Eraser_icon.png</normaloff>:/icons/Eraser_icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -287,8 +287,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>C:/Users/battl/Downloads/color-icon.png</normaloff>C:/Users/battl/Downloads/color-icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/color-icon.png</normaloff>:/icons/color-icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -448,6 +448,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourcs.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>brush Icon.png</file>
+        <file>color-icon.png</file>
+        <file>Eraser_icon.png</file>
+        <file>playpause.png</file>
+    </qresource>
+</RCC>
