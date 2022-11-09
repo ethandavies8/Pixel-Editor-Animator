@@ -19,17 +19,41 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //SETUP UI
     ui->setupUi(this);
 
-    //SETUP PIXEL EDITOR
+
+    //SETUP FRAME PREVIEW & Connections
+    ui->framePreview->setColumnCount(8);
+    ui->framePreview->setRowCount(1);
+    ui->framePreview->setGeometry(20,460,540,98);
+
+    for (int frame = 0; frame < 8; ++frame) {
+        QTableWidgetItem *item = new QTableWidgetItem;
+        ui->framePreview->setItem(0, frame, item);
+    }
+
+    connect(ui->addFrameButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::callAddFrame
+            );
+
+
+    //SETUP PIXEL EDITOR & Connections
     ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->setColumnCount(model.getFrameSize());
     ui->pixelEditor->setRowCount(model.getFrameSize());
     ui->pixelEditor->setGeometry(20,0,450,450);
-    //ui->pixelEditor->setStyleSheet("QTableWidget { selection-color: transparent; selection-background-color: transparent; }");
-    //EDITOR/DRAWING Conncetions
+
     for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
         ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/model.getFrameSize());
         ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/model.getFrameSize());
+    }
+
+    for (int row = 0; row < model.getFrameSize(); ++row) {
+        for (int col = 0; col < model.getFrameSize(); ++col) {
+            QTableWidgetItem *item = new QTableWidgetItem;
+            ui->pixelEditor->setItem(row, col, item);
+        }
     }
 
     connect(ui->pixelEditor,
@@ -114,18 +138,7 @@ void MainWindow::callToolSelectedEraser() {
 }
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
-    if(ui->pixelEditor->item(row, col) == nullptr) {
-        //ui->pixelEditor->setStyleSheet("item {selection-background-color: transparent; selection-color: transparent;};");
-        //ui->pixelEditor->setStyleSheet("item:selected{ background-color: transparent }");
-        std::cout << "No item, creating one." << std::endl;
-        QTableWidgetItem *item = new QTableWidgetItem;
-        item->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
-        ui->pixelEditor->setItem(row, col, item);
-    }
-    else {
-        std::cout << "item exists" << std::endl;
-        ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
-    }
+    ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
 }
 
 void MainWindow::openColorDialog() {
@@ -141,6 +154,23 @@ void MainWindow::sendColor() {
            std::to_string(currentColor.alpha()) + ");}";
 
    ui->colorPreview->setStyleSheet(QString::fromStdString(style));
+
+}
+
+void MainWindow::callAddFrame(bool add) {
+//    //TEST
+//    QPixmap pix("C:/Users/danie/Downloads/testImage.png");
+//    QVector<QPixmap> pixs;
+//    pixs.append(pix);
+//    updateFramePreview(pixs);
+    emit addFrame();
+}
+
+void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
+    for (int currentFrame = 0; currentFrame < frames.length(); ++currentFrame) {
+        ui->framePreview->item(0, currentFrame)->setIcon(QIcon(frames[currentFrame]));
+        std::cout << "updated Frame at: " << std::to_string(currentFrame) << std::endl;
+    }
 
 }
 
