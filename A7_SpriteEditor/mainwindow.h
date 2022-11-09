@@ -34,6 +34,10 @@ private:
     QColorDialog *colorDialog;
     int frameSize;
 
+    void callAddFrame();
+    void callRemoveFrame();
+    void updateFramePreview(QVector<QPixmap>);
+
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
@@ -44,6 +48,9 @@ signals:
     void toolSelected(Model::Tool);
     void replaceProject(QJsonObject&);
     void colorChange(Pixel);
+
+    void addFrame();
+    void removeFrame();
     void changeBrushSize(int);
 };
 #endif // MAINWINDOW_H

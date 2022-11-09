@@ -26,6 +26,7 @@ public slots:
     void updateCurrentColor(Pixel pixel);
     void updateBrushSize(int brushSize);
     void changeTool(Model::Tool tool);
+    void addFrame();
 
 private:
     QVector<Frame> frames;
@@ -34,7 +35,6 @@ private:
     int activeFramePointer = 0;
     int brushSize = 1;
     int frameSize;
-    void addFrame();
     void setPixel(int row, int col, Pixel);
     void swapFrame(int frameIndex, int otherFrameIndex);
     void removeFrame(int removedFrameIndex);
