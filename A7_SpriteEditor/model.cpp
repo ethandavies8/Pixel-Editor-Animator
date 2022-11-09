@@ -103,13 +103,19 @@ void Model::updateCurrentColor(Pixel pixel){
 // Slot that reads a Json Object and replaces this project with it
 void Model::loadProject(QJsonObject& otherProject) {
 
-    QJsonArray frameArray = otherProject.value("frames").toArray();
+    QJsonObject projectFrames = otherProject.value("frames").toObject();
+    QString key = "frame";
+    key.append(QString::number(0)); // Get first frame
     QVector<Frame> newFrames;
 
     int size = otherProject.value("height").toInt();
 
-    for (const QJsonValue& frameVal : frameArray) {
-        QJsonArray rows = frameVal.toArray();
+    // Get frames by their names (frame0, frame1, frame2, etc.)
+    // There must be at least one frame named "frame0"
+    for (int frameNumber = 1; projectFrames.contains(key); frameNumber++) {
+
+        // Go through current frame and make a new frame from the pixels
+        QJsonArray rows = projectFrames.value(key).toArray();
         Frame loadFrame(size);
 
         // Go through each pixel and draw the frame
@@ -124,14 +130,25 @@ void Model::loadProject(QJsonObject& otherProject) {
                 loadFrame.setPixel(colNum, rowNum, pixelValue);
             }
         }
-        // Add the frame to a new list
+
+        // Add the frame to a new list of frames
         newFrames.push_back(loadFrame);
-    }
+
+        // Reset key for next frame
+        key = "frame";
+        key.append(QString::number(frameNumber));
+}
 
     // Now overwrite the original model with a new one
     frames = newFrames;
     frameSize = size;
+    currentColor = {0, 0, 0, 0};
+    currentTool = brush;
     activeFramePointer = 0;
+    brushSize = 1;
+
+    // Update the view
+    emit frameEditorUpdate(frames[activeFramePointer]);
 }
 
 // Slot that will send a signal back to the view with this project converted to Json

@@ -171,8 +171,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::frameSelected,
             &model,
             &Model::updateCurrentFramePointer);
-
-
 }
 
 MainWindow::~MainWindow()
