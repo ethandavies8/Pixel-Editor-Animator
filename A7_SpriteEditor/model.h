@@ -22,6 +22,7 @@ signals:
     void previewUpdate(QVector<QPixmap>);
     void updateFrameAnimation(QPixmap);
     void sendNumberOfFrames(int);
+    void resetView(int);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
@@ -38,7 +39,7 @@ public slots:
     void playPauseClicked();
     void animationUpdate();
     void returnNumberOfFrames();
-
+    void updateResettedView();
 
 private:
     QVector<Frame> frames;

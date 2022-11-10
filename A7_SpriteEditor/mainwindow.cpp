@@ -111,6 +111,18 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::saveFile
             );
+
+    connect(&model,
+            &Model::resetView,
+            this,
+            &MainWindow::setUpView
+            );
+
+    connect(this,
+            &MainWindow::loadPotentialProject,
+            &model,
+            &Model::updateResettedView
+            );
 //Animation Preview
     connect(ui->playPauseButton,
             &QPushButton::clicked,
@@ -191,7 +203,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //ui->framePreview->setColumnCount(8);
     //ui->framePreview->setRowCount(1);
     //ui->framePreview->setGeometry(20,460,540,98);
-
     for (int frame = 0; frame < 8; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
         ui->framePreview->setItem(0, frame, item);
@@ -199,25 +210,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     //SETUP PIXEL EDITOR & Connections
     //SETUP PIXEL EDITOR
-    frameSize = model.getFrameSize();
-    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->setColumnCount(model.getFrameSize());
-    ui->pixelEditor->setRowCount(model.getFrameSize());
-    ui->pixelEditor->setGeometry(20,0,450,450);
 
-    for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
-        ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/model.getFrameSize());
-        ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/model.getFrameSize());
-    }
-
-    for (int row = 0; row < model.getFrameSize(); ++row) {
-        for (int col = 0; col < model.getFrameSize(); ++col) {
-            QTableWidgetItem *item = new QTableWidgetItem;
-            ui->pixelEditor->setItem(row, col, item);
-        }
-    }
-    emit colorChange({0, 0, 0, 255});
+    setUpView(model.getFrameSize());
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::black);
     ui->pixelEditor->setPalette(pal);
@@ -227,6 +221,37 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setUpView(int size) {
+    for (int frame = 0; frame < 8; ++frame) {
+        QTableWidgetItem *item = new QTableWidgetItem;
+        ui->framePreview->setItem(0, frame, item);
+    }
+
+    //SETUP PIXEL EDITOR & Connections
+    //SETUP PIXEL EDITOR
+    frameSize = size;
+    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->setColumnCount(frameSize);
+    ui->pixelEditor->setRowCount(frameSize);
+    ui->pixelEditor->setGeometry(20,0,450,450);
+
+    for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
+        ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/frameSize);
+        ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/frameSize);
+    }
+
+    for (int row = 0; row < frameSize; ++row) {
+        for (int col = 0; col < frameSize; ++col) {
+            QTableWidgetItem *item = new QTableWidgetItem;
+            ui->pixelEditor->setItem(row, col, item);
+        }
+    }
+
+    // If a project is already loaded in, update the view
+    emit loadPotentialProject();
 }
 
 void MainWindow::updatePixelEditor(Frame frame){

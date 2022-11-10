@@ -52,6 +52,7 @@ public slots:
     void updateFrameAnimation(QPixmap);
     void resizeAnimation();
     void receiveNumberOfFrames(int);
+    void setUpView(int);
 
 signals:
     void editorClicked(int, int);
@@ -66,5 +67,6 @@ signals:
     void fpsUpdate(int);
 
     void askNumberOfFrames();
+    void loadPotentialProject();
 };
 #endif // MAINWINDOW_H

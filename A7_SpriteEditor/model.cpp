@@ -88,7 +88,8 @@ void Model::setPixel(int row, int col, Pixel pixel)
             frames[activeFramePointer].setPixel(row + i + x, col + j + y, pixel);
         }
     }
-    emit frameEditorUpdate(frames.at(activeFramePointer));
+
+    emit frameEditorUpdate(frames[activeFramePointer]);
     sendPreviewArray();
 }
 
@@ -126,7 +127,6 @@ void Model::updateCurrentColor(Pixel pixel)
 // Slot that reads a Json Object and replaces this project with it
 void Model::loadProject(QJsonObject &otherProject)
 {
-
     QJsonObject projectFrames = otherProject.value("frames").toObject();
     QString key = "frame";
     key.append(QString::number(0)); // Get first frame
@@ -174,9 +174,8 @@ void Model::loadProject(QJsonObject &otherProject)
     activeFramePointer = 0;
     brushSize = 1;
 
-    // Update the view
-    emit frameEditorUpdate(frames[activeFramePointer]);
-    sendPreviewArray();
+    // Tell the window to reset for the load
+    emit resetView(frameSize);
 }
 
 // Slot that will send a signal back to the view with this project converted to Json
@@ -199,6 +198,12 @@ void Model::retrieveJsonProject()
     root.insert("frames", framesObject);
 
     emit saveProject(root);
+}
+
+// Slot to send signals to update the view on reset
+void Model::updateResettedView() {
+    emit frameEditorUpdate(frames[activeFramePointer]);
+    sendPreviewArray();
 }
 
 int Model::getFrameSize()
