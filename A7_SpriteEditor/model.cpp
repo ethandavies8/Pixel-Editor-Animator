@@ -211,10 +211,17 @@ void Model::frameAnimation()
     {
         for (int i = 0; i < frames.size(); i++)
         {
-            // QTimer::singleShot((1000/fps)*(i+1), this, &Model::updateFrameAnimation(frames[i]));
+             QTimer::singleShot((1000/fps)*(i+1), this, &Model::animationUpdate);
         }
         QTimer::singleShot(1000 * frames.size() / fps + 1000 / fps, this, &Model::frameAnimation);
     }
+}
+void Model::animationUpdate(){
+    if(animationFrame == frames.size())
+        animationFrame = 0;
+
+    emit updateFrameAnimation(frameToPixmap(frames[animationFrame]));
+    animationFrame++;
 }
 void Model::fpsUpdate(int updatedFPS)
 {

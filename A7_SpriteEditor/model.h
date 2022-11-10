@@ -33,6 +33,7 @@ public slots:
     void frameAnimation();
     void fpsUpdate(int);
     void playPauseClicked();
+    void animationUpdate();
 
 private:
     QVector<Frame> frames;
@@ -41,13 +42,14 @@ private:
     int activeFramePointer = 0;
     int brushSize = 1;
     int frameSize;
+    int fps;        //Determines rate of animation
+    int animationFrame = 0;
+    bool playingAnimation; //Determines if animation is playing
     void setPixel(int row, int col, Pixel);
     void swapFrame(int frameIndex, int otherFrameIndex);
     void removeFrame(int removedFrameIndex);
     void sendPreviewArray();
     QPixmap frameToPixmap(Frame);
-    int fps;        //Determines rate of animation
-    bool playingAnimation; //Determines if animation is playing
     void swapFrame(Frame frame, Frame otherFrame);
     void removeFrame(Frame removedFrame);
 
