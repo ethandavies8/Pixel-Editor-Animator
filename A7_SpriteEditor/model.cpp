@@ -176,6 +176,8 @@ void Model::retrieveJsonProject() {
 
 int Model::getFrameSize() {
     return frameSize;
+}
+
 void Model::playPauseClicked(){
     playingAnimation = !playingAnimation;
     frameAnimation();

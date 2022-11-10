@@ -48,10 +48,6 @@ private:
     QPixmap frameToPixmap(Frame);
     int fps;        //Determines rate of animation
     bool playingAnimation; //Determines if animation is playing
-    void addFrame();
-    void setPixel(int row, int col, Pixel pixel);
-    void updateBrushSize(int brushSize);
-    void changeTool(Tool tool);
     void swapFrame(Frame frame, Frame otherFrame);
     void removeFrame(Frame removedFrame);
 
