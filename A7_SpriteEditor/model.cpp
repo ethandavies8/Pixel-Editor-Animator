@@ -10,7 +10,7 @@
 Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}, frameSize(spriteSize), playingAnimation(false)
 {
-    // get FrameSize from view
+     //get FrameSize from view
     Frame newFrame(frameSize);
     frames.append(newFrame);
 }
@@ -199,6 +199,10 @@ void Model::retrieveJsonProject()
 int Model::getFrameSize()
 {
     return frameSize;
+}
+
+void Model::returnNumberOfFrames() {
+    emit sendNumberOfFrames(frames.length());
 }
 void Model::playPauseClicked()
 {

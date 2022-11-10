@@ -35,6 +35,8 @@ private:
 
     QColorDialog *colorDialog;
     int frameSize;
+    int totalFrames;
+
 
     void callAddFrame();
     void callRemoveFrame();
@@ -49,6 +51,7 @@ public slots:
     void updateFPSLabel();
     void updateFrameAnimation(QPixmap);
     void resizeAnimation();
+    void receiveNumberOfFrames(int);
 
 signals:
     void editorClicked(int, int);
@@ -61,5 +64,7 @@ signals:
     void changeBrushSize(int);
     void frameSelected(int);
     void fpsUpdate(int);
+
+    void askNumberOfFrames();
 };
 #endif // MAINWINDOW_H

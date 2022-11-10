@@ -13,6 +13,7 @@ public:
     explicit Model(int spriteSize, QObject *parent = nullptr);
     virtual ~Model();
     int getFrameSize();
+    int getNumberOfFrames();
     enum Tool {brush, eraser};
 
 signals:
@@ -20,6 +21,7 @@ signals:
     void frameEditorUpdate(Frame);
     void previewUpdate(QVector<QPixmap>);
     void updateFrameAnimation(QPixmap);
+    void sendNumberOfFrames(int);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
@@ -34,10 +36,12 @@ public slots:
     void fpsUpdate(int);
     void playPauseClicked();
     void animationUpdate();
+    void returnNumberOfFrames();
+
 
 private:
     QVector<Frame> frames;
-    Pixel currentColor{0, 0, 0, 0};
+    Pixel currentColor{0, 0, 0, 255};
     Tool currentTool;
     int activeFramePointer = 0;
     int brushSize = 1;
@@ -52,6 +56,7 @@ private:
     QPixmap frameToPixmap(Frame);
     void swapFrame(Frame frame, Frame otherFrame);
     void removeFrame(Frame removedFrame);
+    void callSendNumberOfFrames();
 
 //    //AnimationWindow
 //    //ToolBar

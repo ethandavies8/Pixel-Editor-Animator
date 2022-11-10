@@ -20,6 +20,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //SETUP UI
     ui->setupUi(this);
 
+    colorDialog->setCurrentColor(Qt::black);
 
     //SETUP FRAME PREVIEW & Connections
     //ui->framePreview->setColumnCount(8);
@@ -45,6 +46,16 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &Model::previewUpdate,
             this,
             &MainWindow::updateFramePreview
+            );
+    connect(this,
+            &MainWindow::askNumberOfFrames,
+            &model,
+            &Model::returnNumberOfFrames
+            );
+    connect(&model,
+            &Model::sendNumberOfFrames,
+            this,
+            &MainWindow::receiveNumberOfFrames
             );
 
 
@@ -244,10 +255,18 @@ void MainWindow::callEditorClicked(int row, int col) {
 }
 
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
-    emit frameSelected(frameIndex);
-    QPalette pal;
-    pal.setColor(QPalette::Highlight, Qt::white);
-    ui->pixelEditor->setPalette(pal);
+    emit askNumberOfFrames();
+    if (frameIndex < (totalFrames - 1)) {
+        emit frameSelected(frameIndex);
+        QPalette pal;
+        pal.setColor(QPalette::Highlight, Qt::white);
+        ui->pixelEditor->setPalette(pal);
+    }
+
+}
+
+void MainWindow::receiveNumberOfFrames(int numFrames) {
+    totalFrames = numFrames;
 }
 
 void MainWindow::callToolSelectedBrush() {
@@ -299,10 +318,25 @@ void MainWindow::sendColor() {
 }
 
 void MainWindow::callAddFrame() {
-        emit addFrame();
+    emit askNumberOfFrames();
+    emit addFrame();
+    if (totalFrames == 8) {
+        ui->addFrameButton->setEnabled(false);
+    }
+    else {
+        ui->removeFrameButton->setEnabled(true);
+    }
 }
 void MainWindow::callRemoveFrame() {
-        emit removeFrame();
+    emit askNumberOfFrames();
+    emit removeFrame();
+    if (totalFrames == 1) {
+        ui->removeFrameButton->setEnabled(false);
+    }
+    else {
+        ui->removeFrameButton->setEnabled(true);
+        ui->addFrameButton->setEnabled(true);
+    }
 }
 
 void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
