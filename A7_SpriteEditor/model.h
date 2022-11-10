@@ -4,6 +4,7 @@
 #include <QObject>
 #include "frame.h"
 #include "qpixmap.h"
+#include <QPixmap>
 
 class Model : public QObject
 {
@@ -18,6 +19,7 @@ signals:
     void saveProject(QJsonObject& thisProject);
     void frameEditorUpdate(Frame);
     void previewUpdate(QVector<QPixmap>);
+    void updateFrameAnimation(QPixmap);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
@@ -28,6 +30,9 @@ public slots:
     void changeTool(Model::Tool tool);
     void addFrame();
     void updateCurrentFramePointer(int);
+    void frameAnimation();
+    void fpsUpdate(int);
+    void playPauseClicked();
 
 private:
     QVector<Frame> frames;
@@ -41,6 +46,19 @@ private:
     void removeFrame(int removedFrameIndex);
     void sendPreviewArray();
     QPixmap frameToPixmap(Frame);
+    int fps;        //Determines rate of animation
+    bool playingAnimation; //Determines if animation is playing
+    void addFrame();
+    void setPixel(int row, int col, Pixel pixel);
+    void updateBrushSize(int brushSize);
+    void changeTool(Tool tool);
+    void swapFrame(Frame frame, Frame otherFrame);
+    void removeFrame(Frame removedFrame);
+
+//    //AnimationWindow
+//    //ToolBar
+//    //ColorPallette
+//    //GridEditor
 };
 
 #endif // MODEL_H

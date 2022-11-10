@@ -4,10 +4,13 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QImage>
+#include <QTimer>
+#include <QPixmap>
 
 Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}
     , frameSize(spriteSize)
+    , playingAnimation(false)
 {
     //get FrameSize from view
     Frame newFrame(frameSize);
@@ -173,4 +176,18 @@ void Model::retrieveJsonProject() {
 
 int Model::getFrameSize() {
     return frameSize;
+void Model::playPauseClicked(){
+    playingAnimation = !playingAnimation;
+    frameAnimation();
+}
+void Model::frameAnimation(){
+    if(playingAnimation){
+        for(int i = 0; i < frames.size(); i++){
+            //QTimer::singleShot((1000/fps)*(i+1), this, &Model::updateFrameAnimation(frames[i]));
+        }
+        QTimer::singleShot(1000*frames.size()/fps+1000/fps, this, &Model::frameAnimation);
+    }
+}
+void Model::fpsUpdate(int updatedFPS){
+    fps = updatedFPS;
 }

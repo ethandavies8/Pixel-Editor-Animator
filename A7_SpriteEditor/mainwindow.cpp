@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <QMessageBox>
 #include <QJsonArray>
+#include <QString>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -137,6 +138,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::saveFile
             );
+//Animation Preview
+    connect(ui->playPauseButton,
+            &QPushButton::clicked,
+            &model,
+            &Model::playPauseClicked
+            );
 
     //Model Connection
     connect(this,
@@ -171,6 +178,35 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::frameSelected,
             &model,
             &Model::updateCurrentFramePointer);
+    connect(ui->playPauseButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::playPauseClicked
+            );
+
+    connect(ui->fpsSlider,
+            &QSlider::valueChanged,
+            &model,
+            &Model::fpsUpdate
+            );
+
+    connect(ui->fpsSlider,
+            &QSlider::valueChanged,
+            this,
+            &MainWindow::updateFPSLabel
+            );
+
+    connect(this,
+            &MainWindow::fpsUpdate,
+            &model,
+            &Model::fpsUpdate
+            );
+
+    connect(&model,
+            &Model::updateFrameAnimation,
+            ui->spritePreviewLabel,
+            &QLabel::setPixmap
+            );
 }
 
 MainWindow::~MainWindow()
@@ -218,6 +254,12 @@ void MainWindow::callToolSelectedEraser() {
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
+}
+void MainWindow::playPauseClicked(){
+    emit fpsUpdate(ui->fpsSlider->value());
+}
+void MainWindow::updateFPSLabel(){
+    ui->fpsLabel->setText("fps:" + QString::number(ui->fpsSlider->value()));
 }
 
 void MainWindow::openColorDialog() {
