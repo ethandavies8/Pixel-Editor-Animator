@@ -57,6 +57,17 @@ public:
     QSlider *brushSizeSlider;
     QTableWidget *framePreview;
     QPushButton *resizeButton;
+    QTableWidget *framePreview;
+    QPushButton *removeFrameButton;
+    QPushButton *addFrameButton;
+    QSlider *brushSizeSlider;
+    QLabel *spritePreviewLabel;
+    QLabel *fpsLabel;
+    QLabel *borderLabel;
+    QLabel *borderLabel_2;
+    QLabel *borderLabel_3;
+    QLabel *borderLabel_4;
+    QLabel *borderLabel_5;
     QMenuBar *menubar;
     QMenu *fileMenu;
     QStatusBar *statusbar;
@@ -97,6 +108,18 @@ public:
         actionLoad->setObjectName("actionLoad");
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        scrollArea = new QScrollArea(centralwidget);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setGeometry(QRect(19, 450, 781, 81));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 779, 79));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+        horizontalScrollBar = new QScrollBar(centralwidget);
+        horizontalScrollBar->setObjectName("horizontalScrollBar");
+        horizontalScrollBar->setGeometry(QRect(19, 530, 781, 16));
+        horizontalScrollBar->setOrientation(Qt::Horizontal);
         fpsSlider = new QSlider(centralwidget);
         fpsSlider->setObjectName("fpsSlider");
         fpsSlider->setGeometry(QRect(590, 235, 101, 22));
@@ -198,6 +221,7 @@ public:
         pixelEditor->setPalette(palette2);
         pixelEditor->setMouseTracking(true);
         pixelEditor->setFocusPolicy(Qt::StrongFocus);
+        pixelEditor->setStyleSheet(QString::fromUtf8(""));
         pixelEditor->setStyleSheet(QString::fromUtf8("background-color: rgb(225, 225, 225);"));
         pixelEditor->setEditTriggers(QAbstractItemView::NoEditTriggers);
         pixelEditor->setDragEnabled(false);
@@ -307,6 +331,64 @@ public:
         icon5.addFile(QString::fromUtf8(":/icons/resizeIcon.png"), QSize(), QIcon::Normal, QIcon::Off);
         resizeButton->setIcon(icon5);
         resizeButton->setIconSize(QSize(31, 31));
+        removeFrameButton = new QPushButton(centralwidget);
+        removeFrameButton->setObjectName("removeFrameButton");
+        removeFrameButton->setEnabled(false);
+        removeFrameButton->setGeometry(QRect(570, 500, 41, 41));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Bebas Neue")});
+        font1.setPointSize(21);
+        removeFrameButton->setFont(font1);
+        removeFrameButton->setIcon(icon2);
+        removeFrameButton->setIconSize(QSize(35, 35));
+        addFrameButton = new QPushButton(centralwidget);
+        addFrameButton->setObjectName("addFrameButton");
+        addFrameButton->setGeometry(QRect(570, 460, 41, 41));
+        addFrameButton->setFont(font1);
+        addFrameButton->setIcon(icon2);
+        addFrameButton->setIconSize(QSize(35, 35));
+        brushSizeSlider = new QSlider(centralwidget);
+        brushSizeSlider->setObjectName("brushSizeSlider");
+        brushSizeSlider->setGeometry(QRect(480, 310, 101, 22));
+        brushSizeSlider->setMinimum(1);
+        brushSizeSlider->setMaximum(3);
+        brushSizeSlider->setOrientation(Qt::Horizontal);
+        brushSizeSlider->setTickPosition(QSlider::TicksBelow);
+        brushSizeSlider->setTickInterval(1);
+        spritePreviewLabel = new QLabel(centralwidget);
+        spritePreviewLabel->setObjectName("spritePreviewLabel");
+        spritePreviewLabel->setGeometry(QRect(590, 10, 200, 200));
+        spritePreviewLabel->setAutoFillBackground(false);
+        spritePreviewLabel->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        fpsLabel = new QLabel(centralwidget);
+        fpsLabel->setObjectName("fpsLabel");
+        fpsLabel->setGeometry(QRect(750, 10, 41, 20));
+        fpsLabel->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255, 0)"));
+        borderLabel = new QLabel(centralwidget);
+        borderLabel->setObjectName("borderLabel");
+        borderLabel->setGeometry(QRect(580, -30, 2, 481));
+        borderLabel->setStyleSheet(QString::fromUtf8("border-color: rgb(85, 85, 85);\n"
+"background-color: rgb(85, 85, 85);"));
+        borderLabel_2 = new QLabel(centralwidget);
+        borderLabel_2->setObjectName("borderLabel_2");
+        borderLabel_2->setGeometry(QRect(20, -30, 5, 475));
+        borderLabel_2->setStyleSheet(QString::fromUtf8("border-color: rgb(85, 85, 85);\n"
+"background-color: rgb(85, 85, 85);"));
+        borderLabel_3 = new QLabel(centralwidget);
+        borderLabel_3->setObjectName("borderLabel_3");
+        borderLabel_3->setGeometry(QRect(20, 445, 780, 5));
+        borderLabel_3->setStyleSheet(QString::fromUtf8("border-color: rgb(85, 85, 85);\n"
+"background-color: rgb(85, 85, 85);"));
+        borderLabel_4 = new QLabel(centralwidget);
+        borderLabel_4->setObjectName("borderLabel_4");
+        borderLabel_4->setGeometry(QRect(20, 0, 780, 5));
+        borderLabel_4->setStyleSheet(QString::fromUtf8("border-color: rgb(85, 85, 85);\n"
+"background-color: rgb(85, 85, 85);"));
+        borderLabel_5 = new QLabel(centralwidget);
+        borderLabel_5->setObjectName("borderLabel_5");
+        borderLabel_5->setGeometry(QRect(795, 0, 5, 450));
+        borderLabel_5->setStyleSheet(QString::fromUtf8("border-color: rgb(85, 85, 85);\n"
+"background-color: rgb(85, 85, 85);"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -352,6 +434,13 @@ public:
         removeFrameButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         addFrameButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         resizeButton->setText(QString());
+        spritePreviewLabel->setText(QString());
+        fpsLabel->setText(QCoreApplication::translate("MainWindow", "fps:1", nullptr));
+        borderLabel->setText(QString());
+        borderLabel_2->setText(QString());
+        borderLabel_3->setText(QString());
+        borderLabel_4->setText(QString());
+        borderLabel_5->setText(QString());
         fileMenu->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
     } // retranslateUi
 
