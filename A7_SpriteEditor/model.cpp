@@ -152,6 +152,7 @@ void Model::loadProject(QJsonObject& otherProject) {
 
     // Update the view
     emit frameEditorUpdate(frames[activeFramePointer]);
+    sendPreviewArray();
 }
 
 // Slot that will send a signal back to the view with this project converted to Json
@@ -176,6 +177,7 @@ void Model::retrieveJsonProject() {
 
 int Model::getFrameSize() {
     return frameSize;
+}
 void Model::playPauseClicked(){
     playingAnimation = !playingAnimation;
     frameAnimation();
