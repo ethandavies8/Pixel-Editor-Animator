@@ -27,7 +27,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_Model_t {
-    uint offsetsAndSizes[50];
+    uint offsetsAndSizes[60];
     char stringdata0[6];
     char stringdata1[12];
     char stringdata2[1];
@@ -37,22 +37,27 @@ struct qt_meta_stringdata_Model_t {
     char stringdata6[6];
     char stringdata7[14];
     char stringdata8[15];
-    char stringdata9[12];
-    char stringdata10[13];
-    char stringdata11[20];
-    char stringdata12[18];
-    char stringdata13[4];
+    char stringdata9[21];
+    char stringdata10[12];
+    char stringdata11[13];
+    char stringdata12[20];
+    char stringdata13[18];
     char stringdata14[4];
-    char stringdata15[19];
-    char stringdata16[6];
+    char stringdata15[4];
+    char stringdata16[19];
     char stringdata17[6];
-    char stringdata18[16];
-    char stringdata19[10];
-    char stringdata20[11];
-    char stringdata21[12];
-    char stringdata22[5];
-    char stringdata23[9];
-    char stringdata24[26];
+    char stringdata18[6];
+    char stringdata19[16];
+    char stringdata20[10];
+    char stringdata21[11];
+    char stringdata22[12];
+    char stringdata23[5];
+    char stringdata24[9];
+    char stringdata25[26];
+    char stringdata26[15];
+    char stringdata27[10];
+    char stringdata28[17];
+    char stringdata29[16];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_Model_t::offsetsAndSizes) + ofs), len 
@@ -67,22 +72,27 @@ Q_CONSTINIT static const qt_meta_stringdata_Model_t qt_meta_stringdata_Model = {
         QT_MOC_LITERAL(62, 5),  // "Frame"
         QT_MOC_LITERAL(68, 13),  // "previewUpdate"
         QT_MOC_LITERAL(82, 14),  // "QList<QPixmap>"
-        QT_MOC_LITERAL(97, 11),  // "loadProject"
-        QT_MOC_LITERAL(109, 12),  // "otherProject"
-        QT_MOC_LITERAL(122, 19),  // "retrieveJsonProject"
-        QT_MOC_LITERAL(142, 17),  // "receivePixelClick"
-        QT_MOC_LITERAL(160, 3),  // "row"
-        QT_MOC_LITERAL(164, 3),  // "col"
-        QT_MOC_LITERAL(168, 18),  // "updateCurrentColor"
-        QT_MOC_LITERAL(187, 5),  // "Pixel"
-        QT_MOC_LITERAL(193, 5),  // "pixel"
-        QT_MOC_LITERAL(199, 15),  // "updateBrushSize"
-        QT_MOC_LITERAL(215, 9),  // "brushSize"
-        QT_MOC_LITERAL(225, 10),  // "changeTool"
-        QT_MOC_LITERAL(236, 11),  // "Model::Tool"
-        QT_MOC_LITERAL(248, 4),  // "tool"
-        QT_MOC_LITERAL(253, 8),  // "addFrame"
-        QT_MOC_LITERAL(262, 25)   // "updateCurrentFramePointer"
+        QT_MOC_LITERAL(97, 20),  // "updateFrameAnimation"
+        QT_MOC_LITERAL(118, 11),  // "loadProject"
+        QT_MOC_LITERAL(130, 12),  // "otherProject"
+        QT_MOC_LITERAL(143, 19),  // "retrieveJsonProject"
+        QT_MOC_LITERAL(163, 17),  // "receivePixelClick"
+        QT_MOC_LITERAL(181, 3),  // "row"
+        QT_MOC_LITERAL(185, 3),  // "col"
+        QT_MOC_LITERAL(189, 18),  // "updateCurrentColor"
+        QT_MOC_LITERAL(208, 5),  // "Pixel"
+        QT_MOC_LITERAL(214, 5),  // "pixel"
+        QT_MOC_LITERAL(220, 15),  // "updateBrushSize"
+        QT_MOC_LITERAL(236, 9),  // "brushSize"
+        QT_MOC_LITERAL(246, 10),  // "changeTool"
+        QT_MOC_LITERAL(257, 11),  // "Model::Tool"
+        QT_MOC_LITERAL(269, 4),  // "tool"
+        QT_MOC_LITERAL(274, 8),  // "addFrame"
+        QT_MOC_LITERAL(283, 25),  // "updateCurrentFramePointer"
+        QT_MOC_LITERAL(309, 14),  // "frameAnimation"
+        QT_MOC_LITERAL(324, 9),  // "fpsUpdate"
+        QT_MOC_LITERAL(334, 16),  // "playPauseClicked"
+        QT_MOC_LITERAL(351, 15)   // "animationUpdate"
     },
     "Model",
     "saveProject",
@@ -93,6 +103,7 @@ Q_CONSTINIT static const qt_meta_stringdata_Model_t qt_meta_stringdata_Model = {
     "Frame",
     "previewUpdate",
     "QList<QPixmap>",
+    "updateFrameAnimation",
     "loadProject",
     "otherProject",
     "retrieveJsonProject",
@@ -108,7 +119,11 @@ Q_CONSTINIT static const qt_meta_stringdata_Model_t qt_meta_stringdata_Model = {
     "Model::Tool",
     "tool",
     "addFrame",
-    "updateCurrentFramePointer"
+    "updateCurrentFramePointer",
+    "frameAnimation",
+    "fpsUpdate",
+    "playPauseClicked",
+    "animationUpdate"
 };
 #undef QT_MOC_LITERAL
 } // unnamed namespace
@@ -119,42 +134,52 @@ Q_CONSTINIT static const uint qt_meta_data_Model[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   80,    2, 0x06,    1 /* Public */,
-       5,    1,   83,    2, 0x06,    3 /* Public */,
-       7,    1,   86,    2, 0x06,    5 /* Public */,
+       1,    1,  110,    2, 0x06,    1 /* Public */,
+       5,    1,  113,    2, 0x06,    3 /* Public */,
+       7,    1,  116,    2, 0x06,    5 /* Public */,
+       9,    1,  119,    2, 0x06,    7 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       9,    1,   89,    2, 0x0a,    7 /* Public */,
-      11,    0,   92,    2, 0x0a,    9 /* Public */,
-      12,    2,   93,    2, 0x0a,   10 /* Public */,
-      15,    1,   98,    2, 0x0a,   13 /* Public */,
-      18,    1,  101,    2, 0x0a,   15 /* Public */,
-      20,    1,  104,    2, 0x0a,   17 /* Public */,
-      23,    0,  107,    2, 0x0a,   19 /* Public */,
-      24,    1,  108,    2, 0x0a,   20 /* Public */,
+      10,    1,  122,    2, 0x0a,    9 /* Public */,
+      12,    0,  125,    2, 0x0a,   11 /* Public */,
+      13,    2,  126,    2, 0x0a,   12 /* Public */,
+      16,    1,  131,    2, 0x0a,   15 /* Public */,
+      19,    1,  134,    2, 0x0a,   17 /* Public */,
+      21,    1,  137,    2, 0x0a,   19 /* Public */,
+      24,    0,  140,    2, 0x0a,   21 /* Public */,
+      25,    1,  141,    2, 0x0a,   22 /* Public */,
+      26,    0,  144,    2, 0x0a,   24 /* Public */,
+      27,    1,  145,    2, 0x0a,   25 /* Public */,
+      28,    0,  148,    2, 0x0a,   27 /* Public */,
+      29,    0,  149,    2, 0x0a,   28 /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 6,    2,
     QMetaType::Void, 0x80000000 | 8,    2,
+    QMetaType::Void, QMetaType::QPixmap,    2,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 3,   10,
+    QMetaType::Void, 0x80000000 | 3,   11,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   13,   14,
-    QMetaType::Void, 0x80000000 | 16,   17,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, 0x80000000 | 21,   22,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   14,   15,
+    QMetaType::Void, 0x80000000 | 17,   18,
+    QMetaType::Void, QMetaType::Int,   20,
+    QMetaType::Void, 0x80000000 | 22,   23,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -177,6 +202,9 @@ Q_CONSTINIT const QMetaObject Model::staticMetaObject = { {
         // method 'previewUpdate'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QVector<QPixmap>, std::false_type>,
+        // method 'updateFrameAnimation'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QPixmap, std::false_type>,
         // method 'loadProject'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QJsonObject &, std::false_type>,
@@ -199,7 +227,16 @@ Q_CONSTINIT const QMetaObject Model::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateCurrentFramePointer'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'frameAnimation'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'fpsUpdate'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'playPauseClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'animationUpdate'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -213,14 +250,19 @@ void Model::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 0: _t->saveProject((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
         case 1: _t->frameEditorUpdate((*reinterpret_cast< std::add_pointer_t<Frame>>(_a[1]))); break;
         case 2: _t->previewUpdate((*reinterpret_cast< std::add_pointer_t<QList<QPixmap>>>(_a[1]))); break;
-        case 3: _t->loadProject((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
-        case 4: _t->retrieveJsonProject(); break;
-        case 5: _t->receivePixelClick((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 6: _t->updateCurrentColor((*reinterpret_cast< std::add_pointer_t<Pixel>>(_a[1]))); break;
-        case 7: _t->updateBrushSize((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 8: _t->changeTool((*reinterpret_cast< std::add_pointer_t<Model::Tool>>(_a[1]))); break;
-        case 9: _t->addFrame(); break;
-        case 10: _t->updateCurrentFramePointer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->updateFrameAnimation((*reinterpret_cast< std::add_pointer_t<QPixmap>>(_a[1]))); break;
+        case 4: _t->loadProject((*reinterpret_cast< std::add_pointer_t<QJsonObject&>>(_a[1]))); break;
+        case 5: _t->retrieveJsonProject(); break;
+        case 6: _t->receivePixelClick((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 7: _t->updateCurrentColor((*reinterpret_cast< std::add_pointer_t<Pixel>>(_a[1]))); break;
+        case 8: _t->updateBrushSize((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 9: _t->changeTool((*reinterpret_cast< std::add_pointer_t<Model::Tool>>(_a[1]))); break;
+        case 10: _t->addFrame(); break;
+        case 11: _t->updateCurrentFramePointer((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 12: _t->frameAnimation(); break;
+        case 13: _t->fpsUpdate((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 14: _t->playPauseClicked(); break;
+        case 15: _t->animationUpdate(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -257,6 +299,13 @@ void Model::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
                 return;
             }
         }
+        {
+            using _t = void (Model::*)(QPixmap );
+            if (_t _q_method = &Model::updateFrameAnimation; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 3;
+                return;
+            }
+        }
     }
 }
 
@@ -279,13 +328,13 @@ int Model::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 16;
     }
     return _id;
 }
@@ -309,6 +358,13 @@ void Model::previewUpdate(QVector<QPixmap> _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void Model::updateFrameAnimation(QPixmap _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

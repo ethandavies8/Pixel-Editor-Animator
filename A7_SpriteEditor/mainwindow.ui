@@ -16,9 +16,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>145</red>
-        <green>218</green>
-        <blue>218</blue>
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
        </color>
       </brush>
      </colorrole>
@@ -27,9 +45,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>240</red>
-        <green>240</green>
-        <blue>240</blue>
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
        </color>
       </brush>
      </colorrole>
@@ -38,9 +74,27 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>145</red>
-        <green>218</green>
-        <blue>218</blue>
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>225</red>
+        <green>225</green>
+        <blue>225</blue>
        </color>
       </brush>
      </colorrole>
@@ -53,21 +107,33 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(225, 225, 225);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QSlider" name="fpsSlider">
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>200</y>
+      <y>235</y>
       <width>101</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(71, 212, 212);</string>
     </property>
     <property name="minimum">
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>3</number>
+     <number>20</number>
+    </property>
+    <property name="singleStep">
+     <number>0</number>
+    </property>
+    <property name="pageStep">
+     <number>0</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -79,18 +145,21 @@
    <widget class="QPushButton" name="playPauseButton">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>195</y>
+      <x>700</x>
+      <y>230</y>
       <width>31</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/playpause.png</normaloff>../../../../../../../battl/Downloads/playpause.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/playpause.png</normaloff>:/icons/playpause.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -102,8 +171,8 @@
    <widget class="QPushButton" name="brushButton">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>300</y>
+      <x>560</x>
+      <y>335</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -114,27 +183,27 @@
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Base">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
@@ -143,27 +212,27 @@
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Base">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
@@ -172,50 +241,42 @@
        <colorrole role="Button">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Base">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
        <colorrole role="Window">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
-          <red>157</red>
-          <green>235</green>
-          <blue>235</blue>
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
          </color>
         </brush>
        </colorrole>
       </disabled>
      </palette>
     </property>
-    <property name="font">
-     <font>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(157, 235, 235);</string>
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/brush Icon.png</normaloff>../../../../../../../battl/Downloads/brush Icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/brush Icon.png</normaloff>:/icons/brush Icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -227,18 +288,21 @@
    <widget class="QPushButton" name="eraserButton">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>340</y>
+      <x>560</x>
+      <y>375</y>
       <width>41</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/Eraser_icon.png</normaloff>:/icons/Eraser_icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -250,18 +314,21 @@
    <widget class="QPushButton" name="colorButton">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>320</y>
+      <x>630</x>
+      <y>375</y>
       <width>41</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/color-icon.png</normaloff>../../../../../../../battl/Downloads/color-icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/color-icon.png</normaloff>:/icons/color-icon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -273,8 +340,8 @@
    <widget class="QFrame" name="colorPreview">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>325</y>
+      <x>680</x>
+      <y>380</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -283,7 +350,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 0, 0);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -297,7 +364,7 @@
      <rect>
       <x>20</x>
       <y>0</y>
-      <width>450</width>
+      <width>461</width>
       <height>450</height>
      </rect>
     </property>
@@ -310,6 +377,33 @@
     <property name="palette">
      <palette>
       <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Highlight">
         <brush brushstyle="SolidPattern">
          <color alpha="0">
@@ -330,6 +424,33 @@
        </colorrole>
       </active>
       <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Highlight">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
@@ -350,6 +471,33 @@
        </colorrole>
       </inactive>
       <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>225</red>
+          <green>225</green>
+          <blue>225</blue>
+         </color>
+        </brush>
+       </colorrole>
        <colorrole role="Highlight">
         <brush brushstyle="SolidPattern">
          <color alpha="255">
@@ -378,7 +526,7 @@
      <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(225, 225, 225);</string>
     </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
@@ -427,14 +575,313 @@
     <column/>
     <column/>
    </widget>
-   <widget class="QGraphicsView" name="spritePreview">
+   <widget class="QLabel" name="spritePreviewLabel">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>0</y>
-      <width>241</width>
-      <height>191</height>
+      <x>540</x>
+      <y>20</y>
+      <width>200</width>
+      <height>200</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fpsLabel">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>20</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0)</string>
+    </property>
+    <property name="text">
+     <string>fps:1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="borderLabel">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>-30</y>
+      <width>2</width>
+      <height>479</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(85, 85, 85);
+background-color: rgb(85, 85, 85);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="borderLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>-30</y>
+      <width>5</width>
+      <height>475</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(85, 85, 85);
+background-color: rgb(85, 85, 85);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="borderLabel_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>445</y>
+      <width>780</width>
+      <height>5</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(85, 85, 85);
+background-color: rgb(85, 85, 85);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="borderLabel_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>780</width>
+      <height>5</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(85, 85, 85);
+background-color: rgb(85, 85, 85);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="borderLabel_5">
+    <property name="geometry">
+     <rect>
+      <x>795</x>
+      <y>0</y>
+      <width>5</width>
+      <height>450</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-color: rgb(85, 85, 85);
+background-color: rgb(85, 85, 85);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="removeFrameButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>500</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>71</red>
+          <green>212</green>
+          <blue>212</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bebas Neue</family>
+      <pointsize>21</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../../battl/Downloads/Eraser_icon.png</normaloff>../../../../../battl/Downloads/Eraser_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>35</width>
+      <height>35</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="addFrameButton">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>460</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bebas Neue</family>
+      <pointsize>21</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../../../battl/Downloads/Eraser_icon.png</normaloff>../../../../../battl/Downloads/Eraser_icon.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>35</width>
+      <height>35</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QSlider" name="brushSizeSlider">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>340</y>
+      <width>101</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>3</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksBelow</enum>
+    </property>
+    <property name="tickInterval">
+     <number>1</number>
     </property>
    </widget>
    <widget class="QTableWidget" name="framePreview">
@@ -442,14 +889,11 @@
      <rect>
       <x>20</x>
       <y>460</y>
-      <width>540</width>
-      <height>98</height>
+      <width>642</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="showGrid">
      <bool>true</bool>
     </property>
     <property name="rowCount">
@@ -483,90 +927,30 @@
     <column/>
     <column/>
    </widget>
-   <widget class="QPushButton" name="removeFrameButton">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QPushButton" name="resizeButton">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>500</y>
-      <width>41</width>
-      <height>41</height>
+      <x>550</x>
+      <y>230</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <family>Bebas Neue</family>
-      <pointsize>21</pointsize>
-     </font>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
     </property>
     <property name="text">
-     <string>-</string>
+     <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</iconset>
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/resizeIcon.png</normaloff>:/icons/resizeIcon.png</iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>35</width>
-      <height>35</height>
+      <width>31</width>
+      <height>31</height>
      </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addFrameButton">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>460</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bebas Neue</family>
-      <pointsize>21</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>+</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</normaloff>../../../../../../../battl/Downloads/Eraser_icon.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>35</width>
-      <height>35</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QSlider" name="brushSizeSlider">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>310</y>
-      <width>101</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>1</number>
-    </property>
-    <property name="maximum">
-     <number>3</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="tickPosition">
-     <enum>QSlider::TicksBelow</enum>
-    </property>
-    <property name="tickInterval">
-     <number>1</number>
     </property>
    </widget>
   </widget>
@@ -626,6 +1010,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resourcs.qrc"/>
+ </resources>
  <connections/>
 </ui>

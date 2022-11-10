@@ -21,10 +21,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    bool actualsizeAnimation = false;
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
     void openColorDialog();
+    void playPauseClicked();
     bool projectFormatIsCorrect(QJsonObject&);
     Model::Tool currentTool = Model::brush;
 
@@ -44,6 +46,9 @@ public slots:
     void loadFile();
     void saveFile(QJsonObject&);
     void updatePixelEditor(Frame);
+    void updateFPSLabel();
+    void updateFrameAnimation(QPixmap);
+    void resizeAnimation();
 
 signals:
     void editorClicked(int, int);
@@ -55,5 +60,6 @@ signals:
     void removeFrame();
     void changeBrushSize(int);
     void frameSelected(int);
+    void fpsUpdate(int);
 };
 #endif // MAINWINDOW_H

@@ -614,10 +614,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_sizedialog.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
     ],
     "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_sizedialog.h"
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
 },
 {
     "arguments": [
@@ -676,9 +676,9 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
+        "C:\\Users\\danie\\Documents\\Homework\\22 Fall\\CS3505\\a7-sprite-editor-f22-TheCuties\\build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_sizedialog.h"
     ],
     "directory": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
+    "file": "C:/Users/danie/Documents/Homework/22 Fall/CS3505/a7-sprite-editor-f22-TheCuties/build-A7_SpriteEditor-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_sizedialog.h"
 }
 ]

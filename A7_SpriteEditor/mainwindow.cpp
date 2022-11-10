@@ -10,6 +10,7 @@
 #include <QJsonObject>
 #include <QMessageBox>
 #include <QJsonArray>
+#include <QString>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -21,9 +22,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
 
     //SETUP FRAME PREVIEW & Connections
-    ui->framePreview->setColumnCount(8);
-    ui->framePreview->setRowCount(1);
-    ui->framePreview->setGeometry(20,460,540,98);
+    //ui->framePreview->setColumnCount(8);
+    //ui->framePreview->setRowCount(1);
+    //ui->framePreview->setGeometry(20,460,540,98);
 
     for (int frame = 0; frame < 8; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
@@ -137,6 +138,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::saveFile
             );
+//Animation Preview
+    connect(ui->playPauseButton,
+            &QPushButton::clicked,
+            &model,
+            &Model::playPauseClicked
+            );
 
     //Model Connection
     connect(this,
@@ -171,8 +178,41 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::frameSelected,
             &model,
             &Model::updateCurrentFramePointer);
+    connect(ui->playPauseButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::playPauseClicked
+            );
 
+    connect(ui->fpsSlider,
+            &QSlider::valueChanged,
+            &model,
+            &Model::fpsUpdate
+            );
 
+    connect(ui->fpsSlider,
+            &QSlider::valueChanged,
+            this,
+            &MainWindow::updateFPSLabel
+            );
+
+    connect(this,
+            &MainWindow::fpsUpdate,
+            &model,
+            &Model::fpsUpdate
+            );
+
+    connect(&model,
+            &Model::updateFrameAnimation,
+            this,
+            &MainWindow::updateFrameAnimation
+            );
+
+    connect(ui->resizeButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::resizeAnimation
+            );
 }
 
 MainWindow::~MainWindow()
@@ -205,21 +245,41 @@ void MainWindow::callEditorClicked(int row, int col) {
 
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     emit frameSelected(frameIndex);
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::white);
+    ui->pixelEditor->setPalette(pal);
 }
 
 void MainWindow::callToolSelectedBrush() {
     emit toolSelected(Model::brush);
+    currentTool = Model::brush;
     std::cout << "Emitted select Tool: Brush" << std::endl;
 }
 
 void MainWindow::callToolSelectedEraser() {
     emit toolSelected(Model::eraser);
+    currentTool = Model::eraser;
     std::cout << "Emitted select Tool: Eraser" << std::endl;
 }
 
 
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
+}
+void MainWindow::playPauseClicked(){
+    emit fpsUpdate(ui->fpsSlider->value());
+}
+void MainWindow::updateFrameAnimation(QPixmap map){
+    if(actualsizeAnimation)
+        ui->spritePreviewLabel->setPixmap(map);
+    else
+        ui->spritePreviewLabel->setPixmap(map.scaled(200,200));
+}
+void MainWindow::resizeAnimation(){
+    actualsizeAnimation = !actualsizeAnimation;
+}
+void MainWindow::updateFPSLabel(){
+    ui->fpsLabel->setText("fps:" + QString::number(ui->fpsSlider->value()));
 }
 
 void MainWindow::openColorDialog() {
