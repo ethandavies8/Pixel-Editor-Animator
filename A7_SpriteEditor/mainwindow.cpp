@@ -20,18 +20,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //SETUP UI
     ui->setupUi(this);
 
-    colorDialog->setCurrentColor(Qt::black);
-
-    //SETUP FRAME PREVIEW & Connections
-    //ui->framePreview->setColumnCount(8);
-    //ui->framePreview->setRowCount(1);
-    //ui->framePreview->setGeometry(20,460,540,98);
-
-    for (int frame = 0; frame < 8; ++frame) {
-        QTableWidgetItem *item = new QTableWidgetItem;
-        ui->framePreview->setItem(0, frame, item);
-    }
-
     connect(ui->addFrameButton,
             &QPushButton::clicked,
             this,
@@ -57,32 +45,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::receiveNumberOfFrames
             );
-
-
-    //SETUP PIXEL EDITOR & Connections
-    //SETUP PIXEL EDITOR
-    frameSize = model.getFrameSize();
-    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->setColumnCount(model.getFrameSize());
-    ui->pixelEditor->setRowCount(model.getFrameSize());
-    ui->pixelEditor->setGeometry(20,0,450,450);
-
-    for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
-        ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/model.getFrameSize());
-        ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/model.getFrameSize());
-    }
-
-    for (int row = 0; row < model.getFrameSize(); ++row) {
-        for (int col = 0; col < model.getFrameSize(); ++col) {
-            QTableWidgetItem *item = new QTableWidgetItem;
-            ui->pixelEditor->setItem(row, col, item);
-        }
-    }
-    emit colorChange({0, 0, 0, 255});
-    QPalette pal;
-    pal.setColor(QPalette::Highlight, Qt::black);
-    ui->pixelEditor->setPalette(pal);
 
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
@@ -224,6 +186,42 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::resizeAnimation
             );
+
+    //SETUP FRAME PREVIEW & Connections
+    //ui->framePreview->setColumnCount(8);
+    //ui->framePreview->setRowCount(1);
+    //ui->framePreview->setGeometry(20,460,540,98);
+
+    for (int frame = 0; frame < 8; ++frame) {
+        QTableWidgetItem *item = new QTableWidgetItem;
+        ui->framePreview->setItem(0, frame, item);
+    }
+
+    //SETUP PIXEL EDITOR & Connections
+    //SETUP PIXEL EDITOR
+    frameSize = model.getFrameSize();
+    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->setColumnCount(model.getFrameSize());
+    ui->pixelEditor->setRowCount(model.getFrameSize());
+    ui->pixelEditor->setGeometry(20,0,450,450);
+
+    for (int currentCell = 0; currentCell < model.getFrameSize(); ++currentCell) {
+        ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/model.getFrameSize());
+        ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/model.getFrameSize());
+    }
+
+    for (int row = 0; row < model.getFrameSize(); ++row) {
+        for (int col = 0; col < model.getFrameSize(); ++col) {
+            QTableWidgetItem *item = new QTableWidgetItem;
+            ui->pixelEditor->setItem(row, col, item);
+        }
+    }
+    emit colorChange({0, 0, 0, 255});
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::black);
+    ui->pixelEditor->setPalette(pal);
+    colorDialog->setCurrentColor(Qt::black);
 }
 
 MainWindow::~MainWindow()
