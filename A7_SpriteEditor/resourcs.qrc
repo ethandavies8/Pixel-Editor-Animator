@@ -4,5 +4,6 @@
         <file>color-icon.png</file>
         <file>Eraser_icon.png</file>
         <file>playpause.png</file>
+        <file>resizeIcon.png</file>
     </qresource>
 </RCC>

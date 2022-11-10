@@ -21,6 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    bool actualsizeAnimation = false;
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
@@ -46,6 +47,8 @@ public slots:
     void saveFile(QJsonObject&);
     void updatePixelEditor(Frame);
     void updateFPSLabel();
+    void updateFrameAnimation(QPixmap);
+    void resizeAnimation();
 
 signals:
     void editorClicked(int, int);

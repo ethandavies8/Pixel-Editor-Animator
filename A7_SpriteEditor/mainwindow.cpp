@@ -204,8 +204,14 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     connect(&model,
             &Model::updateFrameAnimation,
-            ui->spritePreviewLabel,
-            &QLabel::setPixmap
+            this,
+            &MainWindow::updateFrameAnimation
+            );
+
+    connect(ui->resizeButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::resizeAnimation
             );
 }
 
@@ -257,6 +263,15 @@ void MainWindow::setPixel(Pixel pixel, int row, int col) {
 }
 void MainWindow::playPauseClicked(){
     emit fpsUpdate(ui->fpsSlider->value());
+}
+void MainWindow::updateFrameAnimation(QPixmap map){
+    if(actualsizeAnimation)
+        ui->spritePreviewLabel->setPixmap(map);
+    else
+        ui->spritePreviewLabel->setPixmap(map.scaled(200,200));
+}
+void MainWindow::resizeAnimation(){
+    actualsizeAnimation = !actualsizeAnimation;
 }
 void MainWindow::updateFPSLabel(){
     ui->fpsLabel->setText("fps:" + QString::number(ui->fpsSlider->value()));
