@@ -245,15 +245,20 @@ void MainWindow::callEditorClicked(int row, int col) {
 
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     emit frameSelected(frameIndex);
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::white);
+    ui->pixelEditor->setPalette(pal);
 }
 
 void MainWindow::callToolSelectedBrush() {
     emit toolSelected(Model::brush);
+    currentTool = Model::brush;
     std::cout << "Emitted select Tool: Brush" << std::endl;
 }
 
 void MainWindow::callToolSelectedEraser() {
     emit toolSelected(Model::eraser);
+    currentTool = Model::eraser;
     std::cout << "Emitted select Tool: Eraser" << std::endl;
 }
 
