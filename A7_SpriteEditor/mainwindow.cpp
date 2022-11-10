@@ -22,9 +22,9 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
 
     //SETUP FRAME PREVIEW & Connections
-    ui->framePreview->setColumnCount(8);
-    ui->framePreview->setRowCount(1);
-    ui->framePreview->setGeometry(20,460,540,98);
+    //ui->framePreview->setColumnCount(8);
+    //ui->framePreview->setRowCount(1);
+    //ui->framePreview->setGeometry(20,460,540,98);
 
     for (int frame = 0; frame < 8; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
