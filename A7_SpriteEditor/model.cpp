@@ -24,6 +24,11 @@ void Model::addFrame()
     frames.append(newFrame);
 }
 
+// Slot to duplicate selected frame
+void Model::duplicateFrame() {
+    frames.append(frames[activeFramePointer]);
+}
+
 void Model::removeFrame(int removedFrameIndex)
 {
     frames.removeAt(removedFrameIndex);

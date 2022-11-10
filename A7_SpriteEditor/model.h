@@ -29,6 +29,7 @@ public slots:
     void updateBrushSize(int brushSize);
     void changeTool(Model::Tool tool);
     void addFrame();
+    void duplicateFrame();
     void updateCurrentFramePointer(int);
     void frameAnimation();
     void fpsUpdate(int);
