@@ -25,6 +25,7 @@ private:
     void callToolSelectedBrush();
     void callToolSelectedEraser();
     void openColorDialog();
+    void playPauseClicked();
     bool projectFormatIsCorrect(QJsonObject&);
     enum Tool {brush, eraser};
     Tool currentTool = brush;
@@ -37,11 +38,13 @@ private:
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
+    void updateFPSLabel();
 
 signals:
     void editorClicked(int, int);
     void toolSelected(Tool);
     void replaceProject(QJsonObject&);
     void colorChange(Pixel);
+    void fpsUpdate(int);
 };
 #endif // MAINWINDOW_H

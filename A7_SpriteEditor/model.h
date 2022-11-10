@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "frame.h"
+#include <QPixmap>
 
 class Model : public QObject
 {
@@ -13,12 +14,16 @@ public:
 
 signals:
     void saveProject(QJsonObject& thisProject);
+    void updateFrameAnimation(QPixmap);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
     void retrieveJsonProject();
     void receivePixelClick(int row, int col);
     void updateCurrentColor(Pixel pixel);
+    void frameAnimation();
+    void fpsUpdate(int);
+    void playPauseClicked();
 
 private:
     QVector<Frame> frames;
@@ -28,12 +33,15 @@ private:
     int activeFramePointer = 0;
     int brushSize = 1;
     int frameSize;
+    int fps;        //Determines rate of animation
+    bool playingAnimation; //Determines if animation is playing
     void addFrame();
     void setPixel(int row, int col, Pixel pixel);
     void updateBrushSize(int brushSize);
     void changeTool(Tool tool);
     void swapFrame(Frame frame, Frame otherFrame);
     void removeFrame(Frame removedFrame);
+
 //    //AnimationWindow
 //    //ToolBar
 //    //ColorPallette
