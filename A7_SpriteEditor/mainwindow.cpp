@@ -279,7 +279,7 @@ void MainWindow::callEditorClicked(int row, int col) {
 
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     emit askNumberOfFrames();
-    if (frameIndex < (totalFrames - 1)) {
+    if (frameIndex < totalFrames) {
         emit frameSelected(frameIndex);
         QPalette pal;
         pal.setColor(QPalette::Highlight, Qt::white);
@@ -341,7 +341,6 @@ void MainWindow::sendColor() {
 }
 
 void MainWindow::callAddFrame() {
-    emit askNumberOfFrames();
     emit addFrame();
     if (totalFrames == 8) {
         ui->addFrameButton->setEnabled(false);

@@ -22,6 +22,7 @@ void Model::addFrame()
 {
     Frame newFrame(frameSize);
     frames.append(newFrame);
+    emit sendNumberOfFrames(frames.length());
 }
 
 // Slot to duplicate selected frame
