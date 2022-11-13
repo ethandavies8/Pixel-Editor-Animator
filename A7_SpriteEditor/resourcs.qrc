@@ -5,5 +5,6 @@
         <file>Eraser_icon.png</file>
         <file>playpause.png</file>
         <file>resizeIcon.png</file>
+        <file>duplicate-icon.png</file>
     </qresource>
 </RCC>

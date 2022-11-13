@@ -22,6 +22,7 @@ public:
 private:
     Ui::MainWindow *ui;
     bool actualsizeAnimation = false;
+    bool isPlayingAnimation = false;
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();

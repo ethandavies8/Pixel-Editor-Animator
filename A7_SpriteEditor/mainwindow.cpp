@@ -25,6 +25,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::callAddFrame
             );
+    connect(ui->duplicateFrameButton,
+            &QPushButton::clicked,
+            &model,
+            &Model::duplicateFrame
+            );
     connect(ui->removeFrameButton,
             &QPushButton::clicked,
             this,
@@ -210,6 +215,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     //SETUP PIXEL EDITOR & Connections
     //SETUP PIXEL EDITOR
+    frameSize = model.getFrameSize();
+    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
+    ui->pixelEditor->setColumnCount(model.getFrameSize());
+    ui->pixelEditor->setRowCount(model.getFrameSize());
+    //ui->pixelEditor->setGeometry(20,0,450,450);
 
     setUpView(model.getFrameSize());
     QPalette pal;
@@ -296,12 +307,16 @@ void MainWindow::callToolSelectedBrush() {
     emit toolSelected(Model::brush);
     currentTool = Model::brush;
     std::cout << "Emitted select Tool: Brush" << std::endl;
+    ui->brushButton->setStyleSheet("background-color: rgba(91,250,250,100);");
+    ui->eraserButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
 
 void MainWindow::callToolSelectedEraser() {
     emit toolSelected(Model::eraser);
     currentTool = Model::eraser;
     std::cout << "Emitted select Tool: Eraser" << std::endl;
+    ui->eraserButton->setStyleSheet("background-color: rgba(91,250,250,100);");
+    ui->brushButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
 
 
@@ -310,6 +325,12 @@ void MainWindow::setPixel(Pixel pixel, int row, int col) {
 }
 void MainWindow::playPauseClicked(){
     emit fpsUpdate(ui->fpsSlider->value());
+    isPlayingAnimation = !isPlayingAnimation;
+    if(isPlayingAnimation)
+        ui->playPauseButton->setStyleSheet("background-color: rgba(91,250,250,100);");
+    else
+        ui->playPauseButton->setStyleSheet("background-color: rgba(71,212,212,255);");
+
 }
 void MainWindow::updateFrameAnimation(QPixmap map){
     if(actualsizeAnimation)
@@ -319,6 +340,10 @@ void MainWindow::updateFrameAnimation(QPixmap map){
 }
 void MainWindow::resizeAnimation(){
     actualsizeAnimation = !actualsizeAnimation;
+    if(actualsizeAnimation)
+        ui->resizeButton->setStyleSheet("background-color: rgba(91,250,250,100);");
+    else
+        ui->resizeButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
 void MainWindow::updateFPSLabel(){
     ui->fpsLabel->setText("fps:" + QString::number(ui->fpsSlider->value()));
