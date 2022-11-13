@@ -387,11 +387,11 @@ void MainWindow::callAddFrame() {
 }
 void MainWindow::callRemoveFrame() {
     emit askNumberOfFrames();
-    emit removeFrame();
     if (totalFrames == 1) {
         ui->removeFrameButton->setEnabled(false);
     }
     else {
+        emit removeFrame();
         ui->removeFrameButton->setEnabled(true);
         ui->addFrameButton->setEnabled(true);
     }
