@@ -62,6 +62,7 @@ signals:
     void colorChange(Pixel);
 
     void addFrame();
+    void addNumberOfFrames(int);
     void removeFrame();
     void changeBrushSize(int);
     void frameSelected(int);

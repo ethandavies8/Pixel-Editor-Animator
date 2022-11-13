@@ -23,16 +23,38 @@ void Model::addFrame()
     Frame newFrame(frameSize);
     frames.append(newFrame);
     emit sendNumberOfFrames(frames.length());
+    activeFramePointer++;
+    emit frameEditorUpdate(frames[activeFramePointer]);
+}
+
+void Model::AddNumberOfFrames(int numFrames){
+    for(int i = 0; i < numFrames; i++){
+        Frame newFrame(frameSize);
+        frames.append(newFrame);
+    }
+    emit sendNumberOfFrames(frames.length());
+    activeFramePointer = frames.length() - 1;
+    emit frameEditorUpdate(frames[activeFramePointer]);
 }
 
 // Slot to duplicate selected frame
 void Model::duplicateFrame() {
     frames.append(frames[activeFramePointer]);
+    activeFramePointer++;
+    sendPreviewArray();
+    emit frameEditorUpdate(frames[activeFramePointer]);
+
 }
 
-void Model::removeFrame(int removedFrameIndex)
+void Model::removeFrame()
 {
-    frames.removeAt(removedFrameIndex);
+    frames.removeAt(activeFramePointer);
+    if(activeFramePointer == frames.length()){
+        activeFramePointer--;
+    }
+    emit resetView(frameSize);
+    sendPreviewArray();
+    emit frameEditorUpdate(frames[activeFramePointer]);
 }
 
 void Model::updateCurrentFramePointer(int index)
@@ -170,7 +192,7 @@ void Model::loadProject(QJsonObject &otherProject)
     // Now overwrite the original model with a new one
     frames = newFrames;
     frameSize = size;
-    currentColor = {0, 0, 0, 0};
+    currentColor = {0, 0, 0, 255};
     currentTool = brush;
     activeFramePointer = 0;
     brushSize = 1;

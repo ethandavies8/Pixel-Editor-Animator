@@ -32,6 +32,7 @@ public slots:
     void updateBrushSize(int brushSize);
     void changeTool(Model::Tool tool);
     void addFrame();
+    void removeFrame();
     void duplicateFrame();
     void updateCurrentFramePointer(int);
     void frameAnimation();
@@ -40,6 +41,7 @@ public slots:
     void animationUpdate();
     void returnNumberOfFrames();
     void updateResettedView();
+    void AddNumberOfFrames(int numFrames);
 
 private:
     QVector<Frame> frames;
@@ -53,11 +55,9 @@ private:
     bool playingAnimation; //Determines if animation is playing
     void setPixel(int row, int col, Pixel);
     void swapFrame(int frameIndex, int otherFrameIndex);
-    void removeFrame(int removedFrameIndex);
     void sendPreviewArray();
     QPixmap frameToPixmap(Frame);
     void swapFrame(Frame frame, Frame otherFrame);
-    void removeFrame(Frame removedFrame);
     void callSendNumberOfFrames();
 
 //    //AnimationWindow

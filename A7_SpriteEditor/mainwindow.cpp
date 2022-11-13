@@ -165,6 +165,15 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &model,
             &Model::addFrame);
     connect(this,
+            &MainWindow::removeFrame,
+            &model,
+            &Model::removeFrame);
+
+    connect(this,
+            &MainWindow::addNumberOfFrames,
+            &model,
+            &Model::AddNumberOfFrames);
+    connect(this,
             &MainWindow::frameSelected,
             &model,
             &Model::updateCurrentFramePointer);
@@ -290,14 +299,16 @@ void MainWindow::callEditorClicked(int row, int col) {
 
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     emit askNumberOfFrames();
-    if (frameIndex < totalFrames) {
-        emit frameSelected(frameIndex);
-        QPalette pal;
-        pal.setColor(QPalette::Highlight, Qt::white);
-        ui->pixelEditor->setPalette(pal);
+    if(frameIndex >= totalFrames){
+        emit addNumberOfFrames(frameIndex - totalFrames + 1);
+    }
+    emit frameSelected(frameIndex);
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::white);
+    ui->pixelEditor->setPalette(pal);
     }
 
-}
+
 
 void MainWindow::receiveNumberOfFrames(int numFrames) {
     totalFrames = numFrames;
@@ -392,6 +403,7 @@ void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
         ui->framePreview->item(0, currentFrame)->setData(Qt::DecorationRole, frames[currentFrame].scaledToHeight(75));
         std::cout << "updated Frame at: " << std::to_string(currentFrame) << std::endl;
     }
+
 
 }
 
