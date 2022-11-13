@@ -39,6 +39,7 @@ private:
     int totalFrames;
 
 
+    void callDuplicateFrame();
     void callAddFrame();
     void callRemoveFrame();
     void updateFramePreview(QVector<QPixmap>);
@@ -62,6 +63,7 @@ signals:
     void colorChange(Pixel);
 
     void addFrame();
+    void duplicateFrame();
     void addNumberOfFrames(int);
     void removeFrame();
     void changeBrushSize(int);

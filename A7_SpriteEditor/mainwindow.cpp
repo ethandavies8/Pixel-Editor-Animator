@@ -27,8 +27,8 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             );
     connect(ui->duplicateFrameButton,
             &QPushButton::clicked,
-            &model,
-            &Model::duplicateFrame
+            this,
+            &MainWindow::callAddFrame
             );
     connect(ui->removeFrameButton,
             &QPushButton::clicked,
@@ -168,7 +168,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::removeFrame,
             &model,
             &Model::removeFrame);
-
+    connect(this,
+            &MainWindow::duplicateFrame,
+            &model,
+            &Model::duplicateFrame);
     connect(this,
             &MainWindow::addNumberOfFrames,
             &model,
@@ -309,7 +312,6 @@ void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     }
 
 
-
 void MainWindow::receiveNumberOfFrames(int numFrames) {
     totalFrames = numFrames;
 }
@@ -377,14 +379,29 @@ void MainWindow::sendColor() {
 }
 
 void MainWindow::callAddFrame() {
-    emit addFrame();
-    if (totalFrames == 8) {
-        ui->addFrameButton->setEnabled(false);
+    QPushButton* buttonSender = qobject_cast<QPushButton*>(sender());
+    QString buttonText = buttonSender->text();
+    if(totalFrames >= 8){
+        ui->framePreview->item(0, ui->framePreview->columnCount() -  1)->setSelected(false);
+        ui->framePreview->currentItem()->setSelected(false);
+        ui->framePreview->setColumnCount(ui->framePreview->columnCount() + 1);
+        QTableWidgetItem *item = new QTableWidgetItem;
+        ui->framePreview->setItem(0, ui->framePreview->columnCount() -  1, item);
+        ui->framePreview->item(0, ui->framePreview->columnCount() -  1)->setSelected(true);
+        ui->framePreview->scrollToItem(item);
+    }
+    if(buttonText == "+"){
+        emit addFrame();
     }
     else {
-        ui->removeFrameButton->setEnabled(true);
+        emit duplicateFrame();
     }
+    emit frameSelected(ui->framePreview->columnCount() - 1);
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::white);
+    ui->framePreview->setPalette(pal);
 }
+
 void MainWindow::callRemoveFrame() {
     emit askNumberOfFrames();
     emit removeFrame();

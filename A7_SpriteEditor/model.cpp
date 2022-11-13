@@ -25,6 +25,7 @@ void Model::addFrame()
     emit sendNumberOfFrames(frames.length());
     activeFramePointer++;
     emit frameEditorUpdate(frames[activeFramePointer]);
+    sendPreviewArray();
 }
 
 void Model::AddNumberOfFrames(int numFrames){
@@ -40,10 +41,10 @@ void Model::AddNumberOfFrames(int numFrames){
 // Slot to duplicate selected frame
 void Model::duplicateFrame() {
     frames.append(frames[activeFramePointer]);
+    emit sendNumberOfFrames(frames.length());
     activeFramePointer++;
-    sendPreviewArray();
     emit frameEditorUpdate(frames[activeFramePointer]);
-
+    sendPreviewArray();
 }
 
 void Model::removeFrame()
