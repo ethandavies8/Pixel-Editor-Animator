@@ -62,10 +62,10 @@ void Model::updateCurrentFramePointer(int index)
 }
 
 //Slot for swapping the frame at the passed frameIndex with the current active frame
-void Model::swapFrame(int frameIndex)
+void Model::swapFrame(int frameIndex, int otherFrameIndex)
 {
-    frames.swapItemsAt(activeFramePointer, frameIndex);
-    activeFramePointer = frameIndex;
+    frames.swapItemsAt(frameIndex, otherFrameIndex);
+    activeFramePointer = otherFrameIndex;
     updateView();
 }
 

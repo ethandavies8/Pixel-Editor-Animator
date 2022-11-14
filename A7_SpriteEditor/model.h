@@ -42,7 +42,7 @@ public slots:
     void animationUpdate();
     void returnNumberOfFrames();
     void updateResettedView();
-    void swapFrame(int);
+    void swapFrame(int, int);
 
 private:
     QVector<Frame> frames;

@@ -259,6 +259,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
     ui->framePreview->item(0, 0)->setSelected(true);
     ui->swapFrameLabel->setVisible(false);
+
 }
 
 MainWindow::~MainWindow()
@@ -324,8 +325,17 @@ void MainWindow::callEditorClicked(int row, int col) {
 //Emits a signal to inform the model that the currently selected frame has changed
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     if(swapEnabled){
-        emit swapFrame(frameIndex);
-        callSwapFrame();
+
+        if(!frameToSwitch.isChosen){
+            frameToSwitch.isChosen = true;
+            frameToSwitch.index = frameIndex;
+        }
+        else{
+            otherFrameToSwitch.index = frameIndex;
+            emit swapFrame(frameToSwitch.index, otherFrameToSwitch.index);
+            callSwapFrame();
+            frameToSwitch.isChosen = false;
+        }
     }
     emit frameSelected(frameIndex);
     QPalette pal;
@@ -459,6 +469,7 @@ void MainWindow::callSwapFrame(){
     else{
         ui->pixelEditor->setEnabled(true);
         ui->swapFrameLabel->setVisible(false);
+        frameToSwitch.isChosen = false;
     }
 }
 

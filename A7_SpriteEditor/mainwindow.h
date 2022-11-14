@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 
+
 public:
     MainWindow(Model& model, QWidget *parent = nullptr);
     ~MainWindow();
@@ -50,6 +51,11 @@ private:
     void callSwapFrame();
     bool swapEnabled;
 
+    struct frameSwapStruct {bool isChosen; int index;};
+
+    struct frameSwapStruct frameToSwitch{false, 0};
+    struct frameSwapStruct otherFrameToSwitch{false, 0};
+
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
@@ -69,7 +75,7 @@ signals:
 
     void addFrame();
     void duplicateFrame();
-    void swapFrame(int);
+    void swapFrame(int, int);
     void removeFrame();
     void changeBrushSize(int);
     void frameSelected(int);
