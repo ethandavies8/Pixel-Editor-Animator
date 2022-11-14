@@ -42,7 +42,6 @@ public slots:
     void animationUpdate();
     void returnNumberOfFrames();
     void updateResettedView();
-    void AddNumberOfFrames(int numFrames);
     void swapFrame(int, int);
 
 private:

@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "QTableWidget"
-#include "iostream"
 #include "model.h"
 
 #include <QFile>
@@ -11,7 +10,6 @@
 #include <QMessageBox>
 #include <QJsonArray>
 #include <QString>
-#include <QDrag>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -21,6 +19,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     //SETUP UI
     ui->setupUi(this);
 
+    //Frame Button connetions
     connect(ui->addFrameButton,
             &QPushButton::clicked,
             this,
@@ -36,11 +35,21 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             this,
             &MainWindow::callRemoveFrame
             );
+
+    //Frame preview connections
     connect(&model,
             &Model::previewUpdate,
             this,
             &MainWindow::updateFramePreview
             );
+
+    connect(ui->framePreview,
+            &QTableWidget::cellClicked,
+            this,
+            &MainWindow::callFramePreviewClicked
+            );
+
+    //number of frame connections
     connect(this,
             &MainWindow::askNumberOfFrames,
             &model,
@@ -52,6 +61,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::receiveNumberOfFrames
             );
 
+    //Pixel editor connections
     connect(ui->pixelEditor,
             &QTableWidget::cellClicked,
             this,
@@ -79,11 +89,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &QColorDialog::colorSelected,
             this,
             &MainWindow::sendColor
-            );
-    connect(ui->framePreview,
-            &QTableWidget::cellClicked,
-            this,
-            &MainWindow::callFramePreviewClicked
             );
 
     connect(ui->brushSizeSlider,
@@ -129,14 +134,15 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &model,
             &Model::updateResettedView
             );
-//Animation Preview
+
+    //Animation Preview connection
     connect(ui->playPauseButton,
             &QPushButton::clicked,
             &model,
             &Model::playPauseClicked
             );
 
-    //Model Connection
+    //Model update connections
     connect(this,
             &MainWindow::changeBrushSize,
             &model,
@@ -156,6 +162,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::colorChange,
             &model,
             &Model::updateCurrentColor);
+
     connect(&model,
             &Model::frameEditorUpdate,
             this,
@@ -169,22 +176,22 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::removeFrame,
             &model,
             &Model::removeFrame);
+
     connect(&model,
             &Model::sendFrameIndex,
             this,
             &MainWindow::receiveFrameIndex);
+
     connect(this,
             &MainWindow::duplicateFrame,
             &model,
             &Model::duplicateFrame);
-    connect(this,
-            &MainWindow::addNumberOfFrames,
-            &model,
-            &Model::AddNumberOfFrames);
+
     connect(this,
             &MainWindow::frameSelected,
             &model,
             &Model::updateCurrentFramePointer);
+
     connect(ui->playPauseButton,
             &QPushButton::clicked,
             this,
@@ -221,6 +228,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::resizeAnimation
             );
 
+
     //SETUP VIEW
     ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
@@ -254,6 +262,9 @@ void MainWindow::setUpView(int size, int numFrames) {
     totalFrames = numFrames;
     actualSizeAnimation = false;
     isPlayingAnimation = false;
+    if(numFrames > 1){
+        ui->removeFrameButton->setEnabled(true);
+    }
     ui->pixelEditor->setColumnCount(frameSize);
     ui->pixelEditor->setRowCount(frameSize);
 
@@ -278,6 +289,7 @@ void MainWindow::setUpView(int size, int numFrames) {
     emit loadPotentialProject();
 }
 
+//Updates pixel editor from received frame from the model
 void MainWindow::updatePixelEditor(Frame frame){
     for (int row = 0; row < frameSize; ++row) {
         for (int col = 0; col < frameSize; ++col) {
@@ -287,25 +299,11 @@ void MainWindow::updatePixelEditor(Frame frame){
 }
 
 void MainWindow::callEditorClicked(int row, int col) {
-    QColor currentColor(colorDialog->currentColor());
-    QPalette pal;
-    if(currentTool == Model::brush) {
-       pal.setColor(QPalette::Highlight, currentColor);
-    }
-    else {
-        pal.setColor(QPalette::Highlight, Qt::white);
-    }
-    ui->pixelEditor->setPalette(pal);
     emit editorClicked(row, col);
-    //setPixel({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()}, row,col);
-    std::cout << "cell pressed: ROW: " << row << " COL: " << col << std::endl;
 }
 
+//Emits a signal to inform the model that the currently selected frame has changed
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
-    emit askNumberOfFrames();
-    if(frameIndex >= totalFrames){
-        emit addNumberOfFrames(frameIndex - totalFrames + 1);
-    }
     emit frameSelected(frameIndex);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::white);
@@ -325,12 +323,12 @@ void MainWindow::receiveNumberOfFrames(int numFrames) {
 
 void MainWindow::receiveFrameIndex(int frameIndex){
     currentFrameIndex = frameIndex;
+    ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
 }
 
 void MainWindow::callToolSelectedBrush() {
     emit toolSelected(Model::brush);
     currentTool = Model::brush;
-    std::cout << "Emitted select Tool: Brush" << std::endl;
     ui->brushButton->setStyleSheet("background-color: rgba(91,250,250,100);");
     ui->eraserButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
@@ -338,15 +336,15 @@ void MainWindow::callToolSelectedBrush() {
 void MainWindow::callToolSelectedEraser() {
     emit toolSelected(Model::eraser);
     currentTool = Model::eraser;
-    std::cout << "Emitted select Tool: Eraser" << std::endl;
     ui->eraserButton->setStyleSheet("background-color: rgba(91,250,250,100);");
     ui->brushButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
 
-
+//sets clicked pixel to the current color
 void MainWindow::setPixel(Pixel pixel, int row, int col) {
     ui->pixelEditor->item(row, col)->setBackground(QColor(qRgba(pixel.red,pixel.green,pixel.blue,pixel.alpha)));
 }
+
 void MainWindow::playPauseClicked(){
     emit fpsUpdate(ui->fpsSlider->value());
     isPlayingAnimation = !isPlayingAnimation;
@@ -356,12 +354,14 @@ void MainWindow::playPauseClicked(){
         ui->playPauseButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 
 }
+
 void MainWindow::updateFrameAnimation(QPixmap map){
     if(actualSizeAnimation)
         ui->spritePreviewLabel->setPixmap(map);
     else
         ui->spritePreviewLabel->setPixmap(map.scaled(200,200));
 }
+
 void MainWindow::resizeAnimation(){
     actualSizeAnimation = !actualSizeAnimation;
     if(actualSizeAnimation)
@@ -369,6 +369,7 @@ void MainWindow::resizeAnimation(){
     else
         ui->resizeButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 }
+
 void MainWindow::updateFPSLabel(){
     ui->fpsLabel->setText("fps:" + QString::number(ui->fpsSlider->value()));
 }
@@ -377,6 +378,7 @@ void MainWindow::openColorDialog() {
     colorDialog->open();
 }
 
+//sends the color selection to the model and updates the colorPreview to match the color selection
 void MainWindow::sendColor() {
    QColor currentColor(colorDialog->currentColor());
     emit colorChange({currentColor.red(), currentColor.green(), currentColor.blue(), currentColor.alpha()});
@@ -386,47 +388,51 @@ void MainWindow::sendColor() {
            std::to_string(currentColor.alpha()) + ");}";
 
    ui->colorPreview->setStyleSheet(QString::fromStdString(style));
-
 }
 
+//Adds a new blank frame or a duplicate frame of the active frame depending on the button sender
 void MainWindow::callAddFrame() {
+    //Acquire button sender for either adding a blank frame or duplicate frame
     QPushButton* buttonSender = qobject_cast<QPushButton*>(sender());
     QString buttonText = buttonSender->text();
 
+    //create new column in framePreview
     ui->framePreview->setColumnCount(ui->framePreview->columnCount() + 1);
     QTableWidgetItem *item = new QTableWidgetItem;
     ui->framePreview->setItem(0, ui->framePreview->columnCount() -  1, item);
     ui->framePreview->scrollToItem(item);
-    ui->framePreview->item(0, currentFrameIndex)->setSelected(false);
     ui->framePreview->setCurrentItem(item);
+
     if(buttonText == "+"){
         emit addFrame();
     }
     else {
         emit duplicateFrame();
     }
+
+    //select newly added frame and add highlight
     ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::white);
     ui->framePreview->setPalette(pal);
 }
 
+//Removes the active frame if the operation is valid
 void MainWindow::callRemoveFrame() {
     if (totalFrames == 1) {
         ui->removeFrameButton->setEnabled(false);
     }
     else {
         emit removeFrame();
-        ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
     }
 }
 
+//Sets column count for framePreview and updates framePreview pixmaps from frames parameter
 void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
     ui->framePreview->setColumnCount(frames.length());
     for (int currentFrame = 0; currentFrame < frames.length(); currentFrame++) {
         QIcon icon(frames[currentFrame].scaled(80, 80, Qt::KeepAspectRatio));
         ui->framePreview->item(0, currentFrame)->setData(Qt::DecorationRole, frames[currentFrame].scaledToHeight(75));
-        std::cout << "updated Frame at: " << std::to_string(currentFrame) << std::endl;
     }
 
 }

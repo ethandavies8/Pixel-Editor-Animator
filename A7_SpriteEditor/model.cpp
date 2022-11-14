@@ -18,19 +18,11 @@ Model::Model(int spriteSize, QObject *parent)
 // Testing this branch
 Model::~Model() {}
 
+//slot to add a blank new frame
 void Model::addFrame()
 {
     Frame newFrame(frameSize);
     frames.append(newFrame);
-    activeFramePointer = frames.length() - 1;
-    updateView();
-}
-
-void Model::AddNumberOfFrames(int numFrames){
-    for(int i = 0; i < numFrames; i++){
-        Frame newFrame(frameSize);
-        frames.append(newFrame);
-    }
     activeFramePointer = frames.length() - 1;
     updateView();
 }
@@ -43,20 +35,23 @@ void Model::duplicateFrame() {
     updateView();
 }
 
+//slot to remove current frame
 void Model::removeFrame()
 {
     frames.removeAt(activeFramePointer);
     if(activeFramePointer == frames.length()){
         activeFramePointer--;
     }
+    sendPreviewArray();
     updateView();
 }
 
+//helper method for emitting signals to update the view
 void Model::updateView(){
     emit sendNumberOfFrames(frames.length());
+    sendPreviewArray();
     emit frameEditorUpdate(frames[activeFramePointer]);
     emit sendFrameIndex(activeFramePointer);
-    sendPreviewArray();
 }
 
 void Model::updateCurrentFramePointer(int index)
@@ -72,6 +67,8 @@ void Model::swapFrame(int frameIndex, int otherFrameIndex)
     frames[otherFrameIndex] = tempFrame;
     sendPreviewArray();
 }
+
+//helper method which builds the current frames vector into a vector of pixmaps and updates the view
 void Model::sendPreviewArray()
 {
     QVector<QPixmap> preview;
@@ -82,6 +79,7 @@ void Model::sendPreviewArray()
     emit previewUpdate(preview);
 }
 
+//slot to update pixels
 void Model::receivePixelClick(int row, int col)
 {
     if (currentTool == eraser)
@@ -94,6 +92,7 @@ void Model::receivePixelClick(int row, int col)
     }
 }
 
+//Helper which sets the pixels of the current frame depending on brush size and emits a signal of the current frame to the view
 void Model::setPixel(int row, int col, Pixel pixel)
 {
     int x = 0;
@@ -116,6 +115,7 @@ void Model::setPixel(int row, int col, Pixel pixel)
     sendPreviewArray();
 }
 
+//Helper method to convert frames to images and then pixmaps
 QPixmap Model::frameToPixmap(Frame frame)
 {
     QImage image(frameSize, frameSize, QImage::Format_ARGB32);
@@ -132,16 +132,19 @@ QPixmap Model::frameToPixmap(Frame frame)
     return result;
 }
 
+//Slot to update brush
 void Model::updateBrushSize(int brushSize)
 {
     this->brushSize = brushSize;
 }
 
+//Slot to change tool
 void Model::changeTool(Tool tool)
 {
     currentTool = tool;
 }
 
+//Slot to update currentColor
 void Model::updateCurrentColor(Pixel pixel)
 {
     currentColor = pixel;
@@ -229,19 +232,25 @@ void Model::updateResettedView() {
     sendPreviewArray();
 }
 
+//Public getter for setting up the view
 int Model::getFrameSize()
 {
     return frameSize;
 }
 
+
 void Model::returnNumberOfFrames() {
     emit sendNumberOfFrames(frames.length());
 }
+
+//SLot for play/pause button clicked
 void Model::playPauseClicked()
 {
     playingAnimation = !playingAnimation;
     frameAnimation();
 }
+
+//Plays the animation if the bool is true
 void Model::frameAnimation()
 {
     if (playingAnimation)
@@ -253,6 +262,8 @@ void Model::frameAnimation()
         QTimer::singleShot(1000 * frames.size() / fps + 1000 / fps, this, &Model::frameAnimation);
     }
 }
+
+//Signal to the view of the new frame for the animation
 void Model::animationUpdate(){
     if(animationFrame == frames.size())
         animationFrame = 0;
@@ -260,6 +271,8 @@ void Model::animationUpdate(){
     emit updateFrameAnimation(frameToPixmap(frames[animationFrame]));
     animationFrame++;
 }
+
+//Slot for fps changes
 void Model::fpsUpdate(int updatedFPS)
 {
     fps = updatedFPS;
