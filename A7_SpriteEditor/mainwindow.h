@@ -21,23 +21,23 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    bool actualsizeAnimation = false;
-    bool isPlayingAnimation = false;
+    QColorDialog *colorDialog;
+    Model::Tool currentTool = Model::brush;
+    int frameSize;
+    int totalFrames;
+    int currentFrameIndex;
+    bool actualSizeAnimation;
+    bool isPlayingAnimation;
+
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
     void callToolSelectedEraser();
     void openColorDialog();
     void playPauseClicked();
     bool projectFormatIsCorrect(QJsonObject&);
-    Model::Tool currentTool = Model::brush;
 
     void setPixel(Pixel, int, int);
     void sendColor();
-
-    QColorDialog *colorDialog;
-    int frameSize;
-    int totalFrames;
-    int currentFrameIndex;
 
 
     void callDuplicateFrame();

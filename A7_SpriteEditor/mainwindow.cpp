@@ -252,8 +252,14 @@ void MainWindow::setUpView(int size, int numFrames) {
     frameSize = size;
     currentFrameIndex = 0;
     totalFrames = numFrames;
+    actualSizeAnimation = false;
+    isPlayingAnimation = false;
     ui->pixelEditor->setColumnCount(frameSize);
     ui->pixelEditor->setRowCount(frameSize);
+
+    // Set the animation window to blank
+    QPixmap blankMap;
+    ui->spritePreviewLabel->setPixmap(blankMap);
 
     for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
         ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/frameSize);
@@ -351,14 +357,14 @@ void MainWindow::playPauseClicked(){
 
 }
 void MainWindow::updateFrameAnimation(QPixmap map){
-    if(actualsizeAnimation)
+    if(actualSizeAnimation)
         ui->spritePreviewLabel->setPixmap(map);
     else
         ui->spritePreviewLabel->setPixmap(map.scaled(200,200));
 }
 void MainWindow::resizeAnimation(){
-    actualsizeAnimation = !actualsizeAnimation;
-    if(actualsizeAnimation)
+    actualSizeAnimation = !actualSizeAnimation;
+    if(actualSizeAnimation)
         ui->resizeButton->setStyleSheet("background-color: rgba(91,250,250,100);");
     else
         ui->resizeButton->setStyleSheet("background-color: rgba(71,212,212,255);");
