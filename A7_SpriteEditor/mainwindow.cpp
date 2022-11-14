@@ -68,6 +68,12 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::callEditorClicked
             );
 
+    connect(ui->pixelEditor,
+            &QTableWidget::cellEntered,
+            this,
+            &MainWindow::callEditorClicked
+            );
+
     connect(ui->brushButton,
             &QPushButton::clicked,
             this,
