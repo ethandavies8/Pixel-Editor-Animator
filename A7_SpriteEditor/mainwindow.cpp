@@ -221,24 +221,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::resizeAnimation
             );
 
-    //SETUP FRAME PREVIEW & Connections
-    //ui->framePreview->setColumnCount(8);
-    //ui->framePreview->setRowCount(1);
-    //ui->framePreview->setGeometry(20,460,540,98);
-    for (int frame = 0; frame < 8; ++frame) {
-        QTableWidgetItem *item = new QTableWidgetItem;
-        ui->framePreview->setItem(0, frame, item);
-    }
-
-    //SETUP PIXEL EDITOR & Connections
-    //SETUP PIXEL EDITOR
-    frameSize = model.getFrameSize();
+    //SETUP VIEW
     ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
     ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->setColumnCount(model.getFrameSize());
-    ui->pixelEditor->setRowCount(model.getFrameSize());
-    //ui->pixelEditor->setGeometry(20,0,450,450);
-
+    ui->pixelEditor->setSelectionMode(QAbstractItemView::NoSelection); // Removes highlighting
+    ui->pixelEditor->setFocusPolicy(Qt::NoFocus); // Removes cell focus
     setUpView(model.getFrameSize(), 1);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::black);
@@ -263,11 +250,10 @@ void MainWindow::setUpView(int size, int numFrames) {
     //SETUP PIXEL EDITOR & Connections
     //SETUP PIXEL EDITOR
     frameSize = size;
-    ui->pixelEditor->horizontalHeader()->setMinimumSectionSize(0);
-    ui->pixelEditor->verticalHeader()->setMinimumSectionSize(0);
+    currentFrameIndex = 0;
+    totalFrames = numFrames;
     ui->pixelEditor->setColumnCount(frameSize);
     ui->pixelEditor->setRowCount(frameSize);
-    ui->pixelEditor->setGeometry(20,0,450,450);
 
     for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
         ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/frameSize);
@@ -426,7 +412,6 @@ void MainWindow::callRemoveFrame() {
     else {
         emit removeFrame();
         ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
-
     }
 }
 

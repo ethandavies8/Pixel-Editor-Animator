@@ -50,7 +50,6 @@ void Model::removeFrame()
         activeFramePointer--;
     }
     updateView();
-    emit resetView(frameSize, frames.length());
 }
 
 void Model::updateView(){
