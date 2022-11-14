@@ -258,6 +258,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     colorDialog->setCurrentColor(Qt::black);
 
     ui->framePreview->item(0, 0)->setSelected(true);
+    ui->swapFrameLabel->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -453,9 +454,11 @@ void MainWindow::callSwapFrame(){
     swapEnabled = !swapEnabled;
     if(swapEnabled){
         ui->pixelEditor->setEnabled(false);
+        ui->swapFrameLabel->setVisible(true);
     }
     else{
         ui->pixelEditor->setEnabled(true);
+        ui->swapFrameLabel->setVisible(false);
     }
 }
 

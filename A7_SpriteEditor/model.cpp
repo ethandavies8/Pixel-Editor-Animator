@@ -54,21 +54,17 @@ void Model::updateView(){
     emit sendFrameIndex(activeFramePointer);
 }
 
+//SLot for updating active frame pointer
 void Model::updateCurrentFramePointer(int index)
 {
     activeFramePointer = index;
     emit frameEditorUpdate(frames.at(activeFramePointer));
 }
 
+//Slot for swapping the frame at the passed frameIndex with the current active frame
 void Model::swapFrame(int frameIndex)
 {
     frames.swapItemsAt(activeFramePointer, frameIndex);
-    /*
-    Frame tempFrame = frames.at(frameIndex);
-    frames.replace(frameIndex, frames[activeFramePointer]);
-    frames[otherFrameIndex] = tempFrame;
-    sendPreviewArray();
-    */
     activeFramePointer = frameIndex;
     updateView();
 }
