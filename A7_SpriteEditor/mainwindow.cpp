@@ -354,7 +354,9 @@ void MainWindow::receiveNumberOfFrames(int numFrames) {
 
 void MainWindow::receiveFrameIndex(int frameIndex){
     currentFrameIndex = frameIndex;
-    ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
+    if(currentFrameIndex < ui->framePreview->columnCount()){
+        ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
+    }
 }
 
 void MainWindow::callToolSelectedBrush() {
