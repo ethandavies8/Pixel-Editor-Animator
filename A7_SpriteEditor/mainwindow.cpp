@@ -406,6 +406,7 @@ void MainWindow::callAddFrame() {
     ui->framePreview->setItem(0, ui->framePreview->columnCount() -  1, item);
     ui->framePreview->scrollToItem(item);
     ui->framePreview->item(0, currentFrameIndex)->setSelected(false);
+    ui->framePreview->setCurrentItem(item);
     if(buttonText == "+"){
         emit addFrame();
     }
