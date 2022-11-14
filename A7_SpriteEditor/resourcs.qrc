@@ -6,5 +6,6 @@
         <file>playpause.png</file>
         <file>resizeIcon.png</file>
         <file>duplicate-icon.png</file>
+        <file>swap.png</file>
     </qresource>
 </RCC>

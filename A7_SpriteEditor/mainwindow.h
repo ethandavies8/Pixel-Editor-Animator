@@ -47,6 +47,9 @@ private:
 
     void callFramePreviewClicked(int, int);
 
+    void callSwapFrame();
+    bool swapEnabled;
+
 public slots:
     void loadFile();
     void saveFile(QJsonObject&);
@@ -66,7 +69,7 @@ signals:
 
     void addFrame();
     void duplicateFrame();
-    void addNumberOfFrames(int);
+    void swapFrame(int);
     void removeFrame();
     void changeBrushSize(int);
     void frameSelected(int);

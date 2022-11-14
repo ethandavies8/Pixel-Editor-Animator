@@ -36,6 +36,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::callRemoveFrame
             );
 
+    connect(ui->swapFrameButton,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::callSwapFrame);
+
     //Frame preview connections
     connect(&model,
             &Model::previewUpdate,
@@ -178,6 +183,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::addFrame,
             &model,
             &Model::addFrame);
+
     connect(this,
             &MainWindow::removeFrame,
             &model,
@@ -192,6 +198,11 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::duplicateFrame,
             &model,
             &Model::duplicateFrame);
+
+    connect(this,
+            &MainWindow::swapFrame,
+            &model,
+            &Model::swapFrame);
 
     connect(this,
             &MainWindow::frameSelected,
@@ -268,6 +279,7 @@ void MainWindow::setUpView(int size, int numFrames) {
     totalFrames = numFrames;
     actualSizeAnimation = false;
     isPlayingAnimation = false;
+    swapEnabled = false;
     if(numFrames > 1){
         ui->removeFrameButton->setEnabled(true);
     }
@@ -310,6 +322,10 @@ void MainWindow::callEditorClicked(int row, int col) {
 
 //Emits a signal to inform the model that the currently selected frame has changed
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
+    if(swapEnabled){
+        emit swapFrame(frameIndex);
+        callSwapFrame();
+    }
     emit frameSelected(frameIndex);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::white);
@@ -430,6 +446,16 @@ void MainWindow::callRemoveFrame() {
     }
     else {
         emit removeFrame();
+    }
+}
+
+void MainWindow::callSwapFrame(){
+    swapEnabled = !swapEnabled;
+    if(swapEnabled){
+        ui->pixelEditor->setEnabled(false);
+    }
+    else{
+        ui->pixelEditor->setEnabled(true);
     }
 }
 

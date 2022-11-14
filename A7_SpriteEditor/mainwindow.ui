@@ -1003,6 +1003,32 @@ background-color: rgb(85, 85, 85);</string>
      </size>
     </property>
    </widget>
+   <widget class="QPushButton" name="swapFrameButton">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>550</y>
+      <width>60</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(71, 212, 212);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resourcs.qrc">
+      <normaloff>:/icons/swap.png</normaloff>:/icons/swap.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>55</width>
+      <height>55</height>
+     </size>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

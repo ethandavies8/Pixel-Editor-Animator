@@ -42,7 +42,7 @@ public slots:
     void animationUpdate();
     void returnNumberOfFrames();
     void updateResettedView();
-    void swapFrame(int, int);
+    void swapFrame(int);
 
 private:
     QVector<Frame> frames;
@@ -57,7 +57,6 @@ private:
     void setPixel(int row, int col, Pixel);
     void sendPreviewArray();
     QPixmap frameToPixmap(Frame);
-    void swapFrame(Frame frame, Frame otherFrame);
     void callSendNumberOfFrames();
     void updateView();
 };

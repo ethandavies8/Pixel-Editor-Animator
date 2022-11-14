@@ -60,12 +60,17 @@ void Model::updateCurrentFramePointer(int index)
     emit frameEditorUpdate(frames.at(activeFramePointer));
 }
 
-void Model::swapFrame(int frameIndex, int otherFrameIndex)
+void Model::swapFrame(int frameIndex)
 {
+    frames.swapItemsAt(activeFramePointer, frameIndex);
+    /*
     Frame tempFrame = frames.at(frameIndex);
-    frames.replace(frameIndex, otherFrameIndex);
+    frames.replace(frameIndex, frames[activeFramePointer]);
     frames[otherFrameIndex] = tempFrame;
     sendPreviewArray();
+    */
+    activeFramePointer = frameIndex;
+    updateView();
 }
 
 //helper method which builds the current frames vector into a vector of pixmaps and updates the view
