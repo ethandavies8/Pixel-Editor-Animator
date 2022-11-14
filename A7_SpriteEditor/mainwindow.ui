@@ -703,7 +703,7 @@ background-color: rgb(85, 85, 85);</string>
    </widget>
    <widget class="QPushButton" name="removeFrameButton">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -899,11 +899,26 @@ background-color: rgb(85, 85, 85);</string>
     <property name="mouseTracking">
      <bool>true</bool>
     </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
     <property name="autoScrollMargin">
      <number>16</number>
     </property>
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="dragDropOverwriteMode">
+     <bool>false</bool>
+    </property>
+    <property name="dragDropMode">
+     <enum>QAbstractItemView::NoDragDrop</enum>
+    </property>
+    <property name="defaultDropAction">
+     <enum>Qt::IgnoreAction</enum>
     </property>
     <property name="rowCount">
      <number>1</number>

@@ -22,10 +22,8 @@ void Model::addFrame()
 {
     Frame newFrame(frameSize);
     frames.append(newFrame);
-    emit sendNumberOfFrames(frames.length());
-    activeFramePointer++;
-    emit frameEditorUpdate(frames[activeFramePointer]);
-    sendPreviewArray();
+    activeFramePointer = frames.length() - 1;
+    updateView();
 }
 
 void Model::AddNumberOfFrames(int numFrames){
@@ -33,18 +31,16 @@ void Model::AddNumberOfFrames(int numFrames){
         Frame newFrame(frameSize);
         frames.append(newFrame);
     }
-    emit sendNumberOfFrames(frames.length());
     activeFramePointer = frames.length() - 1;
-    emit frameEditorUpdate(frames[activeFramePointer]);
+    updateView();
 }
+
 
 // Slot to duplicate selected frame
 void Model::duplicateFrame() {
     frames.append(frames[activeFramePointer]);
-    emit sendNumberOfFrames(frames.length());
-    activeFramePointer++;
-    emit frameEditorUpdate(frames[activeFramePointer]);
-    sendPreviewArray();
+    activeFramePointer = frames.length() - 1;
+    updateView();
 }
 
 void Model::removeFrame()
@@ -53,9 +49,15 @@ void Model::removeFrame()
     if(activeFramePointer == frames.length()){
         activeFramePointer--;
     }
-    emit resetView(frameSize);
-    sendPreviewArray();
+    updateView();
+    emit resetView(frameSize, frames.length());
+}
+
+void Model::updateView(){
+    emit sendNumberOfFrames(frames.length());
     emit frameEditorUpdate(frames[activeFramePointer]);
+    emit sendFrameIndex(activeFramePointer);
+    sendPreviewArray();
 }
 
 void Model::updateCurrentFramePointer(int index)
@@ -66,13 +68,11 @@ void Model::updateCurrentFramePointer(int index)
 
 void Model::swapFrame(int frameIndex, int otherFrameIndex)
 {
-
     Frame tempFrame = frames.at(frameIndex);
     frames.replace(frameIndex, otherFrameIndex);
     frames[otherFrameIndex] = tempFrame;
     sendPreviewArray();
 }
-
 void Model::sendPreviewArray()
 {
     QVector<QPixmap> preview;
@@ -199,7 +199,7 @@ void Model::loadProject(QJsonObject &otherProject)
     brushSize = 1;
 
     // Tell the window to reset for the load
-    emit resetView(frameSize);
+    emit resetView(frameSize, (int)frames.length());
 }
 
 // Slot that will send a signal back to the view with this project converted to Json

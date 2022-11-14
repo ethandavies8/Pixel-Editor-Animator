@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QJsonArray>
 #include <QString>
+#include <QDrag>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)
     : QMainWindow(parent)
@@ -168,6 +169,10 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
             &MainWindow::removeFrame,
             &model,
             &Model::removeFrame);
+    connect(&model,
+            &Model::sendFrameIndex,
+            this,
+            &MainWindow::receiveFrameIndex);
     connect(this,
             &MainWindow::duplicateFrame,
             &model,
@@ -234,11 +239,13 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->pixelEditor->setRowCount(model.getFrameSize());
     //ui->pixelEditor->setGeometry(20,0,450,450);
 
-    setUpView(model.getFrameSize());
+    setUpView(model.getFrameSize(), 1);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::black);
     ui->pixelEditor->setPalette(pal);
     colorDialog->setCurrentColor(Qt::black);
+
+    ui->framePreview->item(0, 0)->setSelected(true);
 }
 
 MainWindow::~MainWindow()
@@ -246,8 +253,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setUpView(int size) {
-    for (int frame = 0; frame < 8; ++frame) {
+void MainWindow::setUpView(int size, int numFrames) {
+    ui->framePreview->setColumnCount(numFrames);
+    for (int frame = 0; frame < numFrames; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
         ui->framePreview->setItem(0, frame, item);
     }
@@ -274,6 +282,7 @@ void MainWindow::setUpView(int size) {
     }
 
     // If a project is already loaded in, update the view
+
     emit loadPotentialProject();
 }
 
@@ -314,6 +323,16 @@ void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
 
 void MainWindow::receiveNumberOfFrames(int numFrames) {
     totalFrames = numFrames;
+    if(totalFrames == 1){
+        ui->removeFrameButton->setEnabled(false);
+    }
+    else{
+        ui->removeFrameButton->setEnabled(true);
+    }
+}
+
+void MainWindow::receiveFrameIndex(int frameIndex){
+    currentFrameIndex = frameIndex;
 }
 
 void MainWindow::callToolSelectedBrush() {
@@ -381,46 +400,42 @@ void MainWindow::sendColor() {
 void MainWindow::callAddFrame() {
     QPushButton* buttonSender = qobject_cast<QPushButton*>(sender());
     QString buttonText = buttonSender->text();
-    if(totalFrames >= 8){
-        ui->framePreview->item(0, ui->framePreview->columnCount() -  1)->setSelected(false);
-        ui->framePreview->currentItem()->setSelected(false);
-        ui->framePreview->setColumnCount(ui->framePreview->columnCount() + 1);
-        QTableWidgetItem *item = new QTableWidgetItem;
-        ui->framePreview->setItem(0, ui->framePreview->columnCount() -  1, item);
-        ui->framePreview->item(0, ui->framePreview->columnCount() -  1)->setSelected(true);
-        ui->framePreview->scrollToItem(item);
-    }
+
+    ui->framePreview->setColumnCount(ui->framePreview->columnCount() + 1);
+    QTableWidgetItem *item = new QTableWidgetItem;
+    ui->framePreview->setItem(0, ui->framePreview->columnCount() -  1, item);
+    ui->framePreview->scrollToItem(item);
+    ui->framePreview->item(0, currentFrameIndex)->setSelected(false);
     if(buttonText == "+"){
         emit addFrame();
     }
     else {
         emit duplicateFrame();
     }
-    emit frameSelected(ui->framePreview->columnCount() - 1);
+    ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::white);
     ui->framePreview->setPalette(pal);
 }
 
 void MainWindow::callRemoveFrame() {
-    emit askNumberOfFrames();
     if (totalFrames == 1) {
         ui->removeFrameButton->setEnabled(false);
     }
     else {
         emit removeFrame();
-        ui->removeFrameButton->setEnabled(true);
-        ui->addFrameButton->setEnabled(true);
+        ui->framePreview->item(0, currentFrameIndex)->setSelected(true);
+
     }
 }
 
 void MainWindow::updateFramePreview(QVector<QPixmap> frames) {
-    for (int currentFrame = 0; currentFrame < frames.length(); ++currentFrame) {
+    ui->framePreview->setColumnCount(frames.length());
+    for (int currentFrame = 0; currentFrame < frames.length(); currentFrame++) {
         QIcon icon(frames[currentFrame].scaled(80, 80, Qt::KeepAspectRatio));
         ui->framePreview->item(0, currentFrame)->setData(Qt::DecorationRole, frames[currentFrame].scaledToHeight(75));
         std::cout << "updated Frame at: " << std::to_string(currentFrame) << std::endl;
     }
-
 
 }
 

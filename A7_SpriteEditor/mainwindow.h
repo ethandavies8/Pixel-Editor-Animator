@@ -37,6 +37,7 @@ private:
     QColorDialog *colorDialog;
     int frameSize;
     int totalFrames;
+    int currentFrameIndex;
 
 
     void callDuplicateFrame();
@@ -54,7 +55,8 @@ public slots:
     void updateFrameAnimation(QPixmap);
     void resizeAnimation();
     void receiveNumberOfFrames(int);
-    void setUpView(int);
+    void receiveFrameIndex(int);
+    void setUpView(int, int);
 
 signals:
     void editorClicked(int, int);

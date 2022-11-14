@@ -22,7 +22,8 @@ signals:
     void previewUpdate(QVector<QPixmap>);
     void updateFrameAnimation(QPixmap);
     void sendNumberOfFrames(int);
-    void resetView(int);
+    void sendFrameIndex(int);
+    void resetView(int, int);
 
 public slots:
     void loadProject(QJsonObject& otherProject);
@@ -42,6 +43,7 @@ public slots:
     void returnNumberOfFrames();
     void updateResettedView();
     void AddNumberOfFrames(int numFrames);
+    void swapFrame(int, int);
 
 private:
     QVector<Frame> frames;
@@ -54,16 +56,11 @@ private:
     int animationFrame = 0;
     bool playingAnimation; //Determines if animation is playing
     void setPixel(int row, int col, Pixel);
-    void swapFrame(int frameIndex, int otherFrameIndex);
     void sendPreviewArray();
     QPixmap frameToPixmap(Frame);
     void swapFrame(Frame frame, Frame otherFrame);
     void callSendNumberOfFrames();
-
-//    //AnimationWindow
-//    //ToolBar
-//    //ColorPallette
-//    //GridEditor
+    void updateView();
 };
 
 #endif // MODEL_H
