@@ -325,14 +325,12 @@ void MainWindow::callEditorClicked(int row, int col) {
 //Emits a signal to inform the model that the currently selected frame has changed
 void MainWindow::callFramePreviewClicked(int row, int frameIndex) {
     if(swapEnabled){
-
         if(!frameToSwitch.isChosen){
             frameToSwitch.isChosen = true;
             frameToSwitch.index = frameIndex;
         }
         else{
-            otherFrameToSwitch.index = frameIndex;
-            emit swapFrame(frameToSwitch.index, otherFrameToSwitch.index);
+            emit swapFrame(frameToSwitch.index, frameIndex);
             callSwapFrame();
             frameToSwitch.isChosen = false;
         }

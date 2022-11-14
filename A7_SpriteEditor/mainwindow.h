@@ -54,7 +54,6 @@ private:
     struct frameSwapStruct {bool isChosen; int index;};
 
     struct frameSwapStruct frameToSwitch{false, 0};
-    struct frameSwapStruct otherFrameToSwitch{false, 0};
 
 public slots:
     void loadFile();
