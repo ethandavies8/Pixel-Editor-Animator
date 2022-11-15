@@ -252,14 +252,6 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
     ui->pixelEditor->setSelectionMode(QAbstractItemView::NoSelection); // Removes highlighting
     ui->pixelEditor->setFocusPolicy(Qt::NoFocus); // Removes cell focus
     setUpView(model.getFrameSize(), 1);
-    QPalette pal;
-    pal.setColor(QPalette::Highlight, Qt::black);
-    ui->pixelEditor->setPalette(pal);
-    colorDialog->setCurrentColor(Qt::black);
-
-    ui->framePreview->item(0, 0)->setSelected(true);
-    ui->swapFrameLabel->setVisible(false);
-
 }
 
 
@@ -269,14 +261,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::setUpView(int size, int numFrames) {
+
     ui->framePreview->setColumnCount(numFrames);
     for (int frame = 0; frame < numFrames; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
         ui->framePreview->setItem(0, frame, item);
     }
 
-    //SETUP PIXEL EDITOR & Connections
-    //SETUP PIXEL EDITOR
+    // Set parameters
     frameSize = size;
     currentFrameIndex = 0;
     totalFrames = numFrames;
@@ -284,20 +276,32 @@ void MainWindow::setUpView(int size, int numFrames) {
     isPlayingAnimation = false;
     swapEnabled = false;
     currentTool = Model::brush;
-    if(numFrames > 1){
-        ui->removeFrameButton->setEnabled(true);
-    }
+    frameToSwitch.isChosen = false;
+
+    //SETUP PIXEL EDITOR
+    ui->pixelEditor->setEnabled(true);
     ui->pixelEditor->setColumnCount(frameSize);
     ui->pixelEditor->setRowCount(frameSize);
+    QPalette pal;
+    pal.setColor(QPalette::Highlight, Qt::black);
+    ui->pixelEditor->setPalette(pal);
 
-    // Reset animation, fps, and buttons
+    // Set all other items
     QPixmap blankMap;
     ui->spritePreviewLabel->setPixmap(blankMap);
     ui->fpsSlider->setValue(1);
+    colorDialog->setCurrentColor(Qt::black);
+    sendColor();
     ui->resizeButton->setStyleSheet("background-color: rgba(71,212,212,255);");
     ui->brushButton->setStyleSheet("background-color: rgba(91,250,250,100);");
     ui->eraserButton->setStyleSheet("background-color: rgba(71,212,212,255);");
     ui->playPauseButton->setStyleSheet("background-color: rgba(71,212,212,255);");
+    ui->framePreview->item(0, 0)->setSelected(true);
+    ui->swapFrameLabel->setVisible(false);
+
+    if(numFrames > 1){
+        ui->removeFrameButton->setEnabled(true);
+    }
 
     //set size of cells
     for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
