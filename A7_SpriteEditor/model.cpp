@@ -7,6 +7,21 @@
 #include <QTimer>
 #include <QPixmap>
 
+/*
+* The Cuties
+* CS3505 - Software Systems II
+* Spritz
+*
+* Reviewed by: Rolando Quintana
+*
+* model.cpp formalizes the Model which contains all of the logic and data storage in order for
+* Spritz to operate properly. For example, keeping tack of frames, updating
+* tools, changing brush sizes, animation speeds, previews, etc, are all done
+* by the model.cpp. It communicates witht the View via signals and slots, receiving interactions
+* from the user and telling the View to update accordingly.
+*/
+
+
 Model::Model(int spriteSize, QObject *parent)
     : QObject{parent}, frameSize(spriteSize), playingAnimation(false) {
     //get FrameSize from view
@@ -212,7 +227,7 @@ int Model::getFrameSize() {
     return frameSize;
 }
 
-
+//Emit a signal for the view to get the number of frames
 void Model::returnNumberOfFrames() {
     emit sendNumberOfFrames(frames.length());
 }
