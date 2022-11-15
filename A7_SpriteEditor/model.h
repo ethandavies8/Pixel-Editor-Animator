@@ -1,9 +1,9 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include <QObject>
 #include "frame.h"
 #include "qpixmap.h"
+#include <QObject>
 #include <QPixmap>
 
 class Model : public QObject

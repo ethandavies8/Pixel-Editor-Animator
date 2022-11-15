@@ -1,7 +1,3 @@
-#include "sizedialog.h"
-#include "ui_sizedialog.h"
-#include "model.h"
-
 /*
 * The Cuties
 * CS3505
@@ -12,6 +8,10 @@
 * Class file for size dialog box which shows on initial startup
 * From this size dialog the user is able to choose how big of a sprite to create in the sprite editor
 */
+
+#include "sizedialog.h"
+#include "ui_sizedialog.h"
+#include "model.h"
 
 
 SizeDialog::SizeDialog(QWidget *parent) :

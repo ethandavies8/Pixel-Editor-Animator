@@ -1,8 +1,8 @@
 #ifndef SIZEDIALOG_H
 #define SIZEDIALOG_H
 
-#include <QDialog>
 #include "model.h"
+#include <QDialog>
 
 namespace Ui {
 class SizeDialog;
