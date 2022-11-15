@@ -4,8 +4,7 @@
 
 SizeDialog::SizeDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::SizeDialog)
-{
+    ui(new Ui::SizeDialog) {
     ui->setupUi(this);
 
     // When the button is clicked, the selected option on the combo box will be the size of the sprite
@@ -16,8 +15,7 @@ SizeDialog::SizeDialog(QWidget *parent) :
             );
 }
 
-SizeDialog::~SizeDialog()
-{
+SizeDialog::~SizeDialog() {
     delete ui;
 }
 
