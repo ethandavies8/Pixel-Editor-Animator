@@ -262,6 +262,7 @@ MainWindow::MainWindow(Model& model, QWidget *parent)
 
 }
 
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -298,11 +299,13 @@ void MainWindow::setUpView(int size, int numFrames) {
     ui->eraserButton->setStyleSheet("background-color: rgba(71,212,212,255);");
     ui->playPauseButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 
+    //set size of cells
     for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
         ui->pixelEditor->setColumnWidth(currentCell, ui->pixelEditor->width()/frameSize);
         ui->pixelEditor->setRowHeight(currentCell, ui->pixelEditor->width()/frameSize);
     }
 
+    //preload QTableWidgetItems
     for (int row = 0; row < frameSize; ++row) {
         for (int col = 0; col < frameSize; ++col) {
             QTableWidgetItem *item = new QTableWidgetItem;
@@ -311,7 +314,6 @@ void MainWindow::setUpView(int size, int numFrames) {
     }
 
     // If a project is already loaded in, update the view
-
     emit loadPotentialProject();
 }
 
@@ -324,6 +326,7 @@ void MainWindow::updatePixelEditor(Frame frame){
     }
 }
 
+//is called when a new cell is selected
 void MainWindow::callEditorClicked(int row, int col) {
     emit editorClicked(row, col);
 }

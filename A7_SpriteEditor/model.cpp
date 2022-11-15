@@ -8,9 +8,8 @@
 #include <QPixmap>
 
 Model::Model(int spriteSize, QObject *parent)
-    : QObject{parent}, frameSize(spriteSize), playingAnimation(false)
-{
-     //get FrameSize from view
+    : QObject{parent}, frameSize(spriteSize), playingAnimation(false) {
+    //get FrameSize from view
     Frame newFrame(frameSize);
     frames.append(newFrame);
 }
@@ -19,8 +18,7 @@ Model::Model(int spriteSize, QObject *parent)
 Model::~Model() {}
 
 //slot to add a blank new frame
-void Model::addFrame()
-{
+void Model::addFrame() {
     Frame newFrame(frameSize);
     frames.append(newFrame);
     activeFramePointer = frames.length() - 1;
@@ -36,10 +34,9 @@ void Model::duplicateFrame() {
 }
 
 //slot to remove current frame
-void Model::removeFrame()
-{
+void Model::removeFrame() {
     frames.removeAt(activeFramePointer);
-    if(activeFramePointer == frames.length()){
+    if(activeFramePointer == frames.length()) {
         activeFramePointer--;
     }
     sendPreviewArray();
@@ -47,7 +44,7 @@ void Model::removeFrame()
 }
 
 //helper method for emitting signals to update the view
-void Model::updateView(){
+void Model::updateView() {
     emit sendNumberOfFrames(frames.length());
     sendPreviewArray();
     emit frameEditorUpdate(frames[activeFramePointer]);
@@ -55,59 +52,48 @@ void Model::updateView(){
 }
 
 //SLot for updating active frame pointer
-void Model::updateCurrentFramePointer(int index)
-{
+void Model::updateCurrentFramePointer(int index) {
     activeFramePointer = index;
     emit frameEditorUpdate(frames.at(activeFramePointer));
 }
 
 //Slot for swapping the frame at the passed frameIndex with the current active frame
-void Model::swapFrame(int frameIndex, int otherFrameIndex)
-{
+void Model::swapFrame(int frameIndex, int otherFrameIndex) {
     frames.swapItemsAt(frameIndex, otherFrameIndex);
     activeFramePointer = otherFrameIndex;
     updateView();
 }
 
 //helper method which builds the current frames vector into a vector of pixmaps and updates the view
-void Model::sendPreviewArray()
-{
+void Model::sendPreviewArray() {
     QVector<QPixmap> preview;
-    for (int i = 0; i < frames.size(); i++)
-    {
+    for (int i = 0; i < frames.size(); i++) {
         preview.append(frameToPixmap(frames.at(i)));
     }
     emit previewUpdate(preview);
 }
 
 //slot to update pixels
-void Model::receivePixelClick(int row, int col)
-{
-    if (currentTool == eraser)
-    {
+void Model::receivePixelClick(int row, int col) {
+    if (currentTool == eraser) {
         setPixel(row, col, Pixel{255, 255, 255, 0});
     }
-    else
-    {
+    else {
         setPixel(row, col, currentColor);
     }
 }
 
 //Helper which sets the pixels of the current frame depending on brush size and emits a signal of the current frame to the view
-void Model::setPixel(int row, int col, Pixel pixel)
-{
+void Model::setPixel(int row, int col, Pixel pixel) {
     int x = 0;
     int y = 0;
     // adjust starting location of for loop
-    if (brushSize == 3)
-    {
+    if (brushSize == 3) {
         x = -1;
         y = -1;
     }
-    for (int i = 0; i < brushSize; i++)
-    {
-        for (int j = 0; j < brushSize; j++)
-        {
+    for (int i = 0; i < brushSize; i++) {
+        for (int j = 0; j < brushSize; j++) {
             frames[activeFramePointer].setPixel(row + i + x, col + j + y, pixel);
         }
     }
@@ -117,14 +103,11 @@ void Model::setPixel(int row, int col, Pixel pixel)
 }
 
 //Helper method to convert frames to images and then pixmaps
-QPixmap Model::frameToPixmap(Frame frame)
-{
+QPixmap Model::frameToPixmap(Frame frame) {
     QImage image(frameSize, frameSize, QImage::Format_ARGB32);
     QColor color;
-    for (int i = 0; i < frameSize; i++)
-    {
-        for (int j = 0; j < frameSize; j++)
-        {
+    for (int i = 0; i < frameSize; i++) {
+        for (int j = 0; j < frameSize; j++) {
             color = QColor(frame.getPixel(i, j).red, frame.getPixel(i, j).green, frame.getPixel(i, j).blue, frame.getPixel(i, j).alpha);
             image.setPixelColor(j, i, color);
         }
@@ -134,26 +117,22 @@ QPixmap Model::frameToPixmap(Frame frame)
 }
 
 //Slot to update brush
-void Model::updateBrushSize(int brushSize)
-{
+void Model::updateBrushSize(int brushSize) {
     this->brushSize = brushSize;
 }
 
 //Slot to change tool
-void Model::changeTool(Tool tool)
-{
+void Model::changeTool(Tool tool) {
     currentTool = tool;
 }
 
 //Slot to update currentColor
-void Model::updateCurrentColor(Pixel pixel)
-{
+void Model::updateCurrentColor(Pixel pixel) {
     currentColor = pixel;
 }
 
 // Slot that reads a Json Object and replaces this project with it
-void Model::loadProject(QJsonObject &otherProject)
-{
+void Model::loadProject(QJsonObject &otherProject) {
     QJsonObject projectFrames = otherProject.value("frames").toObject();
     QString key = "frame";
     key.append(QString::number(0)); // Get first frame
@@ -163,19 +142,16 @@ void Model::loadProject(QJsonObject &otherProject)
 
     // Get frames by their names (frame0, frame1, frame2, etc.)
     // There must be at least one frame named "frame0"
-    for (int frameNumber = 1; projectFrames.contains(key); frameNumber++)
-    {
+    for (int frameNumber = 1; projectFrames.contains(key); frameNumber++) {
 
         // Go through current frame and make a new frame from the pixels
         QJsonArray rows = projectFrames.value(key).toArray();
         Frame loadFrame(size);
 
         // Go through each pixel and draw the frame
-        for (int rowNum = 0; rowNum < size; rowNum++)
-        {
+        for (int rowNum = 0; rowNum < size; rowNum++) {
             QJsonArray columns = rows[rowNum].toArray();
-            for (int colNum = 0; colNum < size; colNum++)
-            {
+            for (int colNum = 0; colNum < size; colNum++) {
                 QJsonArray pixel = columns[colNum].toArray();
                 Pixel pixelValue = {pixel[0].toInt(),
                                     pixel[1].toInt(),
@@ -209,16 +185,14 @@ void Model::loadProject(QJsonObject &otherProject)
 }
 
 // Slot that will send a signal back to the view with this project converted to Json
-void Model::retrieveJsonProject()
-{
+void Model::retrieveJsonProject() {
     QJsonObject root;
     root.insert("height", frameSize);
     root.insert("width", frameSize);
     root.insert("numberOfFrames", frames.size());
 
     QJsonObject framesObject;
-    for (int i = 0; i < frames.size(); i++)
-    {
+    for (int i = 0; i < frames.size(); i++) {
 
         // Add frame numbers (frame0, frame1, etc.)
         QString itemName = "frame";
@@ -237,8 +211,7 @@ void Model::updateResettedView() {
 }
 
 //Public getter for setting up the view
-int Model::getFrameSize()
-{
+int Model::getFrameSize() {
     return frameSize;
 }
 
@@ -248,8 +221,7 @@ void Model::returnNumberOfFrames() {
 }
 
 //SLot for play/pause button clicked
-void Model::playPauseClicked()
-{
+void Model::playPauseClicked() {
     playingAnimation = !playingAnimation;
     frameAnimation();
 }
@@ -276,7 +248,6 @@ void Model::animationUpdate(){
 }
 
 //Slot for fps changes
-void Model::fpsUpdate(int updatedFPS)
-{
+void Model::fpsUpdate(int updatedFPS) {
     fps = updatedFPS;
 }

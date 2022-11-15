@@ -2,10 +2,21 @@
 #include "ui_sizedialog.h"
 #include "model.h"
 
+/*
+* The Cuties
+* CS3505
+* Sprite Editor Implementation
+*
+* Reviewed by: Ethan Davies
+*
+* Class file for size dialog box which shows on initial startup
+* From this size dialog the user is able to choose how big of a sprite to create in the sprite editor
+*/
+
+
 SizeDialog::SizeDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::SizeDialog)
-{
+    ui(new Ui::SizeDialog) {
     ui->setupUi(this);
 
     // When the button is clicked, the selected option on the combo box will be the size of the sprite
@@ -16,8 +27,7 @@ SizeDialog::SizeDialog(QWidget *parent) :
             );
 }
 
-SizeDialog::~SizeDialog()
-{
+SizeDialog::~SizeDialog() {
     delete ui;
 }
 
