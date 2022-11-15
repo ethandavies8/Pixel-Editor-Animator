@@ -262,6 +262,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setUpView(int size, int numFrames) {
 
+    //ui->pixelEditor->setGeometry(25, 5, 455, 455);
     ui->framePreview->setColumnCount(numFrames);
     for (int frame = 0; frame < numFrames; ++frame) {
         QTableWidgetItem *item = new QTableWidgetItem;
@@ -285,6 +286,7 @@ void MainWindow::setUpView(int size, int numFrames) {
     QPalette pal;
     pal.setColor(QPalette::Highlight, Qt::black);
     ui->pixelEditor->setPalette(pal);
+
 
     // Set all other items
     QPixmap blankMap;
