@@ -283,15 +283,21 @@ void MainWindow::setUpView(int size, int numFrames) {
     actualSizeAnimation = false;
     isPlayingAnimation = false;
     swapEnabled = false;
+    currentTool = Model::brush;
     if(numFrames > 1){
         ui->removeFrameButton->setEnabled(true);
     }
     ui->pixelEditor->setColumnCount(frameSize);
     ui->pixelEditor->setRowCount(frameSize);
 
-    // Set the animation window to blank
+    // Reset animation, fps, and buttons
     QPixmap blankMap;
     ui->spritePreviewLabel->setPixmap(blankMap);
+    ui->fpsSlider->setValue(1);
+    ui->resizeButton->setStyleSheet("background-color: rgba(71,212,212,255);");
+    ui->brushButton->setStyleSheet("background-color: rgba(91,250,250,100);");
+    ui->eraserButton->setStyleSheet("background-color: rgba(71,212,212,255);");
+    ui->playPauseButton->setStyleSheet("background-color: rgba(71,212,212,255);");
 
     //set size of cells
     for (int currentCell = 0; currentCell < frameSize; ++currentCell) {
