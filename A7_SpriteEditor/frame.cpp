@@ -3,9 +3,10 @@
 * CS 3505
 * Spritz Pixel Editor
 *
-* Reviewed by: Nami Eskandarian
+* Reviewed by: Nami Eskandarian and Wilson Pan
 *
 * Implementation file for the Frame class
+* Frame.cpp will contain a 2D array of pixel
 */
 
 #include "frame.h"
