@@ -200,6 +200,9 @@ void Model::loadProject(QJsonObject &otherProject)
     currentTool = brush;
     activeFramePointer = 0;
     brushSize = 1;
+    fps = 1;
+    animationFrame = 0;
+    playingAnimation = false;
 
     // Tell the window to reset for the load
     emit resetView(frameSize, (int)frames.length());
@@ -251,15 +254,19 @@ void Model::playPauseClicked()
     frameAnimation();
 }
 
-//Plays the animation if the bool is true
+// Function starts a timer for frame animation
 void Model::frameAnimation()
 {
-    if (playingAnimation)
-        QTimer::singleShot((1000/fps), this, &Model::animationUpdate);
+    QTimer::singleShot((1000/fps), this, &Model::animationUpdate);
 }
 
 //Signal to the view of the new frame for the animation
 void Model::animationUpdate(){
+
+    // Do not update the animation if it isn't playing
+    if (!playingAnimation)
+        return;
+
     if(animationFrame == frames.size())
         animationFrame = 0;
 

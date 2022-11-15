@@ -29,6 +29,7 @@ private:
     int currentFrameIndex;
     bool actualSizeAnimation;
     bool isPlayingAnimation;
+    bool swapEnabled;
 
     void callEditorClicked(int, int);
     void callToolSelectedBrush();
@@ -49,7 +50,6 @@ private:
     void callFramePreviewClicked(int, int);
 
     void callSwapFrame();
-    bool swapEnabled;
 
     struct frameSwapStruct {bool isChosen; int index;};
 
