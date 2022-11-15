@@ -255,13 +255,7 @@ void Model::playPauseClicked()
 void Model::frameAnimation()
 {
     if (playingAnimation)
-    {
-        for (int i = 0; i < frames.size(); i++)
-        {
-             QTimer::singleShot((1000/fps)*(i+1), this, &Model::animationUpdate);
-        }
-        QTimer::singleShot(1000 * frames.size() / fps + 1000 / fps, this, &Model::frameAnimation);
-    }
+        QTimer::singleShot((1000/fps), this, &Model::animationUpdate);
 }
 
 //Signal to the view of the new frame for the animation
@@ -271,6 +265,7 @@ void Model::animationUpdate(){
 
     emit updateFrameAnimation(frameToPixmap(frames[animationFrame]));
     animationFrame++;
+    frameAnimation();
 }
 
 //Slot for fps changes
