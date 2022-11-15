@@ -42,7 +42,7 @@ void SizeDialog::setSpriteSize() {
     }
 
     // Close the dialog after the button is pressed
-    this->close();
+    this->accept();
 }
 
 // Returns a model using the size chosen by the user
