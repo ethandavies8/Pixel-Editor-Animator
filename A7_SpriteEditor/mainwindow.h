@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include "frame.h"
 #include "model.h"
+#include <QMainWindow>
 #include <QColorDialog>
 
 QT_BEGIN_NAMESPACE

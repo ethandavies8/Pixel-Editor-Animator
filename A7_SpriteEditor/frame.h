@@ -8,10 +8,10 @@
 * Header file for the Frame class
 */
 
-#include <QJsonObject>
-
 #ifndef FRAME_H
 #define FRAME_H
+
+#include <QJsonObject>
 
 // This Pixel struct will hold the color of an individual pixel on the screen
 struct Pixel{
