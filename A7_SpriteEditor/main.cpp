@@ -12,9 +12,13 @@ int main(int argc, char *argv[])
     // Will run until a size is chosen, then start the program
     SizeDialog s;
     s.setModal(true);
-    s.exec();
+
+    // Close program if user closes out of dialog
+    if (s.exec() == QDialog::Rejected)
+        return a.exec();
 
     Model model = s.getModel();
+
     MainWindow w(model);
     w.show();
     return a.exec();
