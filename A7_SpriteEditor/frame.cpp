@@ -3,6 +3,8 @@
 * CS 3505
 * Spritz Pixel Editor
 *
+* Reviewed by: Nami Eskandarian
+*
 * Implementation file for the Frame class
 */
 
@@ -10,10 +12,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-using std::string;
-
 // Constructor to create an empty frame
 Frame::Frame(int size) {
+
     // Pre-fill an empty frame with fully transparent pixels
     for (int height = 0; height < size; height++) {
         QVector<Pixel> row;
@@ -55,6 +56,7 @@ QJsonArray Frame::getJsonArray() {
 
     for (int i = 0; i < pixels.size(); i++) {
         QJsonArray arr;
+
         // Create an array of pixels
         for (Pixel& pixel : pixels[i]) {
             QJsonArray pix;

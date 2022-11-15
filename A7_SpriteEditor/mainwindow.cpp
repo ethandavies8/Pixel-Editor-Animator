@@ -2,13 +2,13 @@
 #include "ui_mainwindow.h"
 #include "QTableWidget"
 #include "model.h"
+#include "frame.h"
 
 #include <QFile>
+#include <QColorDialog>
 #include <QFileDialog>
 #include <QJsonDocument>
-#include <QJsonObject>
 #include <QMessageBox>
-#include <QJsonArray>
 #include <QString>
 
 MainWindow::MainWindow(Model& model, QWidget *parent)

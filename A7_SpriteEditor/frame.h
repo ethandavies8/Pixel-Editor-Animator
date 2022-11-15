@@ -3,6 +3,8 @@
 * CS 3505
 * Spritz Pixel Editor
 *
+* Reviewed by: Nami Eskandarian
+*
 * Header file for the Frame class
 */
 
@@ -21,6 +23,7 @@ class Frame
 public:
     Frame(int size); // Constructor for frame takes sprite size
     Frame(const Frame& other); // Can duplicate frames
+
     Pixel getPixel(int x, int y); // Get the pixel and its colors
     void setPixel(int x, int y, Pixel newPixel); // Set the pixel's colors
     Frame& operator=(const Frame& other);

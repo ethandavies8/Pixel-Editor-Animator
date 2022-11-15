@@ -1,3 +1,13 @@
+/*
+* The Cuties
+* CS3505
+* Sprite Editor Implementation
+*
+* Reviewed by: Nami Eskandarian
+*
+* Program starts here
+*/
+
 #include "mainwindow.h"
 #include "sizedialog.h"
 #include "model.h"
