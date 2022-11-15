@@ -13,8 +13,7 @@
 using std::string;
 
 // Constructor to create an empty frame
-Frame::Frame(int size)
-{
+Frame::Frame(int size) {
     // Pre-fill an empty frame with fully transparent pixels
     for (int height = 0; height < size; height++) {
         QVector<Pixel> row;
