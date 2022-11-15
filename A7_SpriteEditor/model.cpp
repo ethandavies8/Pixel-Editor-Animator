@@ -1,12 +1,3 @@
-#include "model.h"
-#include "frame.h"
-#include "qpixmap.h"
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QImage>
-#include <QTimer>
-#include <QPixmap>
-
 /*
 * The Cuties
 * CS3505 - Software Systems II
@@ -20,6 +11,15 @@
 * by the model.cpp. It communicates witht the View via signals and slots, receiving interactions
 * from the user and telling the View to update accordingly.
 */
+
+#include "model.h"
+#include "frame.h"
+#include "qpixmap.h"
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QImage>
+#include <QTimer>
+#include <QPixmap>
 
 
 Model::Model(int spriteSize, QObject *parent)
@@ -242,13 +242,12 @@ void Model::playPauseClicked() {
 }
 
 // Function starts a timer for frame animation
-void Model::frameAnimation()
-{
+void Model::frameAnimation() {
     QTimer::singleShot((1000/fps), this, &Model::animationUpdate);
 }
 
 //Signal to the view of the new frame for the animation
-void Model::animationUpdate(){
+void Model::animationUpdate() {
 
     // Do not update the animation if it isn't playing
     if (!playingAnimation)
